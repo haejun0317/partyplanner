@@ -154,8 +154,20 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
-		$("#datepicker").datepicker();
-		$("#datepicker1").datepicker();
+		$("#from").datepicker({
+		    numberOfMonths: 1,
+		    dateFormat : 'yy-mm-dd',
+		    onSelect: function(selected) {
+		    $("#to").datepicker("option","minDate", selected)
+		    }
+		});
+		$("#to").datepicker({
+		    numberOfMonths: 1,
+		    dateFormat : 'yy-mm-dd',
+		    onSelect: function(selected) {
+		  	$("#from").datepicker("option","maxDate", selected)
+		    }
+		});
 	});
 </script>
 <script>
@@ -184,9 +196,7 @@
 							optionText += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;" + $(checkitem).attr("name") +"</p>"
 						}
 					});
-					text += "<div schedule='"+ $(item).attr("event") +"'><p>" + $(item).attr("event")
-							+ "<span style='float: right;'>"
-							+ $(item).attr("time") + "분</span></p>"+optionText+"</div>";
+					text += "<div schedule='"+ $(item).attr("event") +"'><p>" + $(item).attr("event") + "<span style='float: right;'>" + $(item).attr("time") + "분</span></p>"+optionText+"</div>";
 				});
 		$("#showSchedule").html(text);
 	}
@@ -395,7 +405,8 @@
 			var total = $(item).attr("total");
 			sum += Number(total);
 		})
-		$('#sum').html(setComma(sum));
+		$("#sum").val(sum);
+		$('#total').html(setComma(sum));
 	}
 
 	/** option 중복 js 콤마 찍기 */
@@ -630,6 +641,29 @@
 		}
 
 		$("#searchtable").html(text);
+	}
+	
+	/** 다음버튼 눌렀을때 실행되는 액션 */
+	function postForm() {
+		var schedule = "";
+		$(".accordion-group").each(function(index, item) {
+			var optionText= "";
+			$(item).children(".accordion-body").children(".accordion-inner").children(".checkboxOption").each(function(i,checkitem) {
+				if($(checkitem).is(":checked")){
+					optionText +=  "&&"+ $(checkitem).attr("name");
+				}
+			});
+			schedule += "##"+$(item).attr("event") + optionText;
+		});
+		$("#schedule").val(schedule);
+		$("#place").val($("#sample4_roadAddress").val() + $("#restAddress").val());
+		$("#people").val(Number($("#putPeople").val()));
+		$("#startday").val($("#from").val());
+		$("#endday").val($("#to").val());
+		$("#name").val(eventName);
+		$("#id").val("admin");
+		
+		$("#myForm").submit();
 	}
 </script>
 
@@ -866,9 +900,8 @@
                   </tbody>
                 </table>
               </article>
-
-
             </div>
+            
             <div class="span6">
               <div class="widget">
                 <div class="widget">
@@ -883,16 +916,23 @@
                       onclick="sample4_execDaumPostcode()"
                       value="우편번호 찾기">
                     </span>
+                    <span>&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <input placeholder="나머지 주소" type="text"
+                      class="input-medium search-query"
+                      style="margin-top:2px; border-radius: 10px; width: 315px; margin-right: 10px"
+                      id="restAddress" value="">
+                    </span>
                   </form>
                   <form class="form-search">
                     <span class="category">인&emsp;&emsp;원&emsp; <input
                       placeholder="인원 입력 (명)" type="text"
                       class="input-medium search-query"
+                      id="putPeople"
                       style="border-radius: 10px; width: 100px;">
                     </span> <span class="category" style="">&emsp;파티시작일&emsp;
-                      <input type="text" id="datepicker"
+                      <input type="text" id="from"
                       style="border-radius: 10px; width: 95px;">
-                      ~ <input type="text" id="datepicker1"
+                      ~ <input type="text" id="to"
                       style="border-radius: 10px; width: 95px;">
                     </span>
                   </form>
@@ -945,16 +985,8 @@
                 style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
                 <b style="font-size: 15pt;">총 견적 금액 </b><b
                   style="font-size: 35pt;"><span
-                  style="float: right;" id="sum"><strong>0</strong></span></b>
+                  style="float: right;" id="total"><strong>0</strong></span></b>
               </div>
-
-
-
-
-              <!-- 두번째 탭 -->
-
-
-
 
               <!-- end divider -->
             </div>
@@ -967,10 +999,21 @@
           <!-- end span12 -->
           <div class="row">
             <div style="text-align: right;">
-              <button type="submit" class="btn btn-square btn-theme"
-                style="border-radius: 10px">다음</button>
+              <button type="button" class="btn btn-square btn-theme"
+                style="border-radius: 10px" onclick="postForm()">다음</button>
             </div>
           </div>
+          
+          <form action="plan" method="post" id="myForm">
+            <input type="hidden" value="" id="schedule" name="schedule">
+            <input type="hidden" value="" id="people" name="people">
+            <input type="hidden" value="" id="startday" name="startday">
+            <input type="hidden" value="" id="endday" name="endday">
+            <input type="hidden" value="" id="place" name="place">
+            <input type="hidden" value="" id="id" name="id">
+            <input type="hidden" value="" id="name" name="name">
+            <input type="hidden" value="" id="sum" name="sum">
+          </form>
         </div>
       </div>
     </div>
