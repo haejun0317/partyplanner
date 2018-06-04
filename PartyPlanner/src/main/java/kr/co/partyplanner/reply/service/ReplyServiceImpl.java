@@ -17,8 +17,13 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	/** 댓글 목록 리스트 출력*/
 	@Override
-	public List<Reply> listAll() throws Exception {
-		return dao.listAll();
+	public List<Reply> listAll(int num) throws Exception {
+		return dao.listAll(num);
+	}
+
+	@Override
+	public void create(Reply reply) throws Exception {
+		dao.create(reply);
 	}
 
 

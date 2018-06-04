@@ -118,16 +118,30 @@
           <div class="wrapper">  
           <b style="color: black; font-size: 12pt; text-align: left;">문의글</b>
           <p></p>
-          <textarea  style="border-radius: 10px; width: 91%; resize: none;" rows="3"></textarea>&emsp;<button class="btn btn-theme" style="width: 70px; height: 70px; position: absolute; text-align: center; " ><b style="align: center; font-size: 15px  ">등록</b></button>
+          <form action="read" method="post">
+          <input type="hidden" id="id" name="id" value="${member.id }">
+          <input type="hidden" id="partyNum" name="partyNum" value="${party.num }">
+          <textarea  style="border-radius: 10px; width: 91%; resize: none;" rows="3" id="contents" name="contents"></textarea>&emsp;<button class="btn btn-theme" type="submit" style="width: 70px; height: 70px; position: absolute; text-align: center; " ><b style="align: center; font-size: 15px  ">등록</b></button>
+          </form>
           <table class="table">
             <thead>
               <tr>
-                <th>번호</th>
+                <th>문의번호</th>
+                <th>파티번호</th>
+                <th>작 성 자</th>
+                <th>내    용</th>
+                <th>등 록 일</th>
               </tr>
             </thead>
-            <c:forEach items="${reply}" var=reply>
+            <c:forEach items="${reply}" var="reply">
             <tr>
+              <td>${reply.replyNum}</td>
+              <td>${reply.partyNum}</td>
               <td>${reply.id}</td>
+              <td>${reply.contents}</td>
+              <td>${reply.regdate}</td>
+              <td><a href="/party/ReReply"
+            class="btn btn-theme">답글</a></td>
             </tr>
             </c:forEach>
           </table>

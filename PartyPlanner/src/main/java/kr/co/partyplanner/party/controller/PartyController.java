@@ -20,6 +20,7 @@ import kr.co.partyplanner.party.domain.SearchCriteria;
 import kr.co.partyplanner.party.service.PartyService;
 import kr.co.partyplanner.partyjoin.domain.PartyJoin;
 import kr.co.partyplanner.partyjoin.service.PartyJoinService;
+import kr.co.partyplanner.reply.domain.Reply;
 import kr.co.partyplanner.reply.service.ReplyService;
 
 
@@ -58,8 +59,18 @@ public class PartyController {
 	public void read(Model model,int num,String id) throws Exception{
 		model.addAttribute("party",partyservice.read(num));
 		model.addAttribute("member",memberservice.mread(id));
-		model.addAttribute("reply",replyservice.listAll());
+		model.addAttribute("reply",replyservice.listAll(num));
 		
+	}
+	
+	@RequestMapping(value="/read", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
+	public String create(Reply reply ,RedirectAttributes rttr) throws Exception {
+		logger.info("댓글 생성");
+		logger.info(reply);
+		replyservice.create(reply);
+		rttr.addAttribute("num", reply.getPartyNum());
+		rttr.addAttribute("id", reply.getId());
+		return "redirect:/party/read";
 	}
 	
 	@RequestMapping(value="/search.do")

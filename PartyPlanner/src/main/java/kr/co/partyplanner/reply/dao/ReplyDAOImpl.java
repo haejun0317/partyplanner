@@ -17,8 +17,14 @@ public class ReplyDAOImpl implements ReplyDAO {
 	private static final String namespace = "kr.co.partyplanner.mapper.replyMapper";
 
 	@Override
-	public List<Reply> listAll() throws Exception {
-		return session.selectList(namespace+".listAll");
+	public List<Reply> listAll(int num) throws Exception {
+		return session.selectList(namespace+".listAll",num);
+	}
+
+	@Override
+	public void create(Reply reply) throws Exception {
+		
+		session.insert(namespace+".create", reply);
 	}
 
 

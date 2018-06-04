@@ -12,5 +12,22 @@
 		       group_no "groupNo", 
 		       To_char(regdate, 'YYYY-MM-DD' ) regdate
 		FROM   reply
+		WHERE party_num = #{num}
+		ORDER BY reply_num desc
 	</select>
+	
+	<insert id="create">
+		INSERT INTO reply 
+            (reply_num,
+            party_num, 
+             member_id, 
+             CONTENTS,
+             group_no) 
+		VALUES       
+           (reply_num_seq.NEXTVAL,
+           #{partyNum},
+			#{id},
+			#{contents},
+			reply_num_seq.CURRVAL) 
+	</insert>
 </mapper>
