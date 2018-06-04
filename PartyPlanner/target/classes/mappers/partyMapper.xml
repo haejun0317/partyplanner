@@ -5,7 +5,7 @@
 
 <mapper namespace="kr.co.partyplanner.mapper.partyMapper">
 
-<!-- 파티 전체 정보를 출력하기. -->
+<!-- 파티 전체 정보를 출력하기 -->
    <select id="listAll" resultType="Party">
       <![CDATA[
          SELECT num, 

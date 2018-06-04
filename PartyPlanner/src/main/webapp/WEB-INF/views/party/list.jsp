@@ -382,7 +382,7 @@ nav ul li:first-child {	border-left: none;}
 		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'	
 		        });
 		        infowindow.open(map, marker);
-	  // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다.
+	  // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		        map.setCenter(coords);
 		    } 
 		});    
