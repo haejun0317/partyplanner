@@ -22,7 +22,7 @@ public class EventPlanController {
 	
 	@RequestMapping(value ="/misson", method =RequestMethod.GET)
 	public void listAll(Model model, int num )throws Exception{
-		logger.info("tet");
+		logger.info("tesy");
 
 		logger.info("event 컨트롤러 실행중");
 		EventPlan eventPlan = service.read(num);
