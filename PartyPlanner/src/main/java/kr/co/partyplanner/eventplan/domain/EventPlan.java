@@ -15,12 +15,13 @@ public class EventPlan {
 	private String place;
 	private String id;
 	private String name;
+	private int sum;
 	
 	public EventPlan() {}
 
+
 	public EventPlan(int num, String schedule, String mc, String stage, String light, String sound, String staff,
-			int people, String startday, String endday, String place, String id, String name) {
-		super();
+			int people, String startday, String endday, String place, String id, String name, int sum) {
 		this.num = num;
 		this.schedule = schedule;
 		this.mc = mc;
@@ -34,6 +35,7 @@ public class EventPlan {
 		this.place = place;
 		this.id = id;
 		this.name = name;
+		this.sum = sum;
 	}
 
 	public int getNum() {
@@ -139,15 +141,19 @@ public class EventPlan {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 
 	@Override
 	public String toString() {
 		return "EventPlan [num=" + num + ", schedule=" + schedule + ", mc=" + mc + ", stage=" + stage + ", light="
 				+ light + ", sound=" + sound + ", staff=" + staff + ", people=" + people + ", startday=" + startday
-				+ ", endday=" + endday + ", place=" + place + ", id=" + id + ", name=" + name + "]";
+				+ ", endday=" + endday + ", place=" + place + ", id=" + id + ", name=" + name + ", sum=" + sum + "]";
 	}
-	
-	
 
 }
 

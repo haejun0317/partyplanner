@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.partyplanner.event.domain.Event;
 import kr.co.partyplanner.event.domain.EventSchedule;
@@ -25,6 +26,7 @@ import kr.co.partyplanner.event.service.EventScheduleService;
 import kr.co.partyplanner.event.service.EventService;
 import kr.co.partyplanner.event.service.GoodsService;
 import kr.co.partyplanner.event.service.ScheduleOptionService;
+import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.member.controller.MemberController;
 import kr.co.partyplanner.member.domain.Member;
 
@@ -62,7 +64,23 @@ public class EventController {
 
 		model.addAttribute("event", e);
 	}
-
+	
+	@RequestMapping(value = "/plan", method = RequestMethod.POST)
+	public String plan(EventPlan ePlan, RedirectAttributes rttr) throws Exception {
+		logger.info("plan....post");
+		logger.info(ePlan);
+		
+		rttr.addAttribute("schedule", ePlan.getSchedule());
+		rttr.addAttribute("people", ePlan.getPeople());
+		rttr.addAttribute("startday", ePlan.getStartday());
+		rttr.addAttribute("endday", ePlan.getEndday());
+		rttr.addAttribute("place", ePlan.getPlace());
+		rttr.addAttribute("id", ePlan.getId());
+		rttr.addAttribute("name", ePlan.getName());
+		rttr.addAttribute("sum", ePlan.getSum());
+		return "redirect:/option/plan";
+	}
+	
 	@RequestMapping(value = "/option", method = RequestMethod.GET)
 	public void option(Model model) throws Exception {
 		logger.info("cus............");
