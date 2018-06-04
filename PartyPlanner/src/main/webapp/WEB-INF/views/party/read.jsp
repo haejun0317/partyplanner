@@ -6,77 +6,54 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="" />
-<meta name="author" content="" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-<!-- css -->
-<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css"
-  rel="stylesheet" />
-<link
-  href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
-  rel="stylesheet">
-<link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
-<link href="/resources/bootstrap/css/bootstrap-responsive.css"
-  rel="stylesheet" />
-<link href="/resources/bootstrap/css/fancybox/jquery.fancybox.css"
-  rel="stylesheet">
-<link href="/resources/bootstrap/css/jcarousel.css" rel="stylesheet" />
-<link href="/resources/bootstrap/css/flexslider.css" rel="stylesheet" />
-<link href="/resources/bootstrap/css/slitslider.css" rel="stylesheet" />
-<link href="/resources/bootstrap/css/style.css" rel="stylesheet" />
-<!-- Theme skin -->
-<link id="t-colors" href="/resources/bootstrap/skins/default.css"
-  rel="stylesheet" />
-<!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-  href="/resources/bootstrap/ico/apple-touch-icon-144-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-  href="/resources/bootstrap/ico/apple-touch-icon-114-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-  href="/resources/bootstrap/ico/apple-touch-icon-72-precomposed.png" />
-<link rel="apple-touch-icon-precomposed"
-  href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
-<link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- 게시물 읽기 -->
+ <!-- css -->
+  <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet" />
+  <link href="/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="/resources/bootstrap/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+  <link href="/resources/bootstrap/css/jcarousel.css" rel="stylesheet" />
+  <link href="/resources/bootstrap/css/flexslider.css" rel="stylesheet" />
+  <link href="/resources/bootstrap/css/slitslider.css" rel="stylesheet" />
+  <link href="/resources/bootstrap/css/style.css" rel="stylesheet" />
+  <!-- Theme skin -->
+  <link id="t-colors" href="/resources/bootstrap/skins/default.css" rel="stylesheet" />
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/resources/bootstrap/ico/apple-touch-icon-144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/resources/bootstrap/ico/apple-touch-icon-114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/bootstrap/ico/apple-touch-icon-72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
+  <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
+  <!-- 게시물 읽기 -->
 </head>
 
 <body>
-
-<!-- <script>
-$(".reply").on("click",function(e){
-	e.preventDefault();
-	var rep = $(this).attr("href");
-	$(window).scrollTop($(rep).offset().top);
-	
-});
-</script> -->   
-  
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
-  <section id="inner-headline">
-    <div class="container">
-      <div class="row">
-        <div class="span4">
-          <div class="inner-heading">
-            <h2>About us</h2>
+<jsp:include page="/WEB-INF/views/include/header.jsp"/>
+    <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>About us</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="#">Pages</a><i class="icon-angle-right"></i></li>
+              <li class="active">About us</li>
+            </ul>
           </div>
         </div>
-        <div class="span8">
-          <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home"></i></a><i
-              class="icon-angle-right"></i></li>
-            <li><a href="#">Pages</a><i class="icon-angle-right"></i></li>
-            <li class="active">About us</li>
-          </ul>
-        </div>
       </div>
-    </div>
-  </section>
-  <!-- 바디부분 -->
-  <section id="content">
+    </section>
+    <!-- 바디부분 -->
+    <section id="content">
     <div class="container">
       <!-- 첫번째 줄 -->
       <div class="row">
@@ -84,9 +61,8 @@ $(".reply").on("click",function(e){
         <div class="span3">
           <ul class="slides">
             <li><a href="#"><img
-                src="/resources/bootstrap/img/partyImg/${Party.image}"
+                src="/resources/bootstrap/img/partyImg/${party.image}"
                 alt="" class="img-polaroid" width="400px" /></a></li>
-            <li><strong>${Party.member}</strong></li>
           </ul>
         </div>
 
@@ -94,28 +70,28 @@ $(".reply").on("click",function(e){
         <!-- 첫번째 - 오른쪽(사진 부분) span 9 -->
         <div class="span9">
           <ul class="slides">
-            <li><h3>[${Party.name}]</h3></li>
-            <li>모임기간 &emsp;<strong>${Party.startdate} ~
-                ${Party.enddate}</strong></li>
+            <li><h3>[${party.name}]</h3></li>
+            <li>모임기간 &emsp;<strong>${party.startdate} ~
+                ${party.enddate}</strong></li>
             <p></p>
-            <li>모임장소 &emsp;<strong>${Party.place}</strong></li>
+            <li>모임장소 &emsp;<strong>${party.place}</strong></li>
             <p></p>
-            <li>모집정원 &emsp;<strong>총 ${Party.recruit}명</strong>|<strong>0명
+            <li>모집정원 &emsp;<strong>총 ${party.recruit}명</strong>|<strong>0명
                 신청 가능</strong></li>
           </ul>
           <hr>
-          개&nbsp;&nbsp;설&nbsp;&nbsp;자&emsp;&nbsp;<strong>${Member.name}</strong><br>
-          이&nbsp;&nbsp;메&nbsp;&nbsp;일&emsp;&nbsp;<strong>${Member.email}</strong>
+          개&nbsp;&nbsp;설&nbsp;&nbsp;자&emsp;&nbsp;<strong>${member.name}</strong><br>
+          이&nbsp;&nbsp;메&nbsp;&nbsp;일&emsp;&nbsp;<strong>${member.email}</strong>
           <hr>
-          신청기간 &emsp;<strong>${Party.recstart} ~
-            ${Party.recend}</strong>&emsp;&emsp; <a  id="dd" href="#"
+          신청기간 &emsp;<strong>${party.recstart} ~
+            ${party.recend}</strong>&emsp;&emsp; <a  id="dd" href="#"
             class="btn btn-theme">신청하기</a>
           <hr>
         </div>
         <!-- 첫번째부분 끝나는 곳 -->
   </div>
       </div>
-      
+      <div class="container">
       <div class="row">
         <div class="span12">
            <ul class="portfolio-categ filter">
@@ -132,7 +108,7 @@ $(".reply").on("click",function(e){
              <p></p>
              <div class="testimonial2" style="text-align: left; border-radius: 3px">
              <p></p>
-              ${Party.content}
+              ${party.content}
               <p></p>
             </div>
             </div>
@@ -180,13 +156,12 @@ $(".reply").on("click",function(e){
             <h6></h6>
           </div>
          </div>
-        </article>
         
+        </article>
+        </div>
         </div>
       </div>
   </section>
-
-  <jsp:include page="/WEB-INF/views/include/footer.jsp" />
-  
+            <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 </body>
 </html>

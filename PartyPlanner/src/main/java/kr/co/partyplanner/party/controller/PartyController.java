@@ -51,11 +51,12 @@ public class PartyController {
 		model.addAttribute("list",partyservice.listAll());
 	}
 	@RequestMapping(value="/read", method = RequestMethod.GET)
-	public void read(int num, Model model) throws Exception{
-		Party party = partyservice.read(num);
-		/*logger.info(party);*/
-		model.addAttribute("party",party);
+	public void read(Model model,int num,String id) throws Exception{
+		model.addAttribute("party",partyservice.read(num));
+		model.addAttribute("member",memberservice.mread(id));
+		
 	}
+	
 	@RequestMapping(value="/search.do")
 	@ResponseBody
 	public List<Party> search(SearchCriteria cri) throws Exception{
