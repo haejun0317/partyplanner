@@ -521,6 +521,177 @@ td {
   <section id="content">
     <div class="container">
       테이블 들어갈곳
+      <h4>Default styles</h4>
+      <table class="table">
+        <tbody>
+          <tr>
+            <!-- 첫번째 열 -->
+            <td width="20%" style='text-align: center;'>모임 명</td>
+            <td width="80%"><input type="hidden" name="category"
+              value=""> <input class="form-control"
+              name='partyname' id='partyName' type="text"
+              onchange="selTextParty()" placeholder="모임명을 입력하세요"
+              style="border-radius: 10px;"></td>
+          </tr>
+          <tr>
+            <!-- 두번째 열 -->
+            <td style='text-align: center'>모임 카테고리</td>
+            <td><select name="category" id="newCategory"
+              onchange="selCategory()" class="form-control"
+              style="border-radius: 10px;">
+                <option value="" disabled selected hidden>카테고리를
+                  선택하세요</option>
+                <option value="individual">개인</option>
+                <option value="company">기업</option>
+                <option value="education">교육</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>대표 사진 등록</td>
+            <td>
+              <div class="filebox">
+                <input id="upload-name" value="파일선택" disabled="disabled"
+                  style="border-radius: 10px; height: 30px;"> <label
+                  for="ex_filename" style="border-radius: 10px;">업로드</label>
+                <input type="file" name="image" id="ex_filename"
+                  class="upload-hidden">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>인원 모집 기간</td>
+            <td>
+              <div class="input-group bootstrap-timepicker timepicker">
+                <input name="startdate" id="startdate" type="date"
+                  style="border-radius: 10px;" onChange="selPDate()"
+                  format="dd/MM/yyyy"> <font size=4>~</font> <input
+                  name="enddate" id="enddate" type="date"
+                  style="border-radius: 10px;" onChange="selPDate()">
+                <font
+                  size=3>시간 : </font><input type="time"
+                  name="partytime" id="partytime"
+                  style="border-radius: 10px; , width: 100px;"
+                  class="form-control" onChange="selPDate()"> 
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>모임 장소</td>
+            <td>
+              <form name="place">
+                <input type="text" name='post' id="sample6_postcode"
+                  placeholder="우편번호" onchange="selTextPost()"
+                  style="border-radius: 10px;"> <input
+                  type="button" onclick="sample6_execDaumPostcode()"
+                  value="우편번호 찾기"
+                  style="border-radius: 10px; height: 30px;"><br>
+                <input type="text" name='address1' id="sample6_address"
+                  placeholder="주소" onchange="selTextPost()"
+                  style="border-radius: 10px;"> <input
+                  type="text" name='address2' id="sample6_address2"
+                  placeholder="상세주소" onchange="selTextPost()"
+                  style="border-radius: 10px;">
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>모집 인원</td>
+            <td><input type="number" id="recruit" name="recruit"
+              onchange="selRecruit()" style="border-radius: 10px;"
+              style="width: 100px;" step="10" placeholder="인원 수(명)">
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>신청 방법1</td>
+            <td>
+              <div>
+                <input type="radio" name="apply" id="free" value="N"
+                  onclick="selectApply()"> <font size=3>무료
+                  신청&emsp;</font> <input type="radio" name="apply" id="pay"
+                  value="Y" checked="checked" onclick="selectApply()">
+                <font size=3><span style="line-spacing: 10%">유료
+                    신청 <input type="text" name="charged"
+                    style="border-radius: 10px;" style="width: 100px;"
+                    onchange="selcharged()"> <input
+                    type="hidden" name="price" value=""><br>
+                </span></font>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>신청 방법2</td>
+            <td>
+              <div>
+                <input type="radio" name="name" id="isname" value="N"
+                  onclick="selectName()"> <font size=3>실명
+                  신청&emsp;</font> <input type="radio" name="name" id="unname"
+                  value="Y" checked="checked" onclick="selectName()">
+                <font size=3>익명 신청</font> <input type="hidden"
+                  name="nameopt" value="">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style='text-align: center'>프리미엄 등록</td>
+            <td>
+              <div>
+                <span><input type="radio" name="premium"
+                  id='nopremium' value='N' onclick="selectPremium()">
+                  <font size=3>미등록&emsp;</font></span> <span style=""><input
+                  type="radio" name="premium" id='premium' value='Y'
+                  checked="checked" onclick="selectPremium()"> <font
+                  size=3>등록&emsp;</font></span><br> <b><span> <font
+                    size=3>보유 마일리지</font>&emsp; ${member.mileage}
+                </span></b> <b><font size=3>&emsp;&emsp;마일리지 사용&emsp;</font> <input
+                  type="number" id="usemileage" name="mileage"
+                  onchange="selMileage()" style="border-radius: 10px;"
+                  style="width: 100px;" min="500" max="1000" step="10"></b>
+                <input type="hidden" name="preminum" value="">
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style='text-align: center'>그룹 설정</td>
+            <td>
+              <form name="partner">
+                <input type="checkbox" name="pCheck" id="isgroup"
+                  value='Y' onclick="companyCheck()"> <font
+                  size=3>동반인원 여부</font>
+                <!--input class="form-control" style="border-radius: 10px;" name="pNum" id="groupnum" type="number" style="width: 100px;" 
+          min="1" max="100" onChange = "selPartner()"-->
+                <input type="hidden" name="partner" value="">
+                <!-- 동반인원 체크박스에 해당 -->
+              </form>
+            </td>
+          </tr>
+
+          <tr>
+            <td style='text-align: center'>모임 소개</td>
+            <td>
+              <div>
+                <!-- 스마트 에디터 시작 부분 -->
+
+                <textarea  name="content" id="content" cols="30" rows="5"
+                  title="카페설명" name="content" id="content"
+                  class="input_txt3 __byte(1~100) __notnull"
+                  maxlength="200" style="width: 100%;"  onChange="selContent()"></textarea>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style='text-align: center'>출석 확인 번호</td>
+            <td><input class="form-control"
+              style="border-radius: 10px;" id="checknum" name="checknum"
+              type="text" placeholder="12345" onChange="selCheckNum()">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
       <div class="solidline"></div>
     </div>
   </section>
@@ -529,185 +700,14 @@ td {
   <section>
     <div class="container">
       <form action="list.jsp" id="myForm" method="POST">
-        <div class="form-group">
-          <span style="line-height: 70%"><br></span> <label
-            for="category" id="partyname"><font size=5>모임명</font></label>
-          <select name="category" id="newCategory"
-            onchange="selCategory()" class="form-control"
-            style="border-radius: 10px;">
-            <option value="" disabled selected hidden>모임 카테고리를
-              선택하세요</option>
-            <option value="individual">개인</option>
-            <option value="company">기업</option>
-            <option value="education">교육</option>
-          </select> <input type="hidden" name="category" value=""> <input
-            class="form-control" name='partyname' id='partyName'
-            type="text" onchange="selTextParty()"
-            placeholder="모임명을 입력하세요" style="border-radius: 10px;">
-        </div>
-        <span style="line-height: 10%"><br></span> <label
-          for="inputpic"><font size=5>모임 사진 등록하기</font></label>
-        <div class="filebox">
-          <input id="upload-name" value="파일선택" disabled="disabled">
-          <label for="ex_filename">업로드</label> <input type="file"
-            name="image" id="ex_filename" class="upload-hidden">
-        </div>
-
-
-
-        <span style="line-height: 10%"><br></span>
-        <div class="form-group">
-          <label for="when"><font size=5>모집 기간</font></label> <span
-            style="line-weight: 50%"></span> <span> <input
-            name="recstart" id="recstart" type="text"
-            style="border-radius: 10px;"> <!--  <input name="recstart"   id="recstart" type="date" style="border-radius: 10px;" onChange="selRDate()"> -->
-            <font size=4>부터</font>
-          </span> <span> <input name="recend" id="recend" type="text"
-            style="border-radius: 10px;"> <!-- <input name="recend"   id="recend" type="date" style="border-radius: 10px;" onChange="selRDate()" > -->
-            <font size=4>까지</font>
-          </span>
-        </div>
-
-
-        <span style="line-height: 10%"><br></span>
-        <div class="input-group bootstrap-timepicker timepicker">
-          <label for="applydate"><font size=5>모임 일시</font></label> <input
-            name="startdate" id="startdate" type="date"
-            style="border-radius: 10px;" onChange="selPDate()"
-            format="dd/MM/yyyy"> <font size=4>부터</font> <input
-            name="enddate" id="enddate" type="date"
-            style="border-radius: 10px;" onChange="selPDate()">
-          <font size=4>까지</font> <input type="time" name="partytime"
-            id="partytime" style="border-radius: 10px; , width: 100px;"
-            class="form-control" onChange="selPDate()"> <font
-            size=4>에</font>
-        </div>
-
-
         <span style="line-height: 10%"><br></span>
         <div>
-          <label for="partyplace"><font size=5>모임 장소</font></label>
-          <form name="place">
-            <input type="text" name='post' id="sample6_postcode"
-              placeholder="우편번호" onchange="selTextPost()"
-              style="border-radius: 10px;"> <input type="button"
-              onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-            <input type="text" name='address1' id="sample6_address"
-              placeholder="주소" onchange="selTextPost()"
-              style="border-radius: 10px;"> <input type="text"
-              name='address2' id="sample6_address2" placeholder="상세주소"
-              onchange="selTextPost()" style="border-radius: 10px;">
-          </form>
-
-          <!--  span name='place'  id="guide" style="color: #999"></span-->
-        </div>
-
-        <span style="line-height: 10%"><br></span>
-        <div>
-          <label for="partyplace"><font size=5>모집 인원</font></label> <input
-            type="number" id="recruit" name="recruit"
-            onchange="selRecruit()" style="border-radius: 10px;"
-            style="width: 100px;" step="10">
-        </div>
-
-        <span style="line-height: 10%"><br></span>
-        <div>
-          <label for="howtoapply"><font size=5>신청방법 설정</font></label> <input
-            type="radio" name="apply" id="free" value="N"
-            onclick="selectApply()"> <font size=4>무료
-            신청&emsp;</font> <input type="radio" name="apply" id="pay" value="Y"
-            checked="checked" onclick="selectApply()"> <font
-            size=4><span style="line-spacing: 10%">유료 신청 <input
-              type="text" name="charged" style="border-radius: 10px;"
-              style="width: 100px;" onchange="selcharged()"> <input
-              type="hidden" name="price" value=""><br>
-          </span></font> <input type="radio" name="name" id="isname" value="N"
-            onclick="selectName()"> <font size=4>실명
-            신청&emsp;</font> <input type="radio" name="name" id="unname"
-            value="Y" checked="checked" onclick="selectName()">
-          <font size=4>익명 신청</font> <input type="hidden" name="nameopt"
-            value="">
-        </div>
-
-        <span style="line-height: 10%"><br></span>
-        <div style='line-height: 200%'>
-          <label for="premium"><font size=5>프리미엄 설정</font></label> <span><input
-            type="radio" name="premium" id='nopremium' value='N'
-            onclick="selectPremium()"> <font size=4>미등록&emsp;</font></span>
-          <span style=""><input type="radio" name="premium"
-            id='premium' value='Y' checked="checked"
-            onclick="selectPremium()"> <font size=4>등록&emsp;</font></span><br>
-
-          <b><span> <font size=4>보유 마일리지</font>&emsp;
-              ${member.mileage}
-          </span></b> <b><font size=4>&emsp;&emsp;마일리지 사용&emsp;</font> <input
-            type="number" id="usemileage" name="mileage"
-            onchange="selMileage()" style="border-radius: 10px;"
-            style="width: 100px;" min="500" max="1000" step="10"></b>
-          <input type="hidden" name="preminum" value="">
-        </div>
-
-        <span style="line-height: 10%"><br></span>
-        <div>
-          <label for="group"><font size=5>그룹 설정</font></label>
-          <form name="partner">
-            <input type="checkbox" name="pCheck" id="isgroup" value='Y'
-              onclick="companyCheck()"> <font size=4>동반인원
-              여부</font>
-            <!--input class="form-control" style="border-radius: 10px;" name="pNum" id="groupnum" type="number" style="width: 100px;" 
-          min="1" max="100" onChange = "selPartner()"-->
-            <input type="hidden" name="partner" value="">
-            <!-- 동반인원 체크박스에 해당 -->
-          </form>
-        </div>
-
-        <span style="line-height: 10%"><br></span>
-        <div>
-          <label for="content"><font size=5>모임 소개</font></label>
-
-
-          <div>
-            <!-- 스마트 에디터 시작 부분 -->
-            <table style="border: solid white;">
-              <tr style="border: solid white;">
-
-              </tr>
-              <tr>
-                <td style="margin: 0; padding: 0;" colspan="2"><textarea
-                    name="content" id="content" rows="10" cols="100"
-                    style="width: 100%; height: 412px;"
-                    onChange="selContent()"></textarea></td>
-              </tr>
-            </table>
-
-
-
-          </div>
-          <div>
-            <span style="line-height: 10%"><br></span>
-            <div>
-              <label for="phone"><font size=5>신청문의받을 연락처</font></label>
-              <font size=4>전화번호</font> <strong> ${member.phone}</strong><br>
-              <font size=4>이메일</font><strong>${member.email}</strong>
-            </div>
-
-            <span style="line-height: 10%"><br></span>
-            <div>
-              <label for="checknum"><font size=5>출석체크 설정</font></label>
-              <font size=4>출석확인용 번호 입력</font><input class="form-control"
-                style="border-radius: 10px;" id="checknum"
-                name="checknum" type="text" placeholder="12345"
-                onChange="selCheckNum()">
-            </div>
-
-            <span style="line-height: 10%"><br></span>
-            <div>
-              <label for="infoCheck"><font size=5>정보제공 동의
-                  설정</font></label> <span style="line-height: 70%"> <textarea
-                  name="textarea3"
-                  style="resize: none; width: 1200px; height: 200px; border-radius: 10px;"
-                  id="textarea3" disabled
-                  placeholder="참여신청/취소 안내
+          <label for="infoCheck"><font size=5>정보제공 동의 설정</font></label>
+          <span style="line-height: 70%"> <textarea
+              name="textarea3"
+              style="resize: none; width: 1200px; height: 200px; border-radius: 10px;"
+              id="textarea3" readonly="readonly"
+              placeholder="참여신청/취소 안내
 * 모임의 신청/취소/변경/환불은 참여신청 기간 내에만 가능합니다.
 * 결제한 유료모임은 환불 시 결제 수단과 환불 시점에 따라 수수료가 부과될 수 있습니다. 자세한 사항은 취소/환불약관을 확인해주세요.
 * 결제, 환불, 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수 있습니다.
@@ -715,18 +715,18 @@ td {
 * 온오프믹스 결제서비스를 이용하는 모임은 개설자의 사업자 여부에 따라 결제증빙 발행이 가능합니다. 자세한 사항은 FAQ를 확인해 주세요.
 * 개설자 선정방식 또는 개설자 통장입금 방식의 모임 참여/결제 확인은 개설자에게 문의 바랍니다.
 * 온오프믹스는 참여신청 및 참가비 결제 기능을 제공하는 회사로 모임개설자(주최측)가 아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다."></textarea></span>
-              <input type="checkbox" name="infoCheck" id="infocheck"
-                value="Y" onclick="selInfoCheck()"> <font size=4>제3자
-                정보제공 동의</font>
-            </div>
-            <span style="line-height: 70%"><br></span>
+          <input type="checkbox" name="infoCheck" id="infocheck"
+            value="Y" onclick="selInfoCheck()"> <font size=4>제3자
+            정보제공 동의</font>
+        </div>
+        <span style="line-height: 70%"><br></span>
 
-            <div style="text-align: center">
-              <button onclick="location.href='list.jsp'" id="addParty"
-                value='add party' class="btn-medium btn-rounded"></button>
-              <input type="reset" class="btn-medium btn-rounded"
-                value="delparty" id="replyDelPBtn" />
-            </div>
+        <div style="text-align: center">
+          <button onclick="location.href='list.jsp'" id="addParty"
+            value='add party' class="btn-medium btn-rounded"></button>
+          <input type="reset" class="btn-medium btn-rounded"
+            value="delparty" id="replyDelPBtn" />
+        </div>
       </form>
 
 
