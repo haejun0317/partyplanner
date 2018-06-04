@@ -77,9 +77,9 @@
 	FROM  party
 	WHERE 1=1
 	<!-- 카테고리 검색 -->
-		<if test="category != null">and category = #{category}</if>
+		<if test="category != ''">and category = #{category}</if>
 	<!-- 장소로 검색 -->
-		<if test="place != null">and place like '%'||#{place}||'%'</if>
+		<if test="place != ''">and place like '%'||#{place}||'%'</if>
 	<!-- 가격으로 검색 10만원이하(무료까지), 10~50만원, 50~100만원, 100만원~200만원, 200만원이상-->
  		<if test="price != 1 and price == 100000"><![CDATA[and (price <= 100000 or  price is null)]]></if>
 		<if test="price != 1 and price == 500000"><![CDATA[and (price >= 100000 and  price <=500000)]]></if>
@@ -87,21 +87,10 @@
 		<if test="price != 1 and price == 2000000"><![CDATA[and (price >= 1000000 and  price <=2000000)]]></if>
 		<if test="price != 1 and price == 2000001"><![CDATA[and (price >= 2000000)]]></if>
 	<!-- 요일별로 검색 주중, 주말 -->
-	    <if test="week != null and week =='weekday'">and to_char(startdate, 'd')  not in(2,3,4,5,6)</if>
-		<if test="week != null and week =='weekend'">and to_char(startdate, 'd')  not in(1,7)</if>
-	<!-- 시간으로 검색 새벽, 오전, 오후, 저녁-->
-		<if test="time != null and time == '새벽'"><![CDATA[and (to_char(startdate,'HH24') >= 0) and (to_char(startdate,'HH24')  <=05) ]]></if>
-		<if test="time != null and time == '오전'"><![CDATA[and (to_char(startdate,'HH24') >= 06) and (to_char(startdate,'HH24')  <=11) ]]></if>
-		<if test="time != null and time == '오후'"><![CDATA[and (to_char(startdate,'HH24') >= 12) and (to_char(startdate,'HH24')  <=17) ]]></if>
-		<if test="time != null and time == '저녁'"><![CDATA[and (to_char(startdate,'HH24') >= 18) and (to_char(startdate,'HH24')  <=24) ]]></if>
-	<!-- 파티기간으로 검색 -->
-		<if test="startCal != null and endCal == null">and recstart >= #{startCal}</if>
-		<if test="endCal != null and startCal == null"><![CDATA[and recend <= #{endCal}]]></if>
-		<if test="startCal != null and endCal != null"><![CDATA[and recstart >= #{startCal} and recend <= #{endCal}]]></if>
-	<!-- 인기순 최근순 마감순으로 검색 -->
-		<!-- <if test="soon != null and soon =='인기순'">ORDER BY regdate desc</if> -->
-		<if test="soon != null and soon =='최근순'">ORDER BY regdate desc</if>
-		<if test="soon != null and soon =='마감순'">ORDER BY enddate asc</if>
+	    <if test="week != '' and week =='weekday'">and to_char(startdate, 'd')  not in(2,3,4,5,6)</if>
+		<if test="week != '' and week =='weekend'">and to_char(startdate, 'd')  not in(1,7)</if>
+	<!-- 시간으로 검색 오전, 오후, 저녁, 새벽 -->
+		
    </select>
    
    
