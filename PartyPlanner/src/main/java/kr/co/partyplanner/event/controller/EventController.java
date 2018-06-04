@@ -59,6 +59,7 @@ public class EventController {
 		logger.info("cus............");
 		Event e = evnetService.read(event);
 
+
 		model.addAttribute("event", e);
 	}
 
