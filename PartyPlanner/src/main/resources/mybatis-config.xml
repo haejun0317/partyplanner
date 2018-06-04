@@ -19,6 +19,9 @@
 		<typeAlias type="kr.co.partyplanner.option.domain.Light" alias="Light"/>
 		
 		<typeAlias type="kr.co.partyplanner.party.domain.Party" alias="Party"/>
+
+		<typeAlias type="kr.co.partyplanner.reply.domain.Reply" alias="Reply"/>
+		
 		
 		<typeAlias type="kr.co.partyplanner.partyjoin.domain.PartyJoin" alias="PartyJoin"/>
 		<typeAlias type="kr.co.partyplanner.eventplan.domain.EventPlan" alias="EventPlan"/>

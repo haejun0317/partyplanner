@@ -20,6 +20,7 @@ import kr.co.partyplanner.party.domain.SearchCriteria;
 import kr.co.partyplanner.party.service.PartyService;
 import kr.co.partyplanner.partyjoin.domain.PartyJoin;
 import kr.co.partyplanner.partyjoin.service.PartyJoinService;
+import kr.co.partyplanner.reply.service.ReplyService;
 
 
 /**
@@ -43,6 +44,9 @@ public class PartyController {
 	@Inject
 	private EventPlanService eventplanservice;
 	
+	@Inject
+	private ReplyService replyservice;
+	
 	
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
@@ -54,6 +58,7 @@ public class PartyController {
 	public void read(Model model,int num,String id) throws Exception{
 		model.addAttribute("party",partyservice.read(num));
 		model.addAttribute("member",memberservice.mread(id));
+		model.addAttribute("reply",replyservice.listAll());
 		
 	}
 	

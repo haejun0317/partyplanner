@@ -123,14 +123,15 @@
             <thead>
               <tr>
                 <th>번호</th>
-                <th>번호2</th>
               </tr>
             </thead>
+            <c:forEach items="${reply}" var=reply>
             <tr>
-              <td>ds</td>
-              <td>ds2</td>
+              <td>${reply.id}</td>
             </tr>
+            </c:forEach>
           </table>
+          
         </div>
         </article>
 

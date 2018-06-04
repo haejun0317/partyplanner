@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="kr.co.partyplanner.mapper.replyMapper">
+	<select id="listAll" resultType="Reply">
+		  SELECT reply_num "replyNum", 
+		       party_num "partyNum", 
+		       member_id "id", 
+		       contents, 
+		       group_no "groupNo", 
+		       To_char(regdate, 'YYYY-MM-DD' ) regdate
+		FROM   reply
+	</select>
+</mapper>
