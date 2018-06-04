@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="kr.co.partyplanner.mapper.EventScheduleMapper">
+	<select id="listAll" resultType="EventSchedule">
+		SELECT event_name  "eventName", 
+		       item_name   "itemName", 
+		       basic, 
+		       basic_level "basicLevel", 
+		       TIME, 
+		       vital 
+		FROM   event_schedule 
+	</select>
+	
+	<!-- 행사 종류에 따른 식순 가져오기 -->
+	<select id="searchList" resultType="EventSchedule">
+		SELECT event_name  "eventName", 
+		       item_name   "itemName", 
+		       basic, 
+		       basic_level "basicLevel", 
+		       TIME, 
+		       vital 
+		FROM   event_schedule 
+		WHERE  event_name = '${value}' 
+	</select>
+	
+	<!-- 작업중★★★★★★★★★★★★★★★★ -->
+	<!-- 행사 종류에 따른 식순 검색해서 가져오기 -->
+	<select id="eventSearchList" resultType="EventSchedule">
+		SELECT event_name "eventName",
+			   item_name "itemName", 
+			   basic, 
+		       basic_level "basicLevel", 
+		       TIME,
+		       vital
+		FROM   event_schedule 
+		WHERE  event_name = '${event}' 
+		       AND item_name LIKE '%${item}%'
+	</select>
+	
+	<!-- 행사 종류에 따른 기본 식순 가져오기 -->
+	<select id="eventCallList" resultType="EventSchedule">
+		SELECT event_name  "eventName", 
+		       item_name   "itemName", 
+		       basic, 
+		       basic_level "basicLevel", 
+		       TIME, 
+		       vital 
+		FROM   event_schedule 
+		WHERE  event_name = '${value}' 
+		       AND basic = 'Y' 
+		ORDER  BY basic_level 
+	</select>
+
+</mapper>

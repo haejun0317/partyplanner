@@ -1,0 +1,11 @@
+package kr.co.partyplanner.option.dao;
+
+import java.util.List;
+
+import kr.co.partyplanner.option.domain.Stage;
+
+public interface StageDAO {
+
+	/** 전체 리스트 출력 */
+	public List<Stage> listAll() throws Exception;
+}

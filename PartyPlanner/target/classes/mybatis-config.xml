@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                          "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis XML 설정 파일(MyBatis설정의 중앙 허브 역할) -->
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.partyplanner.member.domain.Member" alias="Member"/>
+		<typeAlias type="kr.co.partyplanner.event.domain.Event" alias="Event"/>
+		<typeAlias type="kr.co.partyplanner.event.domain.EventSchedule" alias="EventSchedule"/>
+		<typeAlias type="kr.co.partyplanner.event.domain.ScheduleOption" alias="ScheduleOption"/>
+		<typeAlias type="kr.co.partyplanner.event.domain.ScheduleItem" alias="ScheduleItem"/>
+		<typeAlias type="kr.co.partyplanner.event.domain.Goods" alias="Goods"/>
+		
+		<typeAlias type="kr.co.partyplanner.option.domain.Mc" alias="Mc"/>
+		<typeAlias type="kr.co.partyplanner.option.domain.Staff" alias="Staff"/>
+		<typeAlias type="kr.co.partyplanner.option.domain.Stage" alias="Stage"/>
+		<typeAlias type="kr.co.partyplanner.option.domain.Sound" alias="Sound"/>
+		<typeAlias type="kr.co.partyplanner.option.domain.Light" alias="Light"/>
+		
+		<typeAlias type="kr.co.partyplanner.party.domain.Party" alias="Party"/>
+		
+		<typeAlias type="kr.co.partyplanner.partyjoin.domain.PartyJoin" alias="PartyJoin"/>
+		<typeAlias type="kr.co.partyplanner.eventplan.domain.EventPlan" alias="EventPlan"/>
+	</typeAliases>
+</configuration>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.partyplanner.mapper.partyMapper">
+
+<!-- 파티 전체 정보를 출력하기 -->
+   <select id="listAll" resultType="Party">
+      <![CDATA[
+         SELECT num, 
+                category, 
+                substr(name, 1,10) as name,
+                place,
+                content,
+                image,
+                price,
+                primeum,
+                partner,
+                recruit,
+                To_char(recstart, 'YYYY-MM-DD') recstart, 
+                To_char(recend, 'YYYY-MM-DD') recend, 
+                To_char(regdate, 'YYYY-MM-DD') regdate, 
+                To_char(startdate, 'YYYY-MM-DD') startdate, 
+                To_char(enddate, 'YYYY-MM-DD') enddate, 
+                checknum,
+                member_id "member"
+         FROM   party 
+         WHERE  num > 0 
+         ORDER  BY primeum DESC, 
+                   regdate DESC,
+                   num desc
+      ]]>
+   </select>
+   
+   <!-- 원하는 파티 보기 -->
+      <select id="read" resultType="Party">
+         SELECT num, 
+                category, 
+                name, 1,10,
+                place,
+                content,
+                image,
+                nvl(To_char(price, '999,999,999'),'무료') price,
+                primeum,
+                partner,
+                recruit,
+                To_char(recstart, 'YYYY-MM-DD HH24:MI') recstart, 
+                To_char(recend, 'YYYY-MM-DD HH24:MI') recend, 
+                To_char(regdate, 'YYYY-MM-DD HH24:MI') regdate, 
+                To_char(startdate, 'YYYY-MM-DD HH24:MI') startdate, 
+                To_char(enddate, 'YYYY-MM-DD HH24:MI') enddate, 
+                checknum,
+                member_id "member"
+         FROM   party 
+         WHERE  num = #{num} 
+   </select>
+   <!-- 검색 조건에 따른 리스트 출력 -->
+   <select id="search" resultType="Party">
+   		  SELECT num, 
+		  category,
+	      substr(name, 1,10) as name, 
+	      place,
+	      content,
+	      image,
+	      nvl(To_char(price, '999,999,999'),'무료') price,
+	      primeum,
+	      partner,
+	      recruit,
+	      To_char(recstart, 'YYYY-MM-DD HH24:MI') recstart, 
+	      To_char(recend, 'YYYY-MM-DD HH24:MI') recend, 
+	      To_char(regdate, 'YYYY-MM-DD HH24:MI') regdate, 
+	      To_char(startdate, 'YYYY-MM-DD HH24:MI') startdate, 
+	      To_char(enddate, 'YYYY-MM-DD HH24:MI') enddate, 
+	      checknum,
+	      member_id "member"
+	FROM  party
+	WHERE 1=1
+	<!-- 카테고리 검색 -->
+		<if test="category != ''">and category = #{category}</if>
+	<!-- 장소로 검색 -->
+		<if test="place != ''">and place like '%'||#{place}||'%'</if>
+	<!-- 가격으로 검색 10만원이하(무료까지), 10~50만원, 50~100만원, 100만원~200만원, 200만원이상-->
+ 		<if test="price != 1 and price == 100000"><![CDATA[and (price <= 100000 or  price is null)]]></if>
+		<if test="price != 1 and price == 500000"><![CDATA[and (price >= 100000 and  price <=500000)]]></if>
+		<if test="price != 1 and price == 1000000"><![CDATA[and (price >= 500000 and  price <=1000000)]]></if>
+		<if test="price != 1 and price == 2000000"><![CDATA[and (price >= 1000000 and  price <=2000000)]]></if>
+		<if test="price != 1 and price == 2000001"><![CDATA[and (price >= 2000000)]]></if>
+	<!-- 요일별로 검색 주중, 주말 -->
+	    <if test="week != '' and week =='weekday'">and to_char(startdate, 'd')  not in(2,3,4,5,6)</if>
+		<if test="week != '' and week =='weekend'">and to_char(startdate, 'd')  not in(1,7)</if>
+	<!-- 시간으로 검색 오전, 오후, 저녁, 새벽 -->
+		
+   </select>
+   
+   
+   <select id="myPartyListAll" resultType="Party">
+		SELECT num,
+		     category, 
+             name, 
+             place, 
+             content, 
+             image, 
+             price, 
+             primeum, 
+             partner, 
+             recruit, 
+             To_char(recstart, 'YYYY-MM-DD' )recstart, 
+             To_char(recend, 'YYYY-MM-DD' ) recend, 
+             To_char(startdate, 'YYYY-MM-DD' )startdate, 
+             To_char(enddate, 'YYYY-MM-DD' )enddate,
+             To_char(regdate, 'YYYY-MM-DD' ) regdate,
+             checknum,
+             member_id "member"
+		FROM party
+		where member_id = #{member}
+	</select>
+   </mapper>

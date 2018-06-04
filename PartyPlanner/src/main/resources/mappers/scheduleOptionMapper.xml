@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="kr.co.partyplanner.mapper.scheduleOptionMapper">
+	<select id="listAll" resultType="ScheduleOption">
+		select event_name "eventName", item_name "itemName", name from schedule_option
+	</select>
+
+	<select id="optionList" resultType="ScheduleOption">
+	select event_name as eventName, item_name as itemName, name from schedule_option
+    where event_name = '${event}'  and item_name = '${schedule}'
+	</select>
+	
+</mapper>
