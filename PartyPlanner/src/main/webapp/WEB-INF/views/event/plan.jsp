@@ -306,10 +306,10 @@
 			$("#goodsChoice").html(text);
 			$("#goodsChoice").attr("style", "display:none");
 			checkout = $(arguments[0]).attr("id");
-			console.log(checkout);	
 			$("p[check='"+checkout+"'][option='"+eventOptionName+"']").each(function(index,item) {
-				console.log($(item));
+				$(item).remove();
 			});
+			totalSum();
 		}
 		setText();
 	}
@@ -424,6 +424,10 @@
 			} else {
 				$("#accordion2").empty();
 				setText();
+				$("#goodsList").children().each(function(index,item) {
+					$(item).remove()
+				});
+				totalSum();
 			}
 		});
 
