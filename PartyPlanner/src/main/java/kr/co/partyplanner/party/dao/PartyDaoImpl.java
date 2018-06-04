@@ -19,19 +19,20 @@ public class PartyDaoImpl implements PartyDao {
 	
 	private static final String namespace = "kr.co.partyplanner.mapper.partyMapper";
 	
+	/**파티 전체 보기*/
 	@Override
 	public List<Party> listAll() throws Exception{
 		
 		return sqlSession.selectList(namespace + ".listAll");
 		
 	}
-	
+	/**파티 선택 보기*/
 	@Override
 	public Party read(int num) throws Exception{
 		
 		return sqlSession.selectOne(namespace+".read",num);
 	}
-	
+	/**파티 검색*/
 	@Override
 	public List<Party> search(SearchCriteria cri) throws Exception{
 		
