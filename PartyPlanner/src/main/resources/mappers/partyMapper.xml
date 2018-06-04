@@ -99,7 +99,7 @@
 		<if test="endCal != null and startCal == null"><![CDATA[and recend <= #{endCal}]]></if>
 		<if test="startCal != null and endCal != null"><![CDATA[and recstart >= #{startCal} and recend <= #{endCal}]]></if>
 	<!-- 인기순 최근순 마감순으로 검색 -->
-		<!-- <if test="soon != null and soon =='인기순'">ORDER BY regdate desc</if> -->
+		<!-- <if test="soon != null and soon =='인기순'">ORDER BY regdate desc</if>, -->
 		<if test="soon != null and soon =='최근순'">ORDER BY regdate desc</if>
 		<if test="soon != null and soon =='마감순'">ORDER BY enddate asc</if>
    </select>

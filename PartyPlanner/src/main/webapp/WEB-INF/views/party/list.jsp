@@ -222,7 +222,7 @@ $(document).ready(function() {
 /* nav tag */
 nav ul {
 	padding-top: 10px;
-} /*  상단 여백 10px  */
+} /*  상단 여백 10px ,  */
 nav ul li {
 	display: inline; /*  세로나열을 가로나열로 변경 */
 	border-left: 1px solid #999; /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
