@@ -41,6 +41,8 @@ public class OptionController {
 	@Inject
 	private LightService lightService;
 	
+	EventPlan result;
+	
 	@RequestMapping(value = "/plan", method = RequestMethod.GET)
 	public void planGET(Model model, EventPlan eplan) throws Exception {
 		List<Mc> mcList = mcService.listAll();
@@ -56,11 +58,29 @@ public class OptionController {
 		model.addAttribute("stageList", stageList);
 		model.addAttribute("lightList", lightList);
 		model.addAttribute("eplan", eplan);
+		
+		result = eplan;
+		System.out.println(result);
 	}
 	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
-	public void planPOST(@ModelAttribute EventPlan ePlan, RedirectAttributes rttr) throws Exception{
+	public String planPOST(@ModelAttribute EventPlan ePlan, RedirectAttributes rttr) throws Exception{
 		
+		rttr.addAttribute("mc", ePlan.getMc());
+		rttr.addAttribute("stage", ePlan.getStage());
+		rttr.addAttribute("light", ePlan.getLight());
+		rttr.addAttribute("sound", ePlan.getSound());
+		rttr.addAttribute("staff", ePlan.getStaff());
+		rttr.addAttribute("optionSum", ePlan.getOptionSum());
+		
+		result.setMc(ePlan.getMc());
+		result.setStage(ePlan.getStage());
+		result.setLight(ePlan.getLight());
+		result.setSound(ePlan.getSound());
+		result.setStaff(ePlan.getStaff());
+		result.setOptionSum(ePlan.getOptionSum());
+		
+		return "redirect:/option/plan";
 	}
 	
 	/*

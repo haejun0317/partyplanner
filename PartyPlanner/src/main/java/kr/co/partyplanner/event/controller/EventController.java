@@ -86,11 +86,6 @@ public class EventController {
 		logger.info("cus............");
 	}
 
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
-	public void check(Model model) throws Exception {
-		logger.info("cus............");
-	}
-
 	/** 식순 검색하는 modal 비동기 통신 */
 	@RequestMapping(value = "/search.do")
 	@ResponseBody

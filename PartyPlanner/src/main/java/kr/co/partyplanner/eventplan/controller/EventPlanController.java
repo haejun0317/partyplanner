@@ -20,8 +20,8 @@ public class EventPlanController {
 	@Inject
 	private EventPlanService service;
 	
-	@RequestMapping(value ="/misson", method =RequestMethod.GET)
-	public void listAll(Model model, int num )throws Exception{
+	@RequestMapping(value ="/check", method =RequestMethod.GET)
+	public void ChecklistAll(Model model, int num )throws Exception{
 		logger.info("copt");
 
 		logger.info("event 컨트롤러 실행중");
