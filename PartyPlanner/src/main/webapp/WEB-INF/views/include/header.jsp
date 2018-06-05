@@ -6,10 +6,8 @@
         <div class="row">
           <div class="span12">
             <ul>
-              <li><strong>We are available for any custom
-                  works this month</strong></li>
-              <li>Main office: Springville center X264, Park Ave
-                S.01</li>
+              <li><strong>We are the first party customizing site in the world. Plan your party to your liking.<br></strong></li>
+              <li>Main office: 149, Gasan digital 1-ro, Geumcheon-gu, Seoul, Republic of Korea</li>
               <li>Call us <i class="icon-phone"></i> (123) 456-7890
                 - (123) 555-7891
               </li>
@@ -31,7 +29,7 @@
           <div class="span12">
             <div class="headnav">
               <ul>
-                <li><a href="member/regist"><i class="icon-user"></i> Sign up</a></li>
+                <li><a href="../member/regist"><i class="icon-user"></i> Sign up</a></li>
                 <li><a href="#">Sign in</a></li>
               </ul>
             </div>
@@ -40,7 +38,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="/resources/bootstrap/img/partyplanner_logo.png" alt="logo" class="logo" /></a>
+              <a href="/"><img src="/resources/bootstrap/img/partyplanner_logo.png" alt="logo" class="logo" /></a>
             </div>
           </div>
           <div class="span8">
@@ -49,7 +47,7 @@
                 <nav>
                   <ul class="nav topnav">
                     <li class="dropdown active">
-                      <a href="index.html">Home </a>
+                      <a href="../">Home </a>
                     </li>
                     <li class="dropdown">
                       <a href="#">Company<i class="icon-angle-down"></i></a>
@@ -59,10 +57,10 @@
                       </ul>
                     </li>
                     <li class="dropdown">
-                      <a href="event/select">Plan</a>
+                      <a href="../event/select">Plan</a>
                     </li>
                     <li class="dropdown">
-                      <a href="portfolio-3cols.html">Share</a>
+                      <a href="../party/list">Share</a>
                     </li>
                     <li class="dropdown">
                       <a href="#">Board <i class="icon-angle-down"></i></a>
@@ -70,12 +68,12 @@
                         <li><a href="blog-left-sidebar.html">리뷰</a></li>
                         <li class="dropdown"><a href="#">help <i class="icon-angle-right"></i></a>
                           <ul class="dropdown-menu sub-menu-level1">
-                            <li><a href="index.html">공지사항</a></li>
-                            <li><a href="index-alt3.html">FAQ</a></li>
-                            <li><a href="index-alt3.html">Q&A</a></li>
+                            <li><a href="../">공지사항</a></li>
+                            <li><a href="../">FAQ</a></li>
+                            <li><a href="../">Q&A</a></li>
                           </ul>
                         </li>
-                        <li><a href="index-alt2.html">이벤트</a></li>
+                        <li><a href="../">이벤트</a></li>
                         
                       </ul>
                     </li>
