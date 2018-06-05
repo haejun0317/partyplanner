@@ -1,11 +1,13 @@
 package kr.co.partyplanner.event.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -66,18 +68,22 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
-	public String plan(EventPlan ePlan, RedirectAttributes rttr) throws Exception {
+	public String plan(EventPlan ePlan,String totalGoods, HttpSession session) throws Exception {
 		logger.info("plan....post");
 		logger.info(ePlan);
+		logger.info(totalGoods);
 		
-		rttr.addAttribute("schedule", ePlan.getSchedule());
-		rttr.addAttribute("people", ePlan.getPeople());
-		rttr.addAttribute("startday", ePlan.getStartday());
-		rttr.addAttribute("endday", ePlan.getEndday());
-		rttr.addAttribute("place", ePlan.getPlace());
-		rttr.addAttribute("id", ePlan.getId());
-		rttr.addAttribute("name", ePlan.getName());
-		rttr.addAttribute("eventSum", ePlan.getEventSum());
+		
+		String[] goodsArray = totalGoods.split("##");
+		for (String string : goodsArray) {
+			String[] array = string.split("\\$\\$");
+			String amount = array[0];
+			String good = array[1];
+		}
+		List<Goods> goodsList = goodsService.listAll();
+		
+		session.setAttribute("goodsList",goodsList);
+		session.setAttribute("ePlan", ePlan);
 		return "redirect:/option/plan";
 	}
 	

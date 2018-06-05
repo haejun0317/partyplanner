@@ -27,10 +27,20 @@ public class GoodsDAOTest {
 	private GoodsDAO dao;
 	
 	/** name 해당 이벤트 정보 테스트 */
-	@Test
+//	@Test
 	public void testRead() throws Exception{
 		
 		List<Goods> list = dao.read("BGM");
+		for (Goods good : list) {
+			logger.info(good);
+		}
+	}
+	
+	/** 물품 전체리스트 불러오기 */
+	@Test
+	public void testListAll() throws Exception{
+		
+		List<Goods> list = dao.listAll();
 		for (Goods good : list) {
 			logger.info(good);
 		}

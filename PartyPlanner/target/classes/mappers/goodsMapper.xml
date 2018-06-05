@@ -14,4 +14,12 @@
 		WHERE  option_name = #{name}
 	</select>
 	
+	<select id="listAll" resultType="Goods">
+		SELECT name, 
+		       price, 
+		       rent, 
+		       option_name "optionName" 
+		FROM   goods
+	</select>
+	
 </mapper>

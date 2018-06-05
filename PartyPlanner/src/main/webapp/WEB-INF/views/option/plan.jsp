@@ -65,11 +65,8 @@
 }
 </style>
 
-<<<<<<< HEAD
 <script type="text/javascript">
-=======
-<script type="text/javascript">
->>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
+
 	var sum = 0;
 	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
 	function handleClick(myRadio) {
@@ -164,7 +161,6 @@
 	
 	/** 다음버튼 눌렀을때 실행되는 액션 */
 	function postForm() {
-		
 		$("#mc").val($("input[name=mcGroup]:checked").val());
 		$("#stage").val($("input[name=stageGroup]:checked").val());
 		$("#light").val($("input[name=lightGroup]:checked").val());
@@ -174,11 +170,7 @@
 		
 		$("#myForm").submit();
 	}
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
+	
 </script>
 <script type="text/javascript">
 	function setComma(number) {
@@ -504,12 +496,22 @@
                 style="border-radius: 10px"  onclick="postForm()">다음</button>
 
               <form action="plan" method="post" id="myForm">
-                <input type="hidden" value="" id="mc" name="mc">
-                <input type="hidden" value="" id="stage" name="stage">
-                <input type="hidden" value="" id="light" name="light">
-                <input type="hidden" value="" id="sound" name="sound">
-                <input type="hidden" value="" id="staff" name="staff">
-                <input type="hidden" value="" id="optionsum" name="optionsum">
+                <input type="hidden" value="null" id="mc" name="mc">
+                <input type="hidden" value="null" id="stage" name="stage">
+                <input type="hidden" value="null" id="light" name="light">
+                <input type="hidden" value="null" id="sound" name="sound">
+                <input type="hidden" value="null" id="staff" name="staff">
+                <input type="hidden" value="0" id="optionSum" name="optionSum">
+                
+               <%--  <input type="hidden" value="${eplan.num }" id="num" name="num">
+                <input type="hidden" value="${eplan.schedule }" id="schedule" name="schedule">
+                <input type="hidden" value="${eplan.people }" id="people" name="people">
+                <input type="hidden" value="${eplan.startday }" id="startday" name="startday">
+                <input type="hidden" value="${eplan.endday }" id="endday" name="endday">
+                <input type="hidden" value="${eplan.place }" id="place" name="place">
+                <input type="hidden" value="${eplan.id }" id="id" name="id">
+                <input type="hidden" value="${eplan.name }" id="name" name="name">
+                <input type="hidden" value="${eplan.eventSum }" id="eventSum" name="eventSum"> --%>
               </form>
               
             </div>

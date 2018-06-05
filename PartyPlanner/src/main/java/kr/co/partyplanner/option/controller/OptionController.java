@@ -3,8 +3,12 @@ package kr.co.partyplanner.option.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,47 +44,39 @@ public class OptionController {
 	private StageService stageService;
 	@Inject
 	private LightService lightService;
-	
-	EventPlan result;
-	
+
 	@RequestMapping(value = "/plan", method = RequestMethod.GET)
-	public void planGET(Model model, EventPlan eplan) throws Exception {
+	public void planGET(Model model, HttpSession session) throws Exception {
+		
 		List<Mc> mcList = mcService.listAll();
 		List<Staff> staffList = staffService.listAll();
 		List<Sound> soundList = soundService.listAll();
 		List<Stage> stageList = stageService.listAll();
 		List<Light> lightList = lightService.listAll();
 		
-		logger.info(eplan);
+		EventPlan ePlan = (EventPlan)session.getAttribute("ePlan");
+		logger.info(ePlan);
+		
 		model.addAttribute("mcList", mcList);
 		model.addAttribute("staffList", staffList);
 		model.addAttribute("soundList", soundList);
 		model.addAttribute("stageList", stageList);
 		model.addAttribute("lightList", lightList);
-		model.addAttribute("eplan", eplan);
-		
-		result = eplan;
-		System.out.println(result);
+	
 	}
 	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
-	public String planPOST(@ModelAttribute EventPlan ePlan, RedirectAttributes rttr) throws Exception{
+	public String planPOST(@ModelAttribute EventPlan optionPlan, HttpSession session) throws Exception{
 		
-		rttr.addAttribute("mc", ePlan.getMc());
-		rttr.addAttribute("stage", ePlan.getStage());
-		rttr.addAttribute("light", ePlan.getLight());
-		rttr.addAttribute("sound", ePlan.getSound());
-		rttr.addAttribute("staff", ePlan.getStaff());
-		rttr.addAttribute("optionSum", ePlan.getOptionSum());
-		
-		result.setMc(ePlan.getMc());
-		result.setStage(ePlan.getStage());
-		result.setLight(ePlan.getLight());
-		result.setSound(ePlan.getSound());
-		result.setStaff(ePlan.getStaff());
-		result.setOptionSum(ePlan.getOptionSum());
-		
-		return "redirect:/option/plan";
+		EventPlan ePlan = (EventPlan)session.getAttribute("ePlan");
+		ePlan.setMc(optionPlan.getMc());
+		ePlan.setLight(optionPlan.getLight());
+		ePlan.setSound(optionPlan.getSound());
+		ePlan.setStaff(optionPlan.getStaff());
+		ePlan.setStage(optionPlan.getStage());
+		ePlan.setOptionSum(optionPlan.getOptionSum());
+		session.setAttribute("totalPlan", ePlan);
+		return "redirect:/event/check";
 	}
 	
 	/*

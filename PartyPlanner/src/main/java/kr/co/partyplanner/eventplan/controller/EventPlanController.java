@@ -1,6 +1,7 @@
 package kr.co.partyplanner.eventplan.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.partyplanner.eventplan.service.EventPlanService;
 import kr.co.partyplanner.eventplan.domain.EventPlan;
+import kr.co.partyplanner.eventplan.service.EventPlanService;
 
 @Controller
 @RequestMapping("/event/*")
@@ -21,13 +22,14 @@ public class EventPlanController {
 	private EventPlanService service;
 	
 	@RequestMapping(value ="/check", method =RequestMethod.GET)
-	public void ChecklistAll(Model model, int num )throws Exception{
-		logger.info("copt");
-
-		logger.info("event 컨트롤러 실행중");
-		EventPlan eventPlan = service.read(num);
-		logger.info(eventPlan);
-		model.addAttribute("plan", eventPlan);
+	public void ChecklistAll(Model model, HttpSession session)throws Exception{
+		
+		EventPlan ePlan = (EventPlan)session.getAttribute("ePlan");
+		String goods = (String)session.getAttribute("goods");
+		
+		model.addAttribute("ePlan", ePlan);
+		model.addAttribute("goods", goods);
+		logger.info(ePlan);
 		
 	}
 }

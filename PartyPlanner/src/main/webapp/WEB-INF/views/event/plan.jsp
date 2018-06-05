@@ -382,7 +382,7 @@
 		var amount = $("input[amount="+goods+"]").val();
 		var total = Number(price)*Number(amount);
 		var text = "";
-		text += "<p id='"+goods + addCount +"' option='"+option+"' check='"+checkin+"'>";
+		text += "<p id='"+goods + addCount +"' option='"+option+"' product='"+goods+"' amount='"+amount+"' check='"+checkin+"'>";
 		text += goods + "(&#8361;" + price +") * "+$("input[amount="+goods+"]").val()+"개";
 		text += "<span style='float: right;' class='priceList' total='"+total+"'>&#8361;"+ setComma(total) +"&nbsp;&nbsp;<i value='" + goods + addCount +"' class='icon-remove' onclick='goodsRemove(this)'></i></span>";
         text += "</p>";
@@ -662,6 +662,11 @@
 		$("#endday").val($("#to").val());
 		$("#name").val(eventName);
 		$("#id").val("admin");
+		var goods = "";
+		$("#goodsList p").each(function(index,item) {
+			goods += $(item).attr("amount") +"$$"+ $(item).attr("product") + "##";
+		});
+		$("#goods").val(goods);
 		
 		$("#myForm").submit();
 	}
@@ -1013,6 +1018,7 @@
             <input type="hidden" value="null" id="id" name="id">
             <input type="hidden" value="null" id="name" name="name">
             <input type="hidden" value="0" id="eventSum" name="eventSum">
+            <input type="hidden" value="null" id="goods" name="goods">
           </form>
         </div>
       </div>

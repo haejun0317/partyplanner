@@ -23,6 +23,11 @@ public class GoodsDAOImpl implements GoodsDAO {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+".read", name);
 	}
+
+	@Override
+	public List<Goods> listAll() throws Exception {
+		return session.selectList(namespace+".listAll");
+	}
 	
 
 }

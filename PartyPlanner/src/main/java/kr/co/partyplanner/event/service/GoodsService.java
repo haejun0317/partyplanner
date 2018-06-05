@@ -10,5 +10,7 @@ public interface GoodsService {
 	/** name에 해당하는 행사 정보 불러오기 */
 	public List<Goods> read(String name) throws Exception;
 	
+	/** 물품 전체 리스트 불러오기 */
+	public List<Goods> listAll() throws Exception;
 	
 }

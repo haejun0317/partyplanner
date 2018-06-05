@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Flattern - Flat and trendy bootstrap site template</title>
+<title>기획서 확인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -64,7 +64,21 @@
 	margin-left: -1.3em;
 }
 </style>
+<script type="text/javascript">
+  function setComma(number) {
+    // 정규표현식 : (+- 존재하거나 존재 안함, 숫자가 1개 이상), (숫자가 3개씩 반복)
+    var reg = /(^[+-]?\d+)(\d{3})/;
 
+    // 스트링변환
+    number += '';
+    while (reg.test(number)) {
+      // replace 정규표현식으로 3자리씩 콤마 처리
+      number = number.replace(reg, '$1' + ',' + '$2');
+    }
+
+    return number;
+  }
+</script>
 </head>
 
 <body>
@@ -84,9 +98,9 @@
             <ul class="breadcrumb">
               <li><a href="#"><i class="icon-home"></i></a><i
                 class="icon-angle-right"></i></li>
-              <li><a href="#">Features</a><i
+              <li><a href="#">Plan</a><i
                 class="icon-angle-right"></i></li>
-              <li class="active">Components</li>
+              <li class="active">Check</li>
             </ul>
           </div>
         </div>
@@ -111,19 +125,19 @@
                 </div>
 
                 <form class="form-search">
-                  <span class="category">장&emsp;&emsp;소&emsp; <label>들어가기</label>
+                  <span class="category">장&emsp;&emsp;소&emsp; <label>${ePlan.place}</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">인&emsp;&emsp;원&emsp; <label>들어가기</label>
+                  <span class="category">인&emsp;&emsp;원&emsp; <label>${ePlan.people}명</label>
                   </span> <span class="category">&emsp;예상시간&emsp; <label>들어가기</label>
                   </span>
                 </form>
 
                 <form class="form-search">
                   <span class="category" style="text-align: left;">파티시작일
-                    <label>들어가기</label> ~ <label>들어가기</label>
+                    <label>${ePlan.startday}</label> ~ <label>${ePlan.endday}</label>
                   </span>
                 </form>
 
@@ -138,27 +152,21 @@
                 </div>
 
                 <form class="form-search">
-                  <span class="category">식순옵션가격&emsp;&emsp;&emsp;&emsp; <label>100,000,000원</label>
+                  <span class="category">물품옵션가격&emsp;&emsp;&emsp;&emsp; <label>setComma(${ePlan.eventSum})원</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label>100,000,000원</label>
+                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label>setComma($(ePlan.optionSum))원</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label>100,000,000원</label>
+                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label>setComma($(ePlan.eventSum + ePlan.optionSum))원</label>
                   </span>
                 </form>
-
-
               </div>
-
-
-
             </div>
-
 
             <!-- end span12 -->
             <div class="row">
@@ -180,7 +188,7 @@
 
                       <span style="font-size: 14pt;"><strong>선택 식순</strong></span>
                       <p>
-                        입장<span style="float: right;">5분</span>
+                       <label> ${plan.schedule}</label><span style="float: right;">5분</span>
                       </p>
 
                     </div>
