@@ -1005,14 +1005,14 @@
           </div>
           
           <form action="plan" method="post" id="myForm">
-            <input type="hidden" value="" id="schedule" name="schedule">
-            <input type="hidden" value="" id="people" name="people">
-            <input type="hidden" value="" id="startday" name="startday">
-            <input type="hidden" value="" id="endday" name="endday">
-            <input type="hidden" value="" id="place" name="place">
-            <input type="hidden" value="" id="id" name="id">
-            <input type="hidden" value="" id="name" name="name">
-            <input type="hidden" value="" id="eventSum" name="eventSum">
+            <input type="hidden" value="null" id="schedule" name="schedule">
+            <input type="hidden" value="null" id="people" name="people">
+            <input type="hidden" value="null" id="startday" name="startday">
+            <input type="hidden" value="null" id="endday" name="endday">
+            <input type="hidden" value="null" id="place" name="place">
+            <input type="hidden" value="null" id="id" name="id">
+            <input type="hidden" value="null" id="name" name="name">
+            <input type="hidden" value="0" id="eventSum" name="eventSum">
           </form>
         </div>
       </div>

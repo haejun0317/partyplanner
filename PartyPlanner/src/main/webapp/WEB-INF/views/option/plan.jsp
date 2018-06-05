@@ -65,7 +65,11 @@
 }
 </style>
 
+<<<<<<< HEAD
 <script type="text/javascript">
+=======
+<script type="text/javascript">
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
 	var sum = 0;
 	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
 	function handleClick(myRadio) {
@@ -153,8 +157,7 @@
 				staffprice = afterStr[1];
 			}
 		}
-		sum = Number(mcprice) + Number(stageprice) + Number(soundprice)
-				+ Number(lightprice) + Number(staffprice);
+		sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
 		$("#price").html(setComma(sum) + "원");
 
 	}
@@ -171,8 +174,11 @@
 		
 		$("#myForm").submit();
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
 </script>
 <script type="text/javascript">
 	function setComma(number) {
