@@ -7,8 +7,10 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.option.domain.Light;
@@ -55,4 +57,26 @@ public class OptionController {
 		model.addAttribute("lightList", lightList);
 		model.addAttribute("eplan", eplan);
 	}
+	
+	@RequestMapping(value = "/plan", method = RequestMethod.POST)
+	public void planPOST(@ModelAttribute EventPlan ePlan, RedirectAttributes rttr) throws Exception{
+		
+	}
+	
+	/*
+	public String plan(EventPlan ePlan, RedirectAttributes rttr) throws Exception {
+		logger.info("plan....post");
+		logger.info(ePlan);
+		
+		rttr.addAttribute("schedule", ePlan.getSchedule());
+		rttr.addAttribute("people", ePlan.getPeople());
+		rttr.addAttribute("startday", ePlan.getStartday());
+		rttr.addAttribute("endday", ePlan.getEndday());
+		rttr.addAttribute("place", ePlan.getPlace());
+		rttr.addAttribute("id", ePlan.getId());
+		rttr.addAttribute("name", ePlan.getName());
+		rttr.addAttribute("sum", ePlan.getSum());
+		return "redirect:/option/plan";
+	}
+	*/
 }
