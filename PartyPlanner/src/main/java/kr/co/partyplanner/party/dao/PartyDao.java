@@ -17,5 +17,8 @@ public interface PartyDao {
 	
 	/** 마이페이지의 참여 파티 전체 목록 출력 */
 	public List<Party> myPartyListAll(String id) throws Exception;
+	
+	/** 참가 인원 카운트 기능 */
+	public int joinCount(int num) throws Exception;
 
 }

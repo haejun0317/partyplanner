@@ -115,4 +115,11 @@
 		FROM party
 		where member_id = #{member}
 	</select>
+	
+	<select id="joinCount" resultType="int">
+		SELECT Count(*) 
+		FROM   partyjoin 
+		WHERE  party_num = #{num} 
+		       AND approve = 'Y'
+	</select>
    </mapper>

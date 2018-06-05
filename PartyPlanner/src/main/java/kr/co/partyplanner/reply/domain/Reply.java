@@ -8,10 +8,11 @@ public class Reply {
 	private String contents;
 	private int groupNo;
 	private String regdate;
+	private int orderNum;
 	
 	public Reply() {}
 
-	public Reply(int replyNum, int partyNum, String id, String contents, int groupNo, String regdate) {
+	public Reply(int replyNum, int partyNum, String id, String contents, int groupNo, String regdate, int orderNum) {
 		super();
 		this.replyNum = replyNum;
 		this.partyNum = partyNum;
@@ -19,6 +20,7 @@ public class Reply {
 		this.contents = contents;
 		this.groupNo = groupNo;
 		this.regdate = regdate;
+		this.orderNum = orderNum;
 	}
 
 	public int getReplyNum() {
@@ -69,11 +71,20 @@ public class Reply {
 		this.regdate = regdate;
 	}
 
+	public int getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
+	}
+
 	@Override
 	public String toString() {
 		return "Reply [replyNum=" + replyNum + ", partyNum=" + partyNum + ", id=" + id + ", contents=" + contents
-				+ ", groupNo=" + groupNo + ", regdate=" + regdate + "]";
+				+ ", groupNo=" + groupNo + ", regdate=" + regdate + ", orderNum=" + orderNum + "]";
 	}
+
 	
 
 }

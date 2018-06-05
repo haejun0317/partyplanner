@@ -9,11 +9,12 @@
 		       party_num "partyNum", 
 		       member_id "id", 
 		       contents, 
-		       group_no "groupNo", 
+		       group_no "groupNo",
+		       order_num "orderNum",
 		       To_char(regdate, 'YYYY-MM-DD' ) regdate
 		FROM   reply
 		WHERE party_num = #{num}
-		ORDER BY reply_num desc
+		ORDER BY group_no desc , reply_num asc  
 	</select>
 	
 	<insert id="create">
@@ -22,12 +23,14 @@
             party_num, 
              member_id, 
              CONTENTS,
-             group_no) 
+             group_no,
+             order_num) 
 		VALUES       
            (reply_num_seq.NEXTVAL,
-           #{partyNum},
+            #{partyNum},
 			#{id},
 			#{contents},
-			reply_num_seq.CURRVAL) 
+			reply_num_seq.CURRVAL, 
+			#{orderNum})
 	</insert>
 </mapper>

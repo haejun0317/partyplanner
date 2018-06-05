@@ -41,4 +41,9 @@ public class PartyServiceImpl implements PartyService {
 	public List<Party> myPartyListAll(String id) throws Exception {
 		return dao.myPartyListAll(id);
 	}
+	/** 참여인원 카운트 */
+	@Override
+	public int joinCount(int num) throws Exception {
+		return dao.joinCount(num);
+	}
 }

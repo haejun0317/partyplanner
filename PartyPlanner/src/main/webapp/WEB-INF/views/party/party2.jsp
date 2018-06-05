@@ -69,7 +69,7 @@
                  <div class="wrapper">
                   <div class="testimonial" style="border-radius: 10px" >
                     <h2 style="text-align: center;" ><strong style="color: black;">"${Party.name}"</strong></h2>
-                    <p><img src="/resources/bootstrap/img/partyImg${Member.image}" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
+                    <p><img src="/resources/bootstrap/img/partyImg/${Member.image}"  width="110px" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
                    </div>
                   </div>
                 </div>

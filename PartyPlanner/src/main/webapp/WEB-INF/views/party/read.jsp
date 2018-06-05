@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false"%>
 <!DOCTYPE html>
 <html>
@@ -30,10 +31,68 @@
   <link rel="apple-touch-icon-precomposed" href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
   <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
   <!-- 게시물 읽기 -->
+  <script type="text/javascript">
+  	function comment() {
+		$("#orderNum").val(2);
+		console.log($("#orderNum").val());
+	}
+  	
+  	function reply(){
+  		$("#orderNum").val(1);
+  		console.log($("#orderNum").val());
+  	}
+  	
+  	
+  </script>
+  
+  
+  <script>
+    function fnMove(seq){
+        var offset = $("#div" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+
+
 </head>
 
 <body>
+<!-- 헤더 부분 -->
 <jsp:include page="/WEB-INF/views/include/header.jsp"/>
+
+<!-- 답글  Modal -->
+  <div id="modal" class="modal styled hide fade" tabindex="-1"
+    role="dialog" aria-labelledby="mySigninModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true" style="color: black;">×</button>
+      <h4 id="mySigninModalLabel">답글 남기기</h4>
+    </div>
+    <div class="modal-body">
+      
+      
+      <form  action="read" method="post">
+       <div style="text-align: center;">
+         <input type="hidden" id="id" name="id" value="${member.id }">
+         <input type="hidden" id="partyNum" name="partyNum" value="${party.num}">
+         <input type="hidden" id= "orderNum" name="orderNum"value="2">
+       작성자&nbsp;<input type="text" style="border-radius: 8px; width: 70%" placeholder="${pmember.id}" readonly="readonly"><br><p></p>
+       내&emsp;&nbsp;용&nbsp;<textarea rows="5" style="border-radius: 8px ; width: 70%; resize: none;"></textarea>
+      <br>
+      <p></p>
+       <button id="btnUp" class="btn btn-theme" type="submit"
+              style="width: 50px; height: 30px" onclick="comment()">등록</button>
+       </div>
+      </form>
+       
+    
+    
+    </div>
+  </div>
+
+
+
     <section id="inner-headline">
       <div class="container">
         <div class="row">
@@ -76,17 +135,21 @@
             <p></p>
             <li>모임장소 &emsp;<strong>${party.place}</strong></li>
             <p></p>
-            <li>모집정원 &emsp;<strong>총 ${party.recruit}명</strong>|<strong>0명
+            <li>모집정원 &emsp;<strong>총 ${party.recruit}명</strong>|<strong>${party.recruit - count}명
                 신청 가능</strong></li>
           </ul>
           <hr>
-          개&nbsp;&nbsp;설&nbsp;&nbsp;자&emsp;&nbsp;<strong>${member.name}</strong><br>
-          이&nbsp;&nbsp;메&nbsp;&nbsp;일&emsp;&nbsp;<strong>${member.email}</strong>
+          개&nbsp;&nbsp;설&nbsp;&nbsp;자&emsp;&nbsp;<strong>${pmember.id}</strong><br>
+          이&nbsp;&nbsp;메&nbsp;&nbsp;일&emsp;&nbsp;<strong>${pmember.email}</strong>
           <hr>
           신청기간 &emsp;<strong>${party.recstart} ~
             ${party.recend}</strong>&emsp;&emsp; <a  id="dd" href="#"
             class="btn btn-theme">신청하기</a>
+            
+            
+            
           <hr>
+
         </div>
         <!-- 첫번째부분 끝나는 곳 -->
   </div>
@@ -96,14 +159,14 @@
         <div class="span12">
            <ul class="portfolio-categ filter">
            <li id="all"><strong><a href="#" style="color: black;">All</a>&emsp; &emsp;</strong> </li>
-            <li id="con"><a href="#" style="color: black;">상세정보</a>&emsp; &emsp; </li>
-            <li id="re"><a href="#" style="color: black;">댓글</a>&emsp; &emsp; </li>
-            <li id="q"><a href="#"  style="color: black;">참여신청/취소안내</a>&emsp; &emsp; </li>
+            <li id="con"><a href="#" style="color: black;" onclick="fnMove('1')">상세정보</a>&emsp; &emsp; </li>
+            <li id="re"><a href="#" style="color: black;" onclick="fnMove('2')">댓글</a>&emsp; &emsp; </li>
+            <li id="q"><a href="#"  style="color: black;" onclick="fnMove('3')">참여신청/취소안내</a>&emsp; &emsp; </li>
             </ul>
             <br>
           
           <article id=content >
-            <div class="wrapper">
+            <div  id="div1" class="wrapper">
              <b style="color: black; font-size: 12pt; text-align: left;">파티 상세 정보</b>
              <p></p>
              <div class="testimonial2" style="text-align: left; border-radius: 3px">
@@ -115,42 +178,55 @@
           </article>
             
          <article id=reply >
-          <div class="wrapper">  
+          <div  id="div2" class="wrapper">  
           <b style="color: black; font-size: 12pt; text-align: left;">문의글</b>
           <p></p>
           <form action="read" method="post">
           <input type="hidden" id="id" name="id" value="${member.id }">
-          <input type="hidden" id="partyNum" name="partyNum" value="${party.num }">
-          <textarea  style="border-radius: 10px; width: 91%; resize: none;" rows="3" id="contents" name="contents"></textarea>&emsp;<button class="btn btn-theme" type="submit" style="width: 70px; height: 70px; position: absolute; text-align: center; " ><b style="align: center; font-size: 15px  ">등록</b></button>
+          <input type="hidden" id="partyNum" name="partyNum" value="${party.num}">
+          <input type="hidden" id= "orderNum" name="orderNum"value="1">
+          <textarea  style="border-radius: 10px; width: 91%; resize: none;" rows="3" id="contents" name="contents"></textarea>&emsp;<button class="btn btn-theme" type="submit" style="width: 70px; height: 70px; position: absolute; text-align: center; " ><b style="align: center; font-size: 15px " onclick="reply()">등록</b></button>
           </form>
           <table class="table">
             <thead>
               <tr>
-                <th>문의번호</th>
-                <th>파티번호</th>
-                <th>작 성 자</th>
-                <th>내    용</th>
-                <th>등 록 일</th>
+                <!-- <th>문의번호</th> -->
+                <th  style="text-align: center">작 성 자</th>
+                <th  style="text-align: center">내    용</th>
+                <th  style="text-align: center">등 록 일</th>
               </tr>
             </thead>
-            <c:forEach items="${reply}" var="reply">
+            <tbody >
+            <c:forEach items="${replyList}" var="reply" varStatus="status">
             <tr>
-              <td>${reply.replyNum}</td>
-              <td>${reply.partyNum}</td>
-              <td>${reply.id}</td>
-              <td>${reply.contents}</td>
-              <td>${reply.regdate}</td>
-              <td><a href="/party/ReReply"
-            class="btn btn-theme">답글</a></td>
+              <%-- <td>${fn:length(replyList) - status.index}</td> --%>
+              <c:choose>
+                <c:when test="${reply.orderNum eq 1 }">
+                <td  style="text-align: center">${reply.id}</td>
+                </c:when>
+                <c:otherwise>
+                <td  style="text-align: center">&emsp;&emsp;&emsp;&emsp;<b>└></b> <b style="color: gray;"> [파티장]</b></td>
+                </c:otherwise>
+              </c:choose>
+              <td  style="text-align: center">${reply.contents}</td>
+              <td  style="text-align: center">${reply.regdate}</td>
+              <c:choose>
+                <c:when test="${reply.orderNum eq 1 }">
+                <td  style="text-align: center"><a href="#modal" data-toggle="modal" class="btn btn-theme">답글</a></td>
+                </c:when>
+                <c:otherwise>
+                <td></td>
+                </c:otherwise>
+              </c:choose>
             </tr>
             </c:forEach>
+            </tbody>
           </table>
-          
-        </div>
+          </div>
         </article>
 
         <article id="qna"  >
-         <div class="wrapper">
+         <div id="div3" class="wrapper">
           <b style="color: black; font-size: 12pt">참여신청/취소 안내</b>
           <p></p>
            <div class="testimonial2" style="text-align: left;">
