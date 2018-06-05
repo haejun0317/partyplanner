@@ -650,10 +650,10 @@
 			var optionText= "";
 			$(item).children(".accordion-body").children(".accordion-inner").children(".checkboxOption").each(function(i,checkitem) {
 				if($(checkitem).is(":checked")){
-					optionText +=  "&&"+ $(checkitem).attr("name");
+					optionText +=  "%%"+ $(checkitem).attr("name");
 				}
 			});
-			schedule += "##"+$(item).attr("event") + optionText;
+			schedule += $(item).attr("event") + optionText + "##";
 		});
 		$("#schedule").val(schedule);
 		$("#place").val($("#sample4_roadAddress").val() + $("#restAddress").val());
@@ -666,7 +666,7 @@
 		$("#goodsList p").each(function(index,item) {
 			goods += $(item).attr("amount") +"$$"+ $(item).attr("product") + "##";
 		});
-		$("#goods").val(goods);
+		$("#totalGoods").val(goods);
 		
 		$("#myForm").submit();
 	}
@@ -1018,7 +1018,7 @@
             <input type="hidden" value="null" id="id" name="id">
             <input type="hidden" value="null" id="name" name="name">
             <input type="hidden" value="0" id="eventSum" name="eventSum">
-            <input type="hidden" value="null" id="goods" name="goods">
+            <input type="hidden" value="null" id="totalGoods" name="totalGoods">
           </form>
         </div>
       </div>

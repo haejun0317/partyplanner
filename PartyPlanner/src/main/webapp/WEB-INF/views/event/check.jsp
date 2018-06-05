@@ -41,7 +41,8 @@
 <link rel="apple-touch-icon-precomposed"
   href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
 <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 드로그 앤 드롭 -->
 <style>
 #sortable {
@@ -64,6 +65,28 @@
 	margin-left: -1.3em;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	setSchedule();
+});
+
+function setSchedule() {
+	var text = "";
+	var schedule = $("#schedule").val();
+	var subschedule = schedule.split("##");
+	for ( var i in subschedule) {
+		var ss = subschedule[i].split("%%");
+		for ( var j in ss) {
+			if(ss.length > 1 && j > 0){
+				text += "<p><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;"+ss[j]+"</label></p>";
+			}else{
+				text += "<p><label>"+ss[j]+"</label></p>";
+			}
+		}	
+	}
+	$("#showSchedule").append(text);
+}
+</script>
 <script type="text/javascript">
   function setComma(number) {
     // 정규표현식 : (+- 존재하거나 존재 안함, 숫자가 1개 이상), (숫자가 3개씩 반복)
@@ -140,7 +163,7 @@
                     <label>${ePlan.startday}</label> ~ <label>${ePlan.endday}</label>
                   </span>
                 </form>
-
+                <input type="hidden" id="schedule" value='${ePlan.schedule}'>
               </div>
               <div class="span6">
                 <h4>
@@ -152,17 +175,17 @@
                 </div>
 
                 <form class="form-search">
-                  <span class="category">물품옵션가격&emsp;&emsp;&emsp;&emsp; <label>setComma(${ePlan.eventSum})원</label>
+                  <span class="category">물품옵션가격&emsp;&emsp;&emsp;&emsp; <label>${ePlan.eventSum}원</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label>setComma($(ePlan.optionSum))원</label>
+                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label>${ePlan.optionSum}원</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label>setComma($(ePlan.eventSum + ePlan.optionSum))원</label>
+                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label>${ePlan.eventSum + ePlan.optionSum}원</label>
                   </span>
                 </form>
               </div>
@@ -183,35 +206,32 @@
                 <div class="tab-pane active" id="one">
                   <!-- 탭 왼쪽 부분 -->
                   <div class="span5">
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
+                    <div style="line-height: 2.0em; padding-left: 30px; padding-right: 30px" >
 
                       <span style="font-size: 14pt;"><strong>선택 식순</strong></span>
-                      <p>
-                       <label> ${plan.schedule}</label><span style="float: right;">5분</span>
-                      </p>
-
+                      <div id="showSchedule">
+                      </div>
                     </div>
-
 
                     <div class="widget">
                       <div class="solidline"></div>
                     </div>
 
 
-                    <div
-                      style="line-height: 2.3em; padding-left: 30px; padding-right: 30px">
+                    <div id="plangoods" style="line-height: 2.3em; padding-left: 30px; padding-right: 30px">
                       <span style="font-size: 14pt;"><strong>식순
                           옵션</strong></span>
-                      <p>
-                        도전 골든벨 - 스케치북 (&#8361;5,000) * 50개<span
-                          style="float: right;">&#8361;250,000<i
-                          class="icon-remove"></i></span>
-                      </p>
-
+                      <c:forEach var="plangood" items="${pgList}">
+                        <c:forEach var="goods" items="${goodsList}">
+                          <c:if test="${plangood.goodsName eq goods.name}">
+                            <p price='${goods.price * plangood.amount}'>
+                            ${plangood.goodsName} (&#8361;${goods.price}) * ${plangood.amount}개<span
+                            style="float: right;">&#8361;${goods.price * plangood.amount}</span>
+                            </p>
+                          </c:if>
+                        </c:forEach>
+                      </c:forEach>
                     </div>
-
-
                     <div class="widget">
                       <div class="solidline"></div>
                     </div>
@@ -219,7 +239,7 @@
                       style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
                       <b style="font-size: 14pt;">식순 견적 금액 </b><b
                         style="font-size: 30pt;"><span
-                        style="float: right;"><strong>10,000,000원</strong></span></b>
+                        style="float: right;"><strong>${ePlan.eventSum}</strong></span></b>
                     </div>
                   </div>
 

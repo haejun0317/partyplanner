@@ -31,6 +31,7 @@ import kr.co.partyplanner.event.service.ScheduleOptionService;
 import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.member.controller.MemberController;
 import kr.co.partyplanner.member.domain.Member;
+import kr.co.partyplanner.plangoods.domain.PlanGoods;
 
 @Controller
 @RequestMapping("/event/*")
@@ -73,16 +74,23 @@ public class EventController {
 		logger.info(ePlan);
 		logger.info(totalGoods);
 		
-		
+		List<PlanGoods> pgList = new ArrayList<PlanGoods>();
 		String[] goodsArray = totalGoods.split("##");
 		for (String string : goodsArray) {
-			String[] array = string.split("\\$\\$");
-			String amount = array[0];
-			String good = array[1];
+			if(string.length() > 0) {
+				String[] array = string.split("\\$\\$");
+				String amount = array[0];
+				String good = array[1];
+				PlanGoods pg = new PlanGoods();
+				pg.setAmount(Integer.parseInt(amount));
+				pg.setGoodsName(good);
+				pgList.add(pg);
+			}
 		}
-		List<Goods> goodsList = goodsService.listAll();
 		
+		List<Goods> goodsList = goodsService.listAll();
 		session.setAttribute("goodsList",goodsList);
+		session.setAttribute("pgList", pgList);
 		session.setAttribute("ePlan", ePlan);
 		return "redirect:/option/plan";
 	}
