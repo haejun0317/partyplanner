@@ -35,9 +35,11 @@
 <body>
     <jsp:include page="/WEB-INF/views/include/header.jsp"/>
     <section id="featured">
+    
       <!-- start slider -->
       <div id="slider" class="sl-slider-wrapper demo-2">
         <div class="sl-slider">
+          <!-- 메인페이지 첫번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-1">
@@ -51,6 +53,8 @@
               </blockquote>
             </div>
           </div>
+          
+          <!-- 메인페이지 두번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-2">
@@ -64,6 +68,8 @@
               </blockquote>
             </div>
           </div>
+          
+          <!-- 메인페이지 세번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-3">
@@ -78,6 +84,8 @@
               </blockquote>
             </div>
           </div>
+          
+          <!-- 메인페이지 네번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-4">
@@ -91,6 +99,8 @@
               </blockquote>
             </div>
           </div>
+          
+          <!-- 메인페이지 다섯번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-5">
@@ -105,6 +115,8 @@
             </div>
           </div>
         </div>
+        
+        
         <!-- /sl-slider -->
         <nav id="nav-dots" class="nav-dots">
           <span class="nav-dot-current"></span>
@@ -126,7 +138,7 @@
                 <h3>파티를 기획하고 싶으신분 <span class="highlight"><strong>무료</strong></span> 로 기획하세요!</h3>
               </div>
               <div class="cta floatright">
-                <a class="btn btn-large btn-theme btn-rounded" href="#">Party Plan</a>
+                <a class="btn btn-large btn-theme btn-rounded" href="../event/select">Party Plan</a>
               </div>
             </div>
           </div>
