@@ -405,7 +405,7 @@
 			var total = $(item).attr("total");
 			sum += Number(total);
 		})
-		$("#sum").val(sum);
+		$("#eventSum").val(sum);
 		$('#total').html(setComma(sum));
 	}
 
@@ -1012,7 +1012,7 @@
             <input type="hidden" value="" id="place" name="place">
             <input type="hidden" value="" id="id" name="id">
             <input type="hidden" value="" id="name" name="name">
-            <input type="hidden" value="" id="sum" name="sum">
+            <input type="hidden" value="" id="eventSum" name="eventSum">
           </form>
         </div>
       </div>

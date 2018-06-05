@@ -66,6 +66,7 @@
 </style>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 	var sum = 0;
 	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
 	function handleClick(myRadio) {
@@ -171,6 +172,66 @@
 		
 		$("#myForm").submit();
 	}
+=======
+var sum=0;
+var mcprice=0,stageprice=0,lightprice=0,staffprice=0,soundprice=0;
+function handleClick(myRadio) {
+    if(myRadio.name == 'mcGroup'){
+    	if(myRadio.value == 'no'){
+    		$("#selectMc").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+    		mcprice = 0;
+    	}else{
+    		var beforStr = myRadio.value;
+    		var afterStr = beforStr.split('$$');
+    		$("#selectMc").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 경력 사회자<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
+    		mcprice = afterStr[1];
+    	}
+    }else if(myRadio.name == 'stageGroup'){
+    	if(myRadio.value == 'no'){
+    		$("#selectStage").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+    		stageprice = 0;
+    	}else{
+    		var beforStr = myRadio.value;
+    		var afterStr = beforStr.split('$$');
+    		$("#selectStage").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
+    		stageprice = afterStr[1];
+    	}
+    }else if(myRadio.name == 'lightGroup'){
+    	if(myRadio.value == 'no'){
+    		$("#selectLight").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+    		lightprice = 0;
+    	}else{
+    		var beforStr = myRadio.value;
+    		var afterStr = beforStr.split('$$');
+    		$("#selectLight").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
+    		lightprice = afterStr[1];
+    	}
+    }else if(myRadio.name == 'soundGroup'){
+    	if(myRadio.value == 'no'){
+    		$("#selectSound").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+    		soundprice = 0
+    	}else{
+    		var beforStr = myRadio.value;
+    		var afterStr = beforStr.split('$$');
+    		$("#selectSound").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
+    		soundprice = afterStr[1];	
+    	}
+    }else{
+    	if(myRadio.value == 'no'){
+    		$("#selectStaff").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+    		staffprice = 0;
+    	}else{
+    		var beforStr = myRadio.value;
+    		var afterStr = beforStr.split('$$');
+    		$("#selectStaff").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
+    		staffprice = afterStr[1];
+    	}
+    }
+    sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
+    $("#price").html(setComma(sum)+"원");
+    console.log($("input[name=mcGroup]:checked").val());
+}
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
 </script>
 <script type="text/javascript">
 	function setComma(number) {
