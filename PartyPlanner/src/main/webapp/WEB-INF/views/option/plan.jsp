@@ -122,6 +122,7 @@ function handleClick(myRadio) {
     }
     sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
     $("#price").html(setComma(sum)+"원");
+    console.log($("input[name=mcGroup]:checked").val());
 }
 </script>
 <script type="text/javascript">

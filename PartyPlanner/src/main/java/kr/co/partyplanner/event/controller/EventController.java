@@ -77,7 +77,7 @@ public class EventController {
 		rttr.addAttribute("place", ePlan.getPlace());
 		rttr.addAttribute("id", ePlan.getId());
 		rttr.addAttribute("name", ePlan.getName());
-		rttr.addAttribute("sum", ePlan.getSum());
+		rttr.addAttribute("eventSum", ePlan.getEventSum());
 		return "redirect:/option/plan";
 	}
 	
