@@ -33,4 +33,21 @@
 			reply_num_seq.CURRVAL, 
 			#{orderNum})
 	</insert>
+	
+	<insert id="createComment">
+		INSERT INTO reply 
+            (reply_num,
+            party_num, 
+             member_id, 
+             CONTENTS,
+             group_no,
+             order_num) 
+		VALUES       
+           (reply_num_seq.NEXTVAL,
+            #{partyNum},
+			#{id},
+			#{contents},
+			#{groupNo}, 
+			#{orderNum})
+	</insert>
 </mapper>

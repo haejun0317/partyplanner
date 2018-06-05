@@ -42,7 +42,9 @@
   		console.log($("#orderNum").val());
   	}
   	
-  	
+  	function setGroup() {
+		$("#groupNo").val(arguments[0]);
+	}
   </script>
   
   
@@ -72,24 +74,22 @@
     <div class="modal-body">
       
       
-      <form  action="read" method="post">
+      <form  action="comment" method="post">
        <div style="text-align: center;">
          <input type="hidden" id="id" name="id" value="${member.id }">
          <input type="hidden" id="partyNum" name="partyNum" value="${party.num}">
+         <input type="hidden" id="groupNo" name="groupNo" >
          <input type="hidden" id= "orderNum" name="orderNum"value="2">
        작성자&nbsp;<input type="text" style="border-radius: 8px; width: 70%" placeholder="${pmember.id}" readonly="readonly"><br><p></p>
-       내&emsp;&nbsp;용&nbsp;<textarea rows="5" style="border-radius: 8px ; width: 70%; resize: none;"></textarea>
+       내&emsp;&nbsp;용&nbsp;<textarea rows="5" style="border-radius: 8px ; width: 70%; resize: none;" name="contents"></textarea>
       <br>
       <p></p>
        <button id="btnUp" class="btn btn-theme" type="submit"
               style="width: 50px; height: 30px" onclick="comment()">등록</button>
        </div>
       </form>
-       
-    
-    
+     </div>
     </div>
-  </div>
 
 
 
@@ -177,7 +177,7 @@
             </div>
           </article>
             
-         <article id=reply >
+         <article>
           <div  id="div2" class="wrapper">  
           <b style="color: black; font-size: 12pt; text-align: left;">문의글</b>
           <p></p>
@@ -212,7 +212,7 @@
               <td  style="text-align: center">${reply.regdate}</td>
               <c:choose>
                 <c:when test="${reply.orderNum eq 1 }">
-                <td  style="text-align: center"><a href="#modal" data-toggle="modal" class="btn btn-theme">답글</a></td>
+                <td  style="text-align: center"><a href="#modal" data-toggle="modal" id="md" class="btn btn-theme" onclick="setGroup(${reply.replyNum})">답글</a></td>
                 </c:when>
                 <c:otherwise>
                 <td></td>
@@ -225,25 +225,23 @@
           </div>
         </article>
 
-        <article id="qna"  >
+        <article>
          <div id="div3" class="wrapper">
           <b style="color: black; font-size: 12pt">참여신청/취소 안내</b>
           <p></p>
            <div class="testimonial2" style="text-align: left;">
             <h6></h6>
-            <b style="color: black;">&emsp;* 모임의 신청/취소/변경/환불은 참여신청 기간 내에만 가능합니다.</b><br>
+            <b style="color: black;">&emsp;* 모임의 신청/취소/변경은 참여신청 기간 내에만 가능합니다.</b><br>
             <p></p>
-            <b style="color: black;">&emsp;* 결제한 유료모임은 환불 시 결제 수단과 환불 시점에 따라 수수료가 부과될 수 있습니다. 자세한 사항은 취소/환불약관을 확인해주세요.</b><br>
-            <p></p> 
-            <b>&emsp;* 결제, 환불, 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수 있습니다.</b><br>
+            <b>&emsp;* 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수 있습니다.</b><br>
             <p></p>
             <b>&emsp;* 모임 또는 그룹의 설정, 모집정원 초과 여부에 따라 대기자로 선정될 수 있습니다. 자세한 사항은 FAQ를 확인해주세요.</b><br>
             <p></p>
             <b>&emsp;* 파티플래너 결제서비스를 이용하는 모임은 개설자의 사업자 여부에 따라 결제증빙 발행이 가능합니다. 자세한 사항은 FAQ를 확인해 주세요.</b><br>
             <p></p>
-            <b>&emsp;* 개설자 선정방식 또는 개설자 통장입금 방식의 모임 참여/결제 확인은 개설자에게 문의 바랍니다.</b><br>
+            <b>&emsp;* 개설자 선정방식 또는  방식의 모임 참여 확인은 개설자에게 문의 바랍니다.</b><br>
             <p></p>
-            <b>&emsp;* 파티플래너는 참여신청 및 참가비 결제 기능을 제공하는 회사로 모임개설자(주최측)가 아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다.</b><br>
+            <b>&emsp;* 파티플래너는 참여신청  기능을 제공하는 회사로 모임개설자(주최측)가 아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다.</b><br>
             <h6></h6>
           </div>
          </div>

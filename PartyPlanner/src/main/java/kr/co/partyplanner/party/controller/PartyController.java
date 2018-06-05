@@ -77,6 +77,17 @@ public class PartyController {
 		return "redirect:/party/read";
 	}
 	
+	@RequestMapping(value="/comment", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
+	public String comment(Reply reply ,RedirectAttributes rttr) throws Exception {
+		logger.info("댓글 생성");
+		logger.info(reply);
+		replyservice.createComment(reply);
+		rttr.addAttribute("num", reply.getPartyNum());
+		rttr.addAttribute("id", reply.getId());
+		return "redirect:/party/read";
+	}
+	
+	
 	@RequestMapping(value="/search.do")
 	@ResponseBody
 	public List<Party> search(SearchCriteria cri) throws Exception{

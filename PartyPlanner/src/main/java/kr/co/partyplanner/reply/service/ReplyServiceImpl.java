@@ -26,5 +26,10 @@ public class ReplyServiceImpl implements ReplyService {
 		dao.create(reply);
 	}
 
+	@Override
+	public void createComment(Reply reply) throws Exception {
+		dao.createComment(reply);
+	}
+
 
 }

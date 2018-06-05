@@ -12,5 +12,8 @@ public interface ReplyService {
 	
 	/** 댓글 등록 */
 	public void create(Reply reply)throws Exception;
+	
+	/** 댓글 등록 */
+	public void createComment(Reply reply)throws Exception;
 
 }
