@@ -1,6 +1,11 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false"%>
 <!DOCTYPE html>
@@ -11,6 +16,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  
+  <!--현재시간 -->
+<c:set var="today" value="<%=new java.util.Date()%>" />
+<fmt:formatDate var="now" type="date" value="${today}"
+  pattern="yyyy-MM-dd" />
+  
 
  <!-- css -->
   <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet" />
@@ -54,6 +65,14 @@
         $('html, body').animate({scrollTop : offset.top}, 400);
     }
 </script>
+
+  <script>
+      $( document ).ready( function() {
+        $( 'button' ).click( function() {
+          $( 'h1' ).remove( '.rm' );
+        } );
+      } );
+    </script>
 
 
 </head>
@@ -142,10 +161,29 @@
           개&nbsp;&nbsp;설&nbsp;&nbsp;자&emsp;&nbsp;<strong>${pmember.id}</strong><br>
           이&nbsp;&nbsp;메&nbsp;&nbsp;일&emsp;&nbsp;<strong>${pmember.email}</strong>
           <hr>
-          신청기간 &emsp;<strong>${party.recstart} ~
-            ${party.recend}</strong>&emsp;&emsp; <a  id="dd" href="#"
-            class="btn btn-theme">신청하기</a>
-            
+          
+            <c:forEach items="${Party}" var="party">
+                  <fmt:parseDate var="start" value="${party.recstart}"
+                    pattern="yyyy-MM-dd" />
+                  <fmt:parseDate var="end" value="${party.recend}"
+                    pattern="yyyy-MM-dd" />
+
+                  <fmt:formatDate var="from" type="date"
+                    value="${start}" pattern="yyyy-MM-dd" />
+                  <fmt:formatDate var="to" type="date" value="${end}"
+                    pattern="yyyy-MM-dd" />
+                
+               <c:when test="${from gt now}">
+                          <b> 신청기간 &emsp;<strong>${party.recstart} ~
+                 ${party.recend}</strong>&emsp;&emsp; <a  id="dd" href="#"
+               class="btn btn-theme">신청하기</a></b>
+                        </c:when>
+                        <c:when test="${now ge to}">
+                          <b style="color: red;">신청기간 &emsp;<strong>${party.recstart} ~
+                 ${party.recend}</strong>&emsp;&emsp; <a  id="dd"  href="#"
+               class="btn btn-theme">신청마감</a></b>
+                        </c:when>
+           </c:forEach>
             
             
           <hr>
@@ -187,6 +225,8 @@
           <input type="hidden" id= "orderNum" name="orderNum"value="1">
           <textarea  style="border-radius: 10px; width: 91%; resize: none;" rows="3" id="contents" name="contents"></textarea>&emsp;<button class="btn btn-theme" type="submit" style="width: 70px; height: 70px; position: absolute; text-align: center; " ><b style="align: center; font-size: 15px " onclick="reply()">등록</b></button>
           </form>
+          
+          
           <table class="table">
             <thead>
               <tr>
@@ -212,7 +252,8 @@
               <td  style="text-align: center">${reply.regdate}</td>
               <c:choose>
                 <c:when test="${reply.orderNum eq 1 }">
-                <td  style="text-align: center"><a href="#modal" data-toggle="modal" id="md" class="btn btn-theme" onclick="setGroup(${reply.replyNum})">답글</a></td>
+               
+                <td  style="text-align: center"><button href="#modal" data-toggle="modal" id="md"   class="btn btn-theme" onclick="setGroup(${reply.replyNum})">답글</button></td>
                 </c:when>
                 <c:otherwise>
                 <td></td>
