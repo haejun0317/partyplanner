@@ -169,29 +169,16 @@
                   <strong style="color: #ff3300;">세부</strong> 내용
                 </h4>
               <!-- 탭부분시작 -->
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#one" data-toggle="tab"><i
-                    class="icon-briefcase"></i> Day-1</a></li>
-                <li><a href="#two" data-toggle="tab">Day-2</a></li>
-                <li><a href="#three" data-toggle="tab">Day-3</a></li>
-                <li><a href="#four" data-toggle="tab">Day-4</a></li>
-                <li><a href="#five" data-toggle="tab">Day-5</a></li>
-                <li><a href="#six" data-toggle="tab">Day-6</a></li>
-                <li><a href="#seven" data-toggle="tab">Day-7</a></li>
-              </ul>
-
 
               <div class="tab-content">
                 <!-- 첫번째 탭 -->
                 <div class="tab-pane active" id="one">
-
                   <!-- 탭 왼쪽 부분 -->
                   <div class="span5">
                     <div
                       style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
 
-                      <span style="font-size: 14pt;"><strong>선택
-                          식순</strong></span>
+                      <span style="font-size: 14pt;"><strong>선택 식순</strong></span>
                       <p>
                         입장<span style="float: right;">5분</span>
                       </p>
@@ -299,68 +286,9 @@
                         style="float: right;"><strong>10,000,000원</strong></span></b>
                     </div>
                   </div>
-
-                </div>
-
-
-                <!-- 두번째 탭 -->
-                <div class="tab-pane" id="two">
-
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
-
-                </div>
-
-
-                <!-- 세번째 탭 -->
-                <div class="tab-pane" id="three">
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
-                </div>
-
-
-                <!-- 네번째 탭 -->
-                <div class="tab-pane" id="four">
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
-                </div>
-
-
-                <!-- 다섯번째 탭 -->
-                <div class="tab-pane" id="five">
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
-                </div>
-
-                <!-- 여섯번째 탭 -->
-                <div class="tab-pane" id="six">
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
-                </div>
-
-                <!-- 일곱번째 탭 -->
-                <div class="tab-pane" id="seven">
-                  <!-- 탭 왼쪽 부분 -->
-                  <div class="span6">ㄲ</div>
-                  <!-- 탭 오른쪽 부분 -->
-                  <div class="span5">ㄲ</div>
                 </div>
               </div>
             </div>
-
-            <!-- 탭 끝 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
-
-
 
             <div class="row">
 

@@ -7,9 +7,12 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.option.domain.Light;
 import kr.co.partyplanner.option.domain.Mc;
 import kr.co.partyplanner.option.domain.Sound;
@@ -38,18 +41,62 @@ public class OptionController {
 	@Inject
 	private LightService lightService;
 	
+	EventPlan result;
+	
 	@RequestMapping(value = "/plan", method = RequestMethod.GET)
-	public void planGET(Model model) throws Exception {
+	public void planGET(Model model, EventPlan eplan) throws Exception {
 		List<Mc> mcList = mcService.listAll();
 		List<Staff> staffList = staffService.listAll();
 		List<Sound> soundList = soundService.listAll();
 		List<Stage> stageList = stageService.listAll();
 		List<Light> lightList = lightService.listAll();
 		
+		logger.info(eplan);
 		model.addAttribute("mcList", mcList);
 		model.addAttribute("staffList", staffList);
 		model.addAttribute("soundList", soundList);
 		model.addAttribute("stageList", stageList);
 		model.addAttribute("lightList", lightList);
+		model.addAttribute("eplan", eplan);
+		
+		result = eplan;
+		System.out.println(result);
 	}
+	
+	@RequestMapping(value = "/plan", method = RequestMethod.POST)
+	public String planPOST(@ModelAttribute EventPlan ePlan, RedirectAttributes rttr) throws Exception{
+		
+		rttr.addAttribute("mc", ePlan.getMc());
+		rttr.addAttribute("stage", ePlan.getStage());
+		rttr.addAttribute("light", ePlan.getLight());
+		rttr.addAttribute("sound", ePlan.getSound());
+		rttr.addAttribute("staff", ePlan.getStaff());
+		rttr.addAttribute("optionSum", ePlan.getOptionSum());
+		
+		result.setMc(ePlan.getMc());
+		result.setStage(ePlan.getStage());
+		result.setLight(ePlan.getLight());
+		result.setSound(ePlan.getSound());
+		result.setStaff(ePlan.getStaff());
+		result.setOptionSum(ePlan.getOptionSum());
+		
+		return "redirect:/option/plan";
+	}
+	
+	/*
+	public String plan(EventPlan ePlan, RedirectAttributes rttr) throws Exception {
+		logger.info("plan....post");
+		logger.info(ePlan);
+		
+		rttr.addAttribute("schedule", ePlan.getSchedule());
+		rttr.addAttribute("people", ePlan.getPeople());
+		rttr.addAttribute("startday", ePlan.getStartday());
+		rttr.addAttribute("endday", ePlan.getEndday());
+		rttr.addAttribute("place", ePlan.getPlace());
+		rttr.addAttribute("id", ePlan.getId());
+		rttr.addAttribute("name", ePlan.getName());
+		rttr.addAttribute("sum", ePlan.getSum());
+		return "redirect:/option/plan";
+	}
+	*/
 }

@@ -17,8 +17,10 @@
 		startday,
 		endday,
 		place,
-		member_id "memberId",
-		event_name "eventName"
+		member_id "id",
+		event_name "name",
+		event_sum "eventSum",
+		option_sum "optionSum"
 		FROM event_plan
 		WHERE num = #{num}
 	</select> 
@@ -37,7 +39,9 @@
 		endday,
 		place,
 		member_id "id",
-		event_name "name"
+		event_name "name",
+		event_sum "eventSum",
+		option_sum "optionSum"
 		from event_plan
 		WHERE member_id = #{id}
 	</select>

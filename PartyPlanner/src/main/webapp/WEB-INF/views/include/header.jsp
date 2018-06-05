@@ -40,8 +40,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="img/logo.png" alt="" class="logo" /></a>
-              <h1>파티플래너 로고 들어가는 곳</h1>
+              <a href="index.html"><img src="/resources/bootstrap/img/partyplanner_logo.png" alt="logo" class="logo" /></a>
             </div>
           </div>
           <div class="span8">

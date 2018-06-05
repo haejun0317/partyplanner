@@ -65,79 +65,135 @@
 }
 </style>
 
+<<<<<<< HEAD
 <script type="text/javascript">
-var sum=0;
-var mcprice=0,stageprice=0,lightprice=0,staffprice=0,soundprice=0;
-function handleClick(myRadio) {
-    if(myRadio.name == 'mcGroup'){
-    	if(myRadio.value == 'no'){
-    		$("#selectMc").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
-    		mcprice = 0;
-    	}else{
-    		var beforStr = myRadio.value;
-    		var afterStr = beforStr.split('$$');
-    		$("#selectMc").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 경력 사회자<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
-    		mcprice = afterStr[1];
-    	}
-    }else if(myRadio.name == 'stageGroup'){
-    	if(myRadio.value == 'no'){
-    		$("#selectStage").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
-    		stageprice = 0;
-    	}else{
-    		var beforStr = myRadio.value;
-    		var afterStr = beforStr.split('$$');
-    		$("#selectStage").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
-    		stageprice = afterStr[1];
-    	}
-    }else if(myRadio.name == 'lightGroup'){
-    	if(myRadio.value == 'no'){
-    		$("#selectLight").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
-    		lightprice = 0;
-    	}else{
-    		var beforStr = myRadio.value;
-    		var afterStr = beforStr.split('$$');
-    		$("#selectLight").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
-    		lightprice = afterStr[1];
-    	}
-    }else if(myRadio.name == 'soundGroup'){
-    	if(myRadio.value == 'no'){
-    		$("#selectSound").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
-    		soundprice = 0
-    	}else{
-    		var beforStr = myRadio.value;
-    		var afterStr = beforStr.split('$$');
-    		$("#selectSound").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
-    		soundprice = afterStr[1];	
-    	}
-    }else{
-    	if(myRadio.value == 'no'){
-    		$("#selectStaff").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
-    		staffprice = 0;
-    	}else{
-    		var beforStr = myRadio.value;
-    		var afterStr = beforStr.split('$$');
-    		$("#selectStaff").html("&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"+afterStr[0]+" 이하 규모 지원<span style='float: right;'>&#8361;"+setComma(afterStr[1])+"</span>");
-    		staffprice = afterStr[1];
-    	}
-    }
-    sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
-    $("#price").html(setComma(sum)+"원");
-}
+=======
+<script type="text/javascript">
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
+	var sum = 0;
+	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
+	function handleClick(myRadio) {
+		if (myRadio.name == 'mcGroup') {
+			if (myRadio.value == 'no') {
+				$("#selectMc")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				mcprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectMc").html(
+						"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;" + afterStr[0]
+								+ " 경력 사회자<span style='float: right;'>&#8361;"
+								+ setComma(afterStr[1]) + "</span>");
+				mcprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'stageGroup') {
+			if (myRadio.value == 'no') {
+				$("#selectStage")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				stageprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectStage")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				stageprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'lightGroup') {
+			if (myRadio.value == 'no') {
+				$("#selectLight")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				lightprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectLight")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				lightprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'soundGroup') {
+			if (myRadio.value == 'no') {
+				$("#selectSound")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				soundprice = 0
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectSound")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				soundprice = afterStr[1];
+			}
+		} else {
+			if (myRadio.value == 'no') {
+				$("#selectStaff")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				staffprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectStaff")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				staffprice = afterStr[1];
+			}
+		}
+		sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
+		$("#price").html(setComma(sum) + "원");
+
+	}
+	
+	/** 다음버튼 눌렀을때 실행되는 액션 */
+	function postForm() {
+		
+		$("#mc").val($("input[name=mcGroup]:checked").val());
+		$("#stage").val($("input[name=stageGroup]:checked").val());
+		$("#light").val($("input[name=lightGroup]:checked").val());
+		$("#sound").val($("input[name=soundGroup]:checked").val());
+		$("#staff").val($("input[name=staffGroup]:checked").val());
+		$("#optionSum").val(sum);
+		
+		$("#myForm").submit();
+	}
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner.git
 </script>
 <script type="text/javascript">
-function setComma(number) {
-    // 정규표현식 : (+- 존재하거나 존재 안함, 숫자가 1개 이상), (숫자가 3개씩 반복)
-    var reg = /(^[+-]?\d+)(\d{3})/;
+	function setComma(number) {
+		// 정규표현식 : (+- 존재하거나 존재 안함, 숫자가 1개 이상), (숫자가 3개씩 반복)
+		var reg = /(^[+-]?\d+)(\d{3})/;
 
-    // 스트링변환
-    number += '';
-    while (reg.test(number)) {
-        // replace 정규표현식으로 3자리씩 콤마 처리
-        number = number.replace(reg,'$1'+','+'$2');
-    }
+		// 스트링변환
+		number += '';
+		while (reg.test(number)) {
+			// replace 정규표현식으로 3자리씩 콤마 처리
+			number = number.replace(reg, '$1' + ',' + '$2');
+		}
 
-    return number;
-}
+		return number;
+	}
 </script>
 </head>
 <body>
@@ -279,9 +335,13 @@ function setComma(number) {
                   <div id="collapseOne"
                     class="accordion-body collapse in">
                     <div class="accordion-inner">
-                      <input type="radio" name="mcGroup" value="no" onchange="handleClick(this)">선택 안함 <br>
+                      <input type="radio" name="mcGroup" value="no"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
                       <c:forEach items="${mcList}" var="mc">
-                        <input type="radio" name="mcGroup" value="${mc.name}$$${mc.price}" onchange="handleClick(this)"> ${mc.name} 경력 사회자 <strong>(+${mc.price })</strong>
+                        <input type="radio" name="mcGroup"
+                          value="${mc.name}$$${mc.price}"
+                          onchange="handleClick(this)"> ${mc.name} 경력 사회자 <strong>(+${mc.price })</strong>
                         <br>
                       </c:forEach>
                     </div>
@@ -297,9 +357,13 @@ function setComma(number) {
                   </div>
                   <div id="collapse2" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="stageGroup" value="no" onchange="handleClick(this)">선택 안함 <br>
+                      <input type="radio" name="stageGroup" value="no"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
                       <c:forEach items="${stageList}" var="stage">
-                        <input type="radio" name="stageGroup" value="${stage.name}$$${stage.price}" onchange="handleClick(this)"> ${stage.name} 이하 규모 지원 <strong>(+${stage.price })</strong>
+                        <input type="radio" name="stageGroup"
+                          value="${stage.name}$$${stage.price}"
+                          onchange="handleClick(this)"> ${stage.name} 이하 규모 지원 <strong>(+${stage.price })</strong>
                         <br>
                       </c:forEach>
                     </div>
@@ -314,9 +378,13 @@ function setComma(number) {
                   </div>
                   <div id="collapse3" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="lightGroup" value="no" onchange="handleClick(this)">선택 안함 <br>
+                      <input type="radio" name="lightGroup" value="no"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
                       <c:forEach items="${lightList}" var="light">
-                        <input type="radio" name="lightGroup" value="${light.name}$$${light.price}" onchange="handleClick(this)"> ${light.name} 이하 규모 지원 <strong>(+${light.price })</strong>
+                        <input type="radio" name="lightGroup"
+                          value="${light.name}$$${light.price}"
+                          onchange="handleClick(this)"> ${light.name} 이하 규모 지원 <strong>(+${light.price })</strong>
                         <br>
                       </c:forEach>
                     </div>
@@ -331,9 +399,13 @@ function setComma(number) {
                   </div>
                   <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="soundGroup" value="no" onchange="handleClick(this)">선택 안함 <br>
+                      <input type="radio" name="soundGroup" value="no"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
                       <c:forEach items="${soundList}" var="sound">
-                        <input type="radio" name="soundGroup" value="${sound.name}$$${sound.price}" onchange="handleClick(this)"> ${sound.name} 이하 규모 지원 <strong>(+${sound.price })</strong>
+                        <input type="radio" name="soundGroup"
+                          value="${sound.name}$$${sound.price}"
+                          onchange="handleClick(this)"> ${sound.name} 이하 규모 지원 <strong>(+${sound.price })</strong>
                         <br>
                       </c:forEach>
                     </div>
@@ -349,9 +421,13 @@ function setComma(number) {
                   <div id="collapseThree"
                     class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="staffGroup" value="no" onchange="handleClick(this)">선택 안함 <br>
+                      <input type="radio" name="staffGroup" value="no"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
                       <c:forEach items="${staffList}" var="staff">
-                        <input type="radio" name="staffGroup" value="${staff.name}$$${staff.price}" onchange="handleClick(this)"> ${staff.name} 이하 규모 지원 <strong>(+${staff.price })</strong>
+                        <input type="radio" name="staffGroup"
+                          value="${staff.name}$$${staff.price}"
+                          onchange="handleClick(this)"> ${staff.name} 이하 규모 지원 <strong>(+${staff.price })</strong>
                         <br>
                       </c:forEach>
                     </div>
@@ -381,48 +457,33 @@ function setComma(number) {
                 <div class="solidline"></div>
               </div>
 
-                  <div
-                  style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
+              <div
+                style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
 
-                  <span style="font-size: 14pt;"><strong>옵션
-                      선택</strong></span>
-                  <p>
-                    사회자
-                  </p>
-                  <p id="selectMc">
-                  </p>
-                  <p>
-                    무대
-                  </p>
-                  <p id="selectStage">
-                  </p>
-                  <p>
-                    조명
-                  </p>
-                  <p id="selectLight">
-                  </p>
-                  <p>
-                    음향
-                  </p>
-                  <p id="selectSound">
-                  </p>
-                  <p>
-                    스태프
-                  </p>
-                  <p id="selectStaff">
-                  </p>
-                </div>
+                <span style="font-size: 14pt;"><strong>옵션
+                    선택</strong></span>
+                <p>사회자</p>
+                <p id="selectMc"></p>
+                <p>무대</p>
+                <p id="selectStage"></p>
+                <p>조명</p>
+                <p id="selectLight"></p>
+                <p>음향</p>
+                <p id="selectSound"></p>
+                <p>스태프</p>
+                <p id="selectStaff"></p>
+              </div>
 
-                <div class="widget">
-                  <div class="solidline"></div>
-                </div>
+              <div class="widget">
+                <div class="solidline"></div>
+              </div>
 
-                <div
-                  style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-                  <b style="font-size: 15pt;">총 견적 금액 </b><b
-                    style="font-size: 35pt;"><span
-                    style="float: right;" id="price">0원</span></b>
-                </div>
+              <div
+                style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
+                <b style="font-size: 15pt;">총 견적 금액 </b><b
+                  style="font-size: 35pt;"><span
+                  style="float: right;" id="price">0원</span></b>
+              </div>
 
 
               <!-- end divider -->
@@ -440,7 +501,17 @@ function setComma(number) {
               <button type="submit" class="btn btn-square btn-theme"
                 style="border-radius: 10px">이전</button>
               <button type="submit" class="btn btn-square btn-theme"
-                style="border-radius: 10px">다음</button>
+                style="border-radius: 10px"  onclick="postForm()">다음</button>
+
+              <form action="plan" method="post" id="myForm">
+                <input type="hidden" value="" id="mc" name="mc">
+                <input type="hidden" value="" id="stage" name="stage">
+                <input type="hidden" value="" id="light" name="light">
+                <input type="hidden" value="" id="sound" name="sound">
+                <input type="hidden" value="" id="staff" name="staff">
+                <input type="hidden" value="" id="optionsum" name="optionsum">
+              </form>
+              
             </div>
           </div>
         </div>

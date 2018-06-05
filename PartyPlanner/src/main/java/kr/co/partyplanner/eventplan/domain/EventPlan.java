@@ -15,12 +15,14 @@ public class EventPlan {
 	private String place;
 	private String id;
 	private String name;
+	private int eventSum;
+	private int optionSum;
 	
 	public EventPlan() {}
 
 	public EventPlan(int num, String schedule, String mc, String stage, String light, String sound, String staff,
-			int people, String startday, String endday, String place, String id, String name) {
-		super();
+			int people, String startday, String endday, String place, String id, String name, int eventSum,
+			int optionSum) {
 		this.num = num;
 		this.schedule = schedule;
 		this.mc = mc;
@@ -34,6 +36,8 @@ public class EventPlan {
 		this.place = place;
 		this.id = id;
 		this.name = name;
+		this.eventSum = eventSum;
+		this.optionSum = optionSum;
 	}
 
 	public int getNum() {
@@ -140,14 +144,29 @@ public class EventPlan {
 		this.name = name;
 	}
 
+	public int getEventSum() {
+		return eventSum;
+	}
+
+	public void setEventSum(int eventSum) {
+		this.eventSum = eventSum;
+	}
+
+	public int getOptionSum() {
+		return optionSum;
+	}
+
+	public void setOptionSum(int optionSum) {
+		this.optionSum = optionSum;
+	}
+
 	@Override
 	public String toString() {
 		return "EventPlan [num=" + num + ", schedule=" + schedule + ", mc=" + mc + ", stage=" + stage + ", light="
 				+ light + ", sound=" + sound + ", staff=" + staff + ", people=" + people + ", startday=" + startday
-				+ ", endday=" + endday + ", place=" + place + ", id=" + id + ", name=" + name + "]";
+				+ ", endday=" + endday + ", place=" + place + ", id=" + id + ", name=" + name + ", eventSum=" + eventSum
+				+ ", optionSum=" + optionSum + "]";
 	}
-	
-	
 
 }
 
