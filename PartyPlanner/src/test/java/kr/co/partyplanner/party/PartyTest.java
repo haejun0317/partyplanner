@@ -73,4 +73,11 @@ public class PartyTest {
 		
 	}
 	
+	/** 카운트 테스트 */
+	@Test
+	public void testCount() throws Exception{
+		int count = dao.joinCount(84);
+		logger.info(count);
+	}
+	
 }

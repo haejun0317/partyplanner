@@ -23,8 +23,12 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public void create(Reply reply) throws Exception {
-		
 		session.insert(namespace+".create", reply);
+	}
+
+	@Override
+	public void createComment(Reply reply) throws Exception {
+		session.insert(namespace+".createComment", reply);
 	}
 
 

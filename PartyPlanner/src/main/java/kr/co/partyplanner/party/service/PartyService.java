@@ -18,6 +18,8 @@ public interface PartyService {
 	
 	/** 마이페이지의 참여 파티 전체 목록 출력 */
 	public List<Party> myPartyListAll(String id)throws Exception;
-
+	
+	/** 모집인원 카운트 하는것*/
+	public int joinCount(int num) throws Exception;
 
 }

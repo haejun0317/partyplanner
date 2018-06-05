@@ -26,7 +26,7 @@ public class ReplyDAOTest {
 	
 	
 	/** 댓글 리스트 테스트 */
-	@Test
+	//@Test
 	public void testListAll() throws Exception {
 	
 		List<Reply> list = dao.listAll(104);
@@ -38,16 +38,31 @@ public class ReplyDAOTest {
 	}
 	
 	/** 댓글 등록 테스트*/
-	//@Test
+//	@Test
 	public void createTest()throws Exception{
 		
 		Reply reply = new Reply();
-		reply.setId("jeongh");
+		reply.setId("admin");
 		reply.setPartyNum(104);
-		reply.setContents("삽입 테스트 중입니다 ");
-		reply.setGroupNo(1);
+		reply.setContents("삽입 테스sdsds트 중입니다33 ");
+		reply.setGroupNo(20);
+		reply.setOrderNum(1);
 		
 		dao.create(reply);
+		
+	}
+	
+	@Test
+	public void createCommentTest()throws Exception{
+		
+		Reply reply = new Reply();
+		reply.setId("admin");
+		reply.setPartyNum(104);
+		reply.setContents("삽입 테스sdsds트 중입니다33 ");
+		reply.setGroupNo(48);
+		reply.setOrderNum(2);
+		
+		dao.createComment(reply);
 		
 	}
 

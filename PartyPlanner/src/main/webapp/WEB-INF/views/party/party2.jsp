@@ -32,11 +32,43 @@
   <link rel="apple-touch-icon-precomposed" href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
   <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
 </head>
+<script>
+function selectAll(source) {
+    var checkboxes = document.getElementsByName('box');
+    for(var i=0; i<checkboxes.length; i++) {
+        checkboxes[i].checked = source.checked; // '모두 체크'에 체크가 되면 다 체크하고 아니면 다 해제하고!
+    }
+}
+</script>
+
 
 <body>
   <!-- header 부분 -->
   <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
   
+   <div id="modal" class="modal styled hide fade" tabindex="-1"
+    role="dialog" aria-labelledby="mySigninModalLabel"
+    aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true" style="color: black;">×</button>
+      <h4 id="mySigninModalLabel">정보 제공 동의</h4>
+    </div>
+    <div class="modal-body">
+      
+      
+      <form  action="read" method="post">
+       <div style="text-align: center;">
+         <input type="hidden" id= "orderNum" name="orderNum"value="2">
+       내&emsp;&nbsp;용&nbsp; : 동의합니까?
+      <br>
+      <p></p>
+    <!--    <button id="btnUp" class="btn btn-theme" type="submit"
+              style="width: 50px; height: 30px" onclick="comment()">등록</button> -->
+       </div>
+      </form>
+     </div>
+    </div>
   
    <!-- 상단 부분 --> 
     <section id="inner-headline">
@@ -69,7 +101,7 @@
                  <div class="wrapper">
                   <div class="testimonial" style="border-radius: 10px" >
                     <h2 style="text-align: center;" ><strong style="color: black;">"${Party.name}"</strong></h2>
-                    <p><img src="/resources/bootstrap/img/partyImg${Member.image}" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
+                    <p><img src="/resources/bootstrap/img/partyImg/${Member.image}"  width="110px" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
                    </div>
                   </div>
                 </div>
@@ -99,7 +131,8 @@
                 <div class="span12" >
                  <div class="wrapper">
                   <div class="testimonial" style="border-radius: 10px">
-                    <input type="checkbox"><strong style="color: black;">전체동의</strong><input type="checkbox" style="margin-left: 40px; color: b"><strong style="color: black;">(필수)개인정보 3자 제공 동의</strong> <a style="margin-left: 40px;">내용보기</a>
+
+                    <input type="checkbox" value="box1" name="box" onclick="selectAll(this)"><strong style="color: black;">전체동의</strong><input type="checkbox" name="box" value="box2"style="margin-left: 40px; color: b"><strong style="color: black;">(필수)개인정보 3자 제공 동의</strong> <a href="#modal"  data-toggle="modal" style="margin-left: 40px;">내용보기</a>
                    </div>
                   </div>
                 </div>
@@ -118,26 +151,6 @@
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
     
-  <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="js/jquery.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/jcarousel/jquery.jcarousel.min.js"></script>
-  <script src="js/jquery.fancybox.pack.js"></script>
-  <script src="js/jquery.fancybox-media.js"></script>
-  <script src="js/google-code-prettify/prettify.js"></script>
-  <script src="js/portfolio/jquery.quicksand.js"></script>
-  <script src="js/portfolio/setting.js"></script>
-  <script src="js/tweet/jquery.tweet.js"></script>
-  <script src="js/jquery.flexslider.js"></script>
-  <script src="js/jquery.nivo.slider.js"></script>
-  <script src="js/modernizr.custom.js"></script>
-  <script src="js/jquery.ba-cond.min.js"></script>
-  <script src="js/jquery.slitslider.js"></script>
-  <script src="js/animate.js"></script>
-  <!-- Template Custom JavaScript File -->
-  <script src="js/custom.js"></script>
 
 </body>
 </html>

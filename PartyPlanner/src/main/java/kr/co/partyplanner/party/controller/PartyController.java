@@ -3,6 +3,7 @@ package kr.co.partyplanner.party.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Part;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -57,9 +58,12 @@ public class PartyController {
 	}
 	@RequestMapping(value="/read", method = RequestMethod.GET)
 	public void read(Model model,int num,String id) throws Exception{
-		model.addAttribute("party",partyservice.read(num));
+		Party party = partyservice.read(num);
+		model.addAttribute("party",party);
+		model.addAttribute("count",partyservice.joinCount(num));
 		model.addAttribute("member",memberservice.mread(id));
-		model.addAttribute("reply",replyservice.listAll(num));
+		model.addAttribute("pmember",memberservice.mread(party.getMember()));
+		model.addAttribute("replyList",replyservice.listAll(num));
 		
 	}
 	
@@ -72,6 +76,17 @@ public class PartyController {
 		rttr.addAttribute("id", reply.getId());
 		return "redirect:/party/read";
 	}
+	
+	@RequestMapping(value="/comment", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
+	public String comment(Reply reply ,RedirectAttributes rttr) throws Exception {
+		logger.info("댓글 생성");
+		logger.info(reply);
+		replyservice.createComment(reply);
+		rttr.addAttribute("num", reply.getPartyNum());
+		rttr.addAttribute("id", reply.getId());
+		return "redirect:/party/read";
+	}
+	
 	
 	@RequestMapping(value="/search.do")
 	@ResponseBody
