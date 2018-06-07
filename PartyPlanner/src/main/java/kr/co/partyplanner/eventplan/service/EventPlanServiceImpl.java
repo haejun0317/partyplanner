@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import kr.co.partyplanner.eventplan.dao.EventPlanDAO;
 import kr.co.partyplanner.eventplan.domain.EventPlan;
+import kr.co.partyplanner.plangoods.dao.PlanGoodsDao;
+import kr.co.partyplanner.plangoods.domain.PlanGoods;
 
 @Service
 public class EventPlanServiceImpl implements EventPlanService {
@@ -15,6 +17,8 @@ public class EventPlanServiceImpl implements EventPlanService {
 	@Inject
 	EventPlanDAO dao;
 
+	@Inject
+	PlanGoodsDao goodsDao;
 	
 	@Override
 	public List<EventPlan> listPlan(String id) throws Exception {
@@ -30,5 +34,7 @@ public class EventPlanServiceImpl implements EventPlanService {
 	public void create(EventPlan eventPlan) throws Exception {
 		dao.create(eventPlan);
 	}
+
+
 
 }

@@ -2,7 +2,9 @@ package kr.co.partyplanner.event.controller;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -75,16 +77,24 @@ public class EventController {
 		logger.info(totalGoods);
 		
 		List<PlanGoods> pgList = new ArrayList<PlanGoods>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		String[] goodsArray = totalGoods.split("##");
 		for (String string : goodsArray) {
 			if(string.length() > 0) {
 				String[] array = string.split("\\$\\$");
-				String amount = array[0];
+				int amount = Integer.parseInt(array[0]);
 				String good = array[1];
 				PlanGoods pg = new PlanGoods();
-				pg.setAmount(Integer.parseInt(amount));
+				pg.setAmount(amount);
 				pg.setGoodsName(good);
 				pgList.add(pg);
+				if(map.containsKey(good)) {
+					int value = map.get(good);
+					value += amount;
+					map.put(good, value);
+				}else {
+					map.put(good, amount);
+				}
 			}
 		}
 		
@@ -92,6 +102,7 @@ public class EventController {
 		session.setAttribute("goodsList",goodsList);
 		session.setAttribute("pgList", pgList);
 		session.setAttribute("ePlan", ePlan);
+		session.setAttribute("goodsMap", map);
 		return "redirect:/event/option";
 	}
 

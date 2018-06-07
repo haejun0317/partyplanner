@@ -1,6 +1,7 @@
 package kr.co.partyplanner.option.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -89,6 +90,7 @@ public class OptionController {
 			logger.info(planGoods);
 		}
 		List<Goods> goodsList = (List<Goods>) session.getAttribute("goodsList");
+		Map<String, Integer> goodsMap = (Map<String, Integer>) session.getAttribute("goodsMap");
 		List<Mc> mcList = mcService.listAll();
 		List<Staff> staffList = staffService.listAll();
 		List<Sound> soundList = soundService.listAll();
@@ -98,6 +100,7 @@ public class OptionController {
 		model.addAttribute("ePlan", ePlan);
 		model.addAttribute("pgList", pgList);
 		model.addAttribute("goodsList",goodsList);
+		model.addAttribute("goddsMap",goodsMap);
 		model.addAttribute("mcList", mcList);
 		model.addAttribute("staffList", staffList);
 		model.addAttribute("soundList", soundList);
