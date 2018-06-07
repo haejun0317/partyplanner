@@ -3,7 +3,7 @@
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="false"%>
+  pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
@@ -13,7 +13,6 @@
 
 <head>
 <meta charset="utf-8">
-<title>파티참가염</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="description" content="" />
@@ -55,6 +54,41 @@
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script>
+//각종 이벤트 부분
+$(document).ready(function(){
+    $("#planningText").click(function(){
+        //보임
+        $("#planning").attr("style", "display:block");
+        //숨김
+        $("#partyMake").attr("style", "display:none");
+        $("#partyEnter").attr("style", "display:none");
+        $("#mypage").attr("style", "display:none");
+        
+    }) 
+    $("#partyMakeText").click(function(){
+      $("#partyMake").attr("style", "display:block");
+      $("#planning").attr("style", "display:none");
+      $("#partyEnter").attr("style", "display:none");
+      $("#mypage").attr("style", "display:none");
+      
+    }) 
+    $("#partyEnterText").click(function(){
+      $("#partyEnter").attr("style", "display:block");
+      $("#partyMake").attr("style", "display:none");
+      $("#planning").attr("style", "display:none");
+      $("#mypage").attr("style", "display:none");
+    }) 
+    $("#party").click(function(){
+      $("#mypage").attr("style", "display:block");
+      $("#partyEnter").attr("style", "display:none");
+      $("#partyMake").attr("style", "display:none");
+      $("#planning").attr("style", "display:none");
+    }) 
+    
+ });
+</script>
+
 <script type="text/javascript">
   function some(num){
   	$.ajax({
@@ -71,26 +105,71 @@
   	});
   }
   
-  function addList(mList) {
+  function updateApprove() {
+	  var id = $(arguments[0]).attr("member");
+	  var num = $(arguments[0]).attr("party");
+	  var approve = $(arguments[0]).val();
+	 $.ajax({
+	  		method:"GET",
+	  		url:"approve.do",
+	  		dataType : 'json',
+	  		data : {
+	  			id : id,
+	  			num : num,
+	  			approve : approve
+	  		},
+	  		success : onUpdateCall,
+	  		error : function() {
+				console.log("실패");
+			}
+	  	});
+	  
+	}
+ 
+  function onUpdateCall(partyJoin) {
+	  if(partyJoin.approve == 'Y'){
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=ok]").attr("colspan","2");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=ok]").css("color","blue");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=ok]").html("<b>수락</b>");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=no]").remove();
+	  }else{
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=no]").attr("colspan","2");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=no]").css("color","red");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=no]").html("<b>거절</b>");
+		  $("td[party="+partyJoin.num+"][member="+partyJoin.id+"][name=ok]").remove();
+	  }
+	
+}
+  
+  function addList(list) {
 	var text = "";
-	if(mList.length != 0){
-		for ( var i in mList) {
+	if(list.length != 0){
+		for ( var i in list) {
 	  		text += "<tr>";
-	  		text += "  <td style='text-align: center;'><b>"+mList[i].id+"</b></td>";
-	  		text += "  <td style='text-align: center;'><b>"+mList[i].name+"</b></td>";
-	  		text += "  <td style='text-align: center;'><b>"+mList[i].phone+"</b></td>";
-	  		text += "  <td style='text-align: center;'><b>"+mList[i].email+"</b></td>";
-	  		text += "  <td style='text-align: center;'><b> <input";
-	  		text += "      type='button' class='btn btn-square btn-theme'";
-	  		text += "      style='border-radius: 10px;' value='수락'> <input";
-	  		text += "      type='button' class='btn btn-square btn-theme'";
-	  		text += "      style='border-radius: 10px;' value='거절'>";
-	  		text += "  </b></td>"
-	  		text += " </tr>"
+	  		text += "  <td style='text-align: center;'><b>"+list[i].member.id+"</b></td>";
+	  		text += "  <td style='text-align: center;'><b>"+list[i].member.name+"</b></td>";
+	  		text += "  <td style='text-align: center;'><b>"+list[i].member.phone+"</b></td>";
+	  		text += "  <td style='text-align: center;'><b>"+list[i].member.email+"</b></td>";
+	  		if(list[i].partyjoin.approve == 'Y'){
+	  			text += "  <td style='text-align: center; color:blue' colspan='2'><b>수락</b></td>" ;
+		  		text += " </tr>";
+	  		}else if(list[i].partyjoin.approve == 'N'){
+	  			text += "  <td style='text-align: center; color:red' colspan='2'><b>거절</b></td>" ;
+		  		text += " </tr>";
+	  		}else{
+	  			text += "  <td style='text-align: center;' name='ok' party='"+list[i].partyjoin.num+"' member='"+list[i].member.id+"'><b> <button";
+		  		text += "      type='button' class='btn btn-square btn-theme'";
+		  		text += "      value='Y' party='"+list[i].partyjoin.num+"' member='"+list[i].member.id+"' onclick='updateApprove(this)'>수락</button></td>" ;
+		  		text += "  <td style='text-align: center;' name='no' party='"+list[i].partyjoin.num+"' member='"+list[i].member.id+"'><b> <button";
+		  		text += "      type='button' class='btn btn-square btn-theme'";
+		  		text += "      value='N' party='"+list[i].partyjoin.num+"' member='"+list[i].member.id+"' onclick='updateApprove(this)'>거절</button>";
+		  		text += "  </b></td>";
+		  		text += " </tr>";
+	  		}
 	  	}
 	}else{
 		text += "<tr>";
-		text += "  <td style='text-align: center;' colspan='4'><b>없다 시발</b></td>";
+		text += "  <td style='text-align: center;' colspan='6'><b>신청자 없음</b></td>";
 		text += " </tr>"
 	}
   	
@@ -98,71 +177,35 @@
   }
 </script>
 
-<script>
-//각종 이벤트 부분
-$(document).ready(function(){
-    $("#planningText").click(function(){
-        //보임
-        $("#planning").attr("style", "display:block");
-        //숨김
-        $("#partyMake").attr("style", "display:none");
-        $("#partyEnter").attr("style", "display:none");
-        $("#mypage").attr("style", "display:none");
-        
-    }) 
-    $("#partyMakeText").click(function(){
-    	$("#partyMake").attr("style", "display:block");
-    	$("#planning").attr("style", "display:none");
-    	$("#partyEnter").attr("style", "display:none");
-    	$("#mypage").attr("style", "display:none");
-    	
-    }) 
-    $("#partyEnterText").click(function(){
-    	$("#partyEnter").attr("style", "display:block");
-    	$("#partyMake").attr("style", "display:none");
-    	$("#planning").attr("style", "display:none");
-    	$("#mypage").attr("style", "display:none");
-    }) 
-    $("#party").click(function(){
-    	$("#mypage").attr("style", "display:block");
-    	$("#partyEnter").attr("style", "display:none");
-    	$("#partyMake").attr("style", "display:none");
-    	$("#planning").attr("style", "display:none");
-    }) 
-    
- });
-</script>
-
 </head>
 
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
   <!-- Sign in Modal -->
-  <div id="modal" class="modal styled hide fade" tabindex="-1"
-    role="dialog" aria-labelledby="mySigninModalLabel"
-    aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal"
-        aria-hidden="true" style="color: black;">×</button>
-      <h4 id="mySigninModalLabel">신청자 목록</h4>
-    </div>
-    <div class="modal-body">
-      <form class="form-horizontal" action="/member/login" method="post">
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="text-align: center;">ID</th>
-              <th style="text-align: center;">이름</th>
-              <th style="text-align: center;">전화번호</th>
-              <th style="text-align: center;">이메일</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="joinlist">
-
-          </tbody>
-        </table>
-      </form>
+  <div id="modal" class="modal styled hide fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true" style="color: black;">×</button>
+        <h4>신청자 목록</h4>
+      </div>
+      <div class="modal-body">
+        <form id="" method="post">
+          <table class="table" style="font-size: 8pt">
+            <thead>
+              <tr>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">이름</th>
+                <th style="text-align: center;">전화번호</th>
+                <th style="text-align: center;">이메일</th>
+                <th style="text-align: center;" colspan="2">수락여부</th>
+              </tr>
+            </thead>
+            <tbody id="joinlist">
+            </tbody>
+          </table>
+        </form>
+      </div>
     </div>
   </div>
   <!-- end header -->
@@ -173,15 +216,14 @@ $(document).ready(function(){
     <div class="row">
       <div class="span4">
         <div class="inner-heading">
-          <h2>Blog left sidebar</h2>
+          <h2>My_Page</h2>
         </div>
       </div>
       <div class="span8">
         <ul class="breadcrumb">
           <li><a href="#"><i class="icon-home"></i></a><i
             class="icon-angle-right"></i></li>
-          <li><a href="#">Blog</a><i class="icon-angle-right"></i></li>
-          <li class="active">Blog with left sidebar</li>
+          <li><a href="#">PartyPlanner</a>
         </ul>
       </div>
     </div>
@@ -196,11 +238,11 @@ $(document).ready(function(){
       <div class="span2">
         <aside class="left-sidebar">
         <div class="widget">
-          <form class="form-search">
+          <!--     <form class="form-search">
             <input placeholder="예비" type="text"
               class="input-mini search-query">
             <button type="submit" class="btn btn-small btn-theme">예비</button>
-          </form>
+          </form> -->
         </div>
         <div class="widget">
           <h5 class="widgetheading">Categories</h5>
@@ -213,38 +255,6 @@ $(document).ready(function(){
               href="#">개설 파티</a></li>
             <li id="party"><i class="icon-angle-right"></i><a
               href="#">마이페이지</a></li>
-          </ul>
-        </div>
-        <div class="widget">
-          <h5 class="widgetheading">예비용</h5>
-          <ul class="recent">
-            <li><img src="img/dummies/blog/65x65/thumb1.jpg"
-              class="pull-left" alt="" />
-              <h6>
-                <a href="#">이용약관</a>
-              </h6>
-              <p>넣으면 좋을듯?</p></li>
-            <li><a href="#"><img
-                src="img/dummies/blog/65x65/thumb2.jpg"
-                class="pull-left" alt="" /></a>
-              <h6>
-                <a href="#">Maiorum ponderum eum</a>
-              </h6>
-              <p>Mazim alienum appellantur eu cu ullum officiis pro
-                pri</p></li>
-
-          </ul>
-        </div>
-        <div class="widget">
-          <h6 class="widgetheading">Popular Event</h6>
-          <ul class="tags">
-            <li><a href="#">체육대회</a></li>
-            <li><a href="#">단합회</a></li>
-            <li><a href="#">MT</a></li>
-            <li><a href="#">OT</a></li>
-            <li><a href="#">결혼식</a></li>
-            <li><a href="#">돌잔치</a></li>
-            <li><a href="#">대학교축제</a></li>
           </ul>
         </div>
         </aside>
@@ -308,40 +318,44 @@ $(document).ready(function(){
               <thead>
                 <tr>
                   <th style="text-align: center;">파티번호</th>
-                  <th style="text-align: center;">참 가 자</th>
-                  <th style="text-align: center;">등록날짜</th>
+                  <th style="text-align: center;">파티이름</th>
+                  <th style="text-align: center;">파티일시</th>
+                  <th style="text-align: center;">장 소</th>
                   <th style="text-align: center;">수락여부</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
-
                 <c:forEach items="${PartyJoin}" var="join">
-
-                  <tr>
-                    <td style="text-align: center;"><b>${join.num}</b></td>
-                    <td style="text-align: center;"><b>${join.id}</b></td>
-                    <td style="text-align: center;"><b>${join.regdate}</b></td>
-                    <td style="text-align: center;"><c:choose>
-                        <c:when test="${join.approve eq 'Y'}">
-                          <div style="color: blue;">
-                            <b>수락</b>
-                          </div>
-                        </c:when>
-                        <c:when test="${join.approve eq 'N'}">
-                          <div style="color: red;">
-                            <b>거절</b>
-                          </div>
-                        </c:when>
-                        <c:when test="${join.approve ne 'NULL'}">
-                          <div style="color: black;">
-                            <b>대기</b>
-                          </div>
-                        </c:when>
-                      </c:choose></td>
-                    <td></td>
-                  </tr>
-
+                  <c:forEach items="${allParty}" var="joinParty">
+                    <c:if test="${join.num  eq joinParty.num}">
+                      <tr>
+                        <td style="text-align: center;"><b>
+                            ${joinParty.num}</b></td>
+                        <td style="text-align: center;"><b>${joinParty.name}</b></td>
+                        <td style="text-align: center;"><b>${joinParty.startdate}
+                            ~ ${joinParty.enddate}</b></td>
+                        <td style="text-align: center;"><b>${joinParty.place}</b></td>
+                        <c:choose>
+                          <c:when test="${join.approve eq 'Y'}">
+                            <td style="text-align: center; color: blue;">
+                              <b>수락</b>
+                            </td>
+                          </c:when>
+                          <c:when test="${join.approve eq 'N'}">
+                            <td style="text-align: center; color: red;">
+                              <b>거절</b>
+                            </td>
+                          </c:when>
+                          <c:when test="${join.approve eq null}">
+                            <td
+                              style="text-align: center; color: black;">
+                              <b>대기</b>
+                            </td>
+                          </c:when>
+                        </c:choose>
+                      </tr>
+                    </c:if>
+                  </c:forEach>
                 </c:forEach>
               </tbody>
             </table>
@@ -364,11 +378,11 @@ $(document).ready(function(){
             <table class="table">
               <thead>
                 <tr>
-                  <th style="text-align: center;">파티번호</th>
+                  <th style="text-align: center; width: 8%">파티번호</th>
                   <th style="text-align: center;">파티이름</th>
-                  <th style="text-align: center;">파티일시</th>
+                  <th style="text-align: center; width: 20%">파티일시</th>
                   <th style="text-align: center;">장 소</th>
-                  <th style="text-align: center;">진행여부</th>
+                  <th style="text-align: center; width: 8%">진행여부</th>
                   <th></th>
                 </tr>
               </thead>
@@ -404,8 +418,8 @@ $(document).ready(function(){
                     <td style="text-align: center;"><a
                       href="#modal" data-toggle="modal"
                       onclick="some(${party.num});"><input
-                        type='button' class='btn btn-square btn-theme'
-                        style='border-radius: 10px;' value="신청 목록 보기"></a></td>
+                        type='button' class='btn btn-theme'
+                        style='border-radius: 10px;' value="신청 목록"></a></td>
                   </tr>
                 </c:forEach>
                 <input type="hidden" id="party-num">
@@ -431,7 +445,7 @@ $(document).ready(function(){
           <div class="testimonial" style="border-radius: 10px">
             아&nbsp;&nbsp;이&nbsp;&nbsp;디&nbsp;&nbsp; <input type="text"
               name="id" style="border-radius: 10px; padding-left: 15px"
-              placeholder="${Member.id}"  readonly>
+              placeholder="${Member.id}" readonly>
             <hr>
             비밀번호&nbsp;&nbsp; <input type="password" name="passwd"
               style="border-radius: 10px; padding-left: 15px"
@@ -449,7 +463,7 @@ $(document).ready(function(){
             <!-- <button class='btn btn-square btn-theme'
               style='border-radius: 10px;' type="button"
               onclick="checkEmail()" style="margin-left: 10px">체크</button> -->
-            <br> 
+            <br>
             <hr>
             전화번호 &nbsp;&nbsp; <input type="text" name="phone"
               style="border-radius: 10px; padding-left: 15px"

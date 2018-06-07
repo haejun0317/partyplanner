@@ -16,25 +16,44 @@
 	</insert>
 
 	<select id="listParty" resultType="PartyJoin">
-		SELECT member_id                      "id", 
-		       party_num                      "num", 
-		       To_char(regdate, 'YYYY-MM-DD') regdate, 
-		       <!-- Nvl(approve, '대기') --> 
-		                                      approve 
-		FROM   partyjoin 
-		WHERE  member_id = #{id} 	
+		SELECT member_id "id",
+		party_num "num",
+		To_char(regdate, 'YYYY-MM-DD') regdate,
+		<!-- Nvl(approve, '대기') -->
+		approve
+		FROM partyjoin
+		WHERE member_id = #{id}
+		ORDER BY party_num asc
+	</select>
+	
+	<select id="read" resultType="PartyJoin">
+		SELECT member_id "id",
+		party_num "num",
+		To_char(regdate, 'YYYY-MM-DD') regdate,
+		<!-- Nvl(approve, '대기') -->
+		approve
+		FROM partyjoin
+		WHERE member_id = #{id} and party_num = #{num}
 	</select>
 
 	<select id="listReq" resultType="Member">
-		SELECT id, 
-		       passwd, 
-		       name, 
-		       email, 
-		       phone 
-		FROM   member 
-		       join partyjoin 
-		         ON ( id = member_id ) 
-		WHERE  party_num = #{num} 
+		SELECT id,
+		passwd,
+		name,
+		email,
+		phone
+		FROM member
+		join partyjoin
+		ON ( id = member_id )
+		WHERE party_num = #{num}
 	</select>
+
+	<update id="approveUpdate">
+		UPDATE partyjoin 
+		SET    approve = #{approve} 
+		WHERE  party_num = #{num} 
+        AND member_id = #{id}
+	</update>
+
 
 </mapper>

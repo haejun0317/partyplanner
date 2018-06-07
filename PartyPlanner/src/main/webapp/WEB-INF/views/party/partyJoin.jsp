@@ -9,7 +9,6 @@
 
 <head>
   <meta charset="utf-8">
-  <title>파티참가염</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
   <meta name="description" content="" />
@@ -101,7 +100,7 @@ function selectAll(source) {
                  <div class="wrapper">
                   <div class="testimonial" style="border-radius: 10px" >
                     <h2 style="text-align: center;" ><strong style="color: black;">"${Party.name}"</strong></h2>
-                    <p><img src="/resources/bootstrap/img/partyImg/${Member.image}"  width="110px" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
+                    <p><img src="/resources/bootstrap/img/partyImg/${Party.image}"  width="110px" align="left"><h6>&nbsp;&nbsp;<i class="icon-calendar"></i>&nbsp;<strong style="color: black;">모집기간 - ${Party.recstart}</strong> <b>~</b> <strong style="color: black;">${Party.recend} 까지</strong></h6><h6>&nbsp;&nbsp;<i class="icon-map-marker" style=""></i>&nbsp;<strong style="color: black;"> 모집장소 - ${Party.place}</strong></h6><h6>&nbsp;&nbsp;<i class="icon-group"></i><strong style="color: black;">모집정원 - ${Party.recruit} 명</strong></h6><br><br></p>
                    </div>
                   </div>
                 </div>
@@ -139,7 +138,7 @@ function selectAll(source) {
             </article>
             
             <div style="text-align: center;">
-             <a href="party3?num=${Party.num}&id=${Member.id}" class="btn btn-blue">신청하기</a>
+             <a href="joinCompleted?num=${Party.num}&id=${Member.id}" class="btn btn-blue">신청하기</a>
              <a href="#" class="btn btn-red">취소하기</a>
             </div>
             

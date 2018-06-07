@@ -15,4 +15,10 @@ public interface PartyJoinDAO {
 	
 	/** 파티번호에 대한 회원 리스트 */
 	public List<Member> listReq(int num) throws Exception;
+	
+	/** 파티참가 읽어오기 */
+	public PartyJoin read(String id, int num) throws Exception;
+	
+	/** 파티 참가신청 수락여부 */
+	public void approveUpdate(PartyJoin partyJoin)throws Exception;
 }
