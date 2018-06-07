@@ -113,7 +113,8 @@
              checknum,
              member_id "member"
 		FROM party
-		where member_id = #{member}
+		WHERE member_id = #{member}
+		ORDER BY num asc
 	</select>
 	
 	<select id="joinCount" resultType="int">

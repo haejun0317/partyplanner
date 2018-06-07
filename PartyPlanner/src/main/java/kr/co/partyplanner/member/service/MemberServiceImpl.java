@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.partyplanner.member.dao.MemberDAO;
 import kr.co.partyplanner.member.domain.Member;
+import kr.co.partyplanner.member.dto.LoginDTO;
 
 @Service
 public class MemberServiceImpl implements MemberServcie {
@@ -37,6 +38,22 @@ public class MemberServiceImpl implements MemberServcie {
 	@Override
 	public void update(Member member) throws Exception {
 		dao.update(member);
+	}
+
+	/** LOGIN (아이디와 비밀번호 필요) */
+	@Override
+	public Member login(LoginDTO dto) throws Exception {
+		return dao.login(dto);
+	}
+
+	@Override
+	public void keepLogin(String id, String sessionId, String next) throws Exception {
+		dao.keepLogin(id, sessionId, next);
+	}
+
+	@Override
+	public Member checkLoginBefore(String Value) {
+		return dao.checkUserWithSessionKey(Value);
 	}
 
 

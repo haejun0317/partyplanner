@@ -133,15 +133,14 @@
       <div class="row">
         <div class="span4">
           <div class="inner-heading">
-            <h2>About us</h2>
+            <h2>View_Details</h2>
           </div>
         </div>
         <div class="span8">
           <ul class="breadcrumb">
             <li><a href="#"><i class="icon-home"></i></a><i
               class="icon-angle-right"></i></li>
-            <li><a href="#">Pages</a><i class="icon-angle-right"></i></li>
-            <li class="active">About us</li>
+            <li><a href="#">PartyPlanner</a>
           </ul>
         </div>
       </div>

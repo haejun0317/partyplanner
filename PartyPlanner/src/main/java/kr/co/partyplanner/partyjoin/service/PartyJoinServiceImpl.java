@@ -31,4 +31,14 @@ public class PartyJoinServiceImpl implements PartyJoinService {
 		return dao.listReq(num);
 	}
 
+	@Override
+	public void approveUpdate(PartyJoin partyJoin) throws Exception {
+		dao.approveUpdate(partyJoin);
+	}
+
+	@Override
+	public PartyJoin read(String id, int num) throws Exception {
+		return dao.read(id, num);
+	}
+
 }
