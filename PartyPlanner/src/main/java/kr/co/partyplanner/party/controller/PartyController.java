@@ -1,6 +1,9 @@
 package kr.co.partyplanner.party.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.Part;
@@ -44,9 +47,6 @@ public class PartyController {
 	private PartyJoinService partyjoinservice;
 	
 	@Inject
-	private EventPlanService eventplanservice;
-	
-	@Inject
 	private ReplyService replyservice;
 	
 	
@@ -56,7 +56,7 @@ public class PartyController {
 		logger.info("show all list...........");
 		model.addAttribute("list",partyservice.listAll());
 	}
-	@RequestMapping(value="/read", method = RequestMethod.GET)
+	@RequestMapping(value="/viewDetails", method = RequestMethod.GET)
 	public void read(Model model,int num,String id) throws Exception{
 		Party party = partyservice.read(num);
 		model.addAttribute("party",party);
@@ -74,7 +74,7 @@ public class PartyController {
 		replyservice.create(reply);
 		rttr.addAttribute("num", reply.getPartyNum());
 		rttr.addAttribute("id", reply.getId());
-		return "redirect:/party/read";
+		return "redirect:/party/viewDetails";
 	}
 	
 	@RequestMapping(value="/comment", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
@@ -84,7 +84,7 @@ public class PartyController {
 		replyservice.createComment(reply);
 		rttr.addAttribute("num", reply.getPartyNum());
 		rttr.addAttribute("id", reply.getId());
-		return "redirect:/party/read";
+		return "redirect:/party/viewDetails";
 	}
 	
 	
@@ -103,7 +103,7 @@ public class PartyController {
 	
 	//여기까지 정훈이꺼
 	/** 참가 신청 페이지 */
-	@RequestMapping(value ="/party2", method =RequestMethod.GET)
+	@RequestMapping(value ="/partyJoin", method =RequestMethod.GET)
 	public void listAll(Model model,int num,String id)throws Exception{
 		//String id추가 id
 		logger.info("show all list");
@@ -112,7 +112,7 @@ public class PartyController {
 	}
 	
 	/** 참가 완료 페이지 */
-	@RequestMapping(value ="/party3", method =RequestMethod.GET)
+	@RequestMapping(value ="/joinCompleted", method =RequestMethod.GET)
 	public void clistAll(Model model,int num,String id)throws Exception{
 		logger.info("show all clist");
 		
@@ -125,33 +125,6 @@ public class PartyController {
 		model.addAttribute("Member", memberservice.mread(id));
 	}
 	
-	/** 마이 페이지 (정보수정하는 곳) */
-	@RequestMapping(value ="/party4", method =RequestMethod.GET)
-	public void plan(Model model,String id)throws Exception{
-		logger.info("show all list");
-		model.addAttribute("PartyJoin", partyjoinservice.listparty(id));
-		model.addAttribute("Party", partyservice.myPartyListAll(id));
-		model.addAttribute("Member", memberservice.mread(id));
-		model.addAttribute("EventPlan", eventplanservice.listPlan(id));
-	}
-	
-	/** member 수정하기 버튼 눌렀을 때 */
-	@RequestMapping(value="/party4", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
-	public String updatePost(Member member ,RedirectAttributes rttr) throws Exception {
-		logger.info("업데이트");
-		logger.info(member);
-		memberservice.update(member);
-		return "redirect:/";
-	}
-	
-	/** 파티 신청자 목록 modal에 값 가져오는 비동기 통신 */
-	@RequestMapping(value="/partyreq.do")
-	@ResponseBody
-	public List<Member> partyReq(int partyNum) throws Exception{
-		List<Member> mList = partyjoinservice.listReq(partyNum);
-		
-		return mList;
-	}
 	
 	
 	//여기까지 서영이꺼

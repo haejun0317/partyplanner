@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.aspectj.apache.bcel.generic.ReturnaddressType;
 import org.springframework.stereotype.Repository;
 
 import kr.co.partyplanner.party.dao.PartyDao;
@@ -46,4 +47,5 @@ public class PartyServiceImpl implements PartyService {
 	public int joinCount(int num) throws Exception {
 		return dao.joinCount(num);
 	}
+	
 }
