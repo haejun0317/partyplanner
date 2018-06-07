@@ -45,7 +45,7 @@
                <% if(member != null){ %>
                        <li><i class="icon-user"></i><%=member.getName() %> 님 환영합니다.</li>
                        <li><a href="/member/logout" >Logout</a></li>
-                       <li><a href="/party/party4?id=<%=member.getId() %>" >my page</a></li>
+                       <li><a href="/member/myPage?id=<%=member.getId() %>" >my page</a></li>
                <% }else{ %>
                        <li><a href="/member/regist"><i
                        class="icon-user"></i> Sign up</a></li>
