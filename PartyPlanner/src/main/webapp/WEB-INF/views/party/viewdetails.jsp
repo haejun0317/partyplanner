@@ -1,7 +1,5 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Calendar"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -16,12 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-
-<!--현재시간 -->
-<c:set var="today" value="<%=new java.util.Date()%>" />
-<fmt:formatDate var="now" type="date" value="${today}"
-  pattern="yyyy-MM-dd" />
-
 
 <!-- css -->
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css"
