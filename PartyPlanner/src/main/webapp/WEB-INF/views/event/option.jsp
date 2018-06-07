@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Flattern - Flat and trendy bootstrap site template</title>
+<title>옵션선택</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -25,7 +25,7 @@
 <link href="/resources/bootstrap/css/flexslider.css" rel="stylesheet" />
 <link href="/resources/bootstrap/css/slitslider.css" rel="stylesheet" />
 <link href="/resources/bootstrap/css/style.css" rel="stylesheet" />
-<!-- Theme skin -->
+<!-- Theme skin -->   
 <link id="t-colors" href="/resources/bootstrap/skins/default.css"
   rel="stylesheet" />
 <!-- boxed bg -->
@@ -65,547 +65,459 @@
 }
 </style>
 
-</head>
+<script type="text/javascript">
 
+	var sum = 0;
+	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
+	function handleClick(myRadio) {
+		if (myRadio.name == 'mcGroup') {
+			if (myRadio.value == 'null') {
+				$("#selectMc")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				mcprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectMc").html(
+						"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;" + afterStr[0]
+								+ " 경력 사회자<span style='float: right;'>&#8361;"
+								+ setComma(afterStr[1]) + "</span>");
+				mcprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'stageGroup') {
+			if (myRadio.value == 'null') {
+				$("#selectStage")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				stageprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectStage")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				stageprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'lightGroup') {
+			if (myRadio.value == 'null') {
+				$("#selectLight")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				lightprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectLight")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				lightprice = afterStr[1];
+			}
+		} else if (myRadio.name == 'soundGroup') {
+			if (myRadio.value == 'null') {
+				$("#selectSound")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				soundprice = 0
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectSound")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				soundprice = afterStr[1];
+			}
+		} else {
+			if (myRadio.value == 'null') {
+				$("#selectStaff")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
+				staffprice = 0;
+			} else {
+				var beforStr = myRadio.value;
+				var afterStr = beforStr.split('$$');
+				$("#selectStaff")
+						.html(
+								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;"
+										+ afterStr[0]
+										+ " 이하 규모 지원<span style='float: right;'>&#8361;"
+										+ setComma(afterStr[1]) + "</span>");
+				staffprice = afterStr[1];
+			}
+		}
+		sum = Number(mcprice) + Number(stageprice) + Number(soundprice) + Number(lightprice) + Number(staffprice);
+		$("#price").html(setComma(sum) + "원");
+
+	}
+	
+	/** 다음버튼 눌렀을때 실행되는 액션 */
+	function postForm() {
+		$("#mc").val($("input[name=mcGroup]:checked").attr("id"));
+		$("#stage").val($("input[name=stageGroup]:checked").attr("id"));
+		$("#light").val($("input[name=lightGroup]:checked").attr("id"));
+		$("#sound").val($("input[name=soundGroup]:checked").attr("id"));
+		$("#staff").val($("input[name=staffGroup]:checked").attr("id"));
+		$("#optionSum").val(sum);
+		
+		$("#myForm").submit();
+	}
+	
+</script>
+<script type="text/javascript">
+	function setComma(number) {
+		// 정규표현식 : (+- 존재하거나 존재 안함, 숫자가 1개 이상), (숫자가 3개씩 반복)
+		var reg = /(^[+-]?\d+)(\d{3})/;
+
+		// 스트링변환
+		number += '';
+		while (reg.test(number)) {
+			// replace 정규표현식으로 3자리씩 콤마 처리
+			number = number.replace(reg, '$1' + ',' + '$2');
+		}
+
+		return number;
+	}
+</script>
+</head>
 <body>
 
-   <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-    <!-- end header -->
-    
-    <section id="inner-headline">
-      <div class="container">
-        <div class="row">
-          <div class="span4">
-            <div class="inner-heading">
-              <h2>행사기획</h2>
-            </div>
-          </div>
-          <div class="span8">
-            <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i
-                class="icon-angle-right"></i></li>
-              <li><a href="#">Features</a><i
-                class="icon-angle-right"></i></li>
-              <li class="active">Components</li>
-            </ul>
+  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+  <!-- end header -->
+
+  <section id="inner-headline">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <div class="inner-heading">
+            <h2>행사기획</h2>
           </div>
         </div>
+        <div class="span8">
+          <ul class="breadcrumb">
+            <li><a href="#"><i class="icon-home"></i></a><i
+              class="icon-angle-right"></i></li>
+            <li><a href="#">Features</a><i class="icon-angle-right"></i></li>
+            <li class="active">Components</li>
+          </ul>
+        </div>
       </div>
-    </section>
-    <section id="content">
-      <div class="container">
-        <div class="row demobtn">
-          <div class="span12">
-            <!-- end divider -->
-            <div class="row">
-              <div class="span6">
+    </div>
+  </section>
+  <section id="content">
+    <div class="container">
+      <div class="row demobtn">
+        <div class="span12">
+          <!-- end divider -->
+          <div class="row">
+            <div class="span6">
 
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <td style="padding: 0px; vertical-align: top;">
-                        <div class="btn-group">
-                          <button class="btn btn-square btn-theme"
-                            style="border-radius: 10px;">01 식순</button>
-                          <button class="btn btn-square btn-theme"
-                            style="background-color: #18191a; border-color: #18191a; border-radius: 10px;">02
-                            옵션</button>
-                        </div>
-                      </td>
-
-                    </tr>
-                  </thead>
-
-                </table>
-
-
-
-                <!-- 드로그앤 드롭 / 테스트 -->
-
-                <h5>
-                  <strong>옵션</strong>선택
-                  <!-- 검색 modal★ -->
-                  <a href="#discountModal" data-toggle="modal"
-                    style="float: right; font-size: 15pt"><i
-                    class="icon-ok"></i>할인 안내</a>
-
-                  <!-- 검색 modal★ -->
-                  <div id="discountModal" class="modal styled hide fade"
-                    tabindex="-1" role="dialog"
-                    aria-labelledby="mySignupModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-header">
-                      <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true">×</button>
-                      <h4 id="mySignupModalLabel">
-                        Party <strong>Discount</strong>
-                      </h4>
-                    </div>
-                    <div class="modal-body">
-                      <form class="form-horizontal">
-
-                        <!-- 
-                        <div class="control-group">
-
-                          <div class="controls"
-                            style="margin-left: 125px;">
-                            <input type="text" id=""
-                              placeholder="원하는 식순을 입력하세요."
-                              style="border-radius: 10px;">
-                            <button class="btn btn-square btn-theme"
-                              style="border-radius: 10px;">검색</button>
-                          </div>
-
-                        </div>
-                         -->
-
-
-                        <table class="table table-striped"
-                          style="font-size: 13px;">
-                          <thead>
-                            <tr>
-                              <th width="10%">#</th>
-                              <th width="50%">이름</th>
-                              <th width="20%">시간</th>
-                              <th width="20%"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-
-                              <td>입장</td>
-                              <td>5분</td>
-                              <td>
-                                <button type="submit"
-                                  class="btn btn-square btn-theme"
-                                  style="border-radius: 10px;">추가</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-
-                              <td>공 던지기</td>
-                              <td>60분</td>
-                              <td>
-                                <button type="submit"
-                                  class="btn btn-square btn-theme"
-                                  style="border-radius: 10px">추가</button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-
-                              <td>골든 벨</td>
-                              <td>60분</td>
-                              <td>
-                                <button type="submit"
-                                  class="btn btn-square btn-theme"
-                                  style="border-radius: 10px">추가</button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-
-                        <div class="control-group">
-
-                          <!-- 
-                          <div class="controls"
-                            style="margin-left: 125px;">
-                            <input type="text" id=""
-                              placeholder="식순 직접 입력"
-                              style="border-radius: 10px;">
-                            <button class="btn btn-square btn-theme"
-                              style="border-radius: 10px;">직접추가</button>
-                          </div>
-                          
-                           -->
-
-                          <p class="aligncenter margintop20"
-                            style="font-size: 18px">
-                            행사 기획은 <strong>Party Planner</strong> 와 함께
-                        </div>
-
-                      </form>
-
-                    </div>
-                  </div>
-                </h5>
-                <!-- start: Accordion -->
-                <div class="accordion" id="accordion2">
-                  <div class="accordion-group">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"
-                        href="#collapseOne"> <i class="icon-plus"></i>
-                        사회자
-                      </a>
-                    </div>
-                    <div id="collapseOne"
-                      class="accordion-body collapse in">
-                      <div class="accordion-inner">
-
-                        <input type="checkbox" name="" value="" checked>
-                        8년 이상 경력 사회자 <br> <input type="checkbox"
-                          name="fruits" value=""> 5년 이상 경력 사회자 <br>
-                        <input type="checkbox" name="fruits" value="">
-                        8년 이상 경력 레크리에이션 사회자 <br> <input
-                          type="checkbox" name="fruits" value="">
-                        5년 이상 경력 레크리에이션 사회자 <br>
-
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <td style="padding: 0px; vertical-align: top;">
+                      <div class="btn-group">
+                        <button class="btn btn-square btn-theme"
+                          style="border-radius: 10px;">01 식순</button>
+                        <button class="btn btn-square btn-theme"
+                          style="background-color: #18191a; border-color: #18191a; border-radius: 10px;">02
+                          옵션</button>
                       </div>
-                    </div>
-                  </div>
+                    </td>
 
-                  <div class="accordion-group">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"
-                        href="#collapse2"> <i class="icon-plus"></i>
-                        무대
-                      </a>
-                    </div>
-                    <div id="collapse2" class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <input type="checkbox" name="" value="" checked>
-                        100명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 500명 이하 규모 <br>
-                        <input type="checkbox" name="fruits" value="">
-                        1000명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 2000명 이하 규모 <br>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-group">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"
-                        href="#collapse3"> <i class="icon-plus"></i>
-                        조명
-                      </a>
-                    </div>
-                    <div id="collapse3" class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <input type="checkbox" name="" value="" checked>
-                        50명 이하 규모 (LED Par 8대 + Dimmer) <br> <input
-                          type="checkbox" name="fruits" value="">
-                        100명 이하 규모 (Moving 4대 + LED Par 8대 + Console) <br>
-                        <input type="checkbox" name="fruits" value="">
-                        500명 이하 규모 (Moving Set 20대 + Console)<br> <input
-                          type="checkbox" name="fruits" value="">
-                        2000명 이하 규모 <br>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-group">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"
-                        href="#collapseTwo"> <i class="icon-plus"></i>
-                        음향
-                      </a>
-                    </div>
-                    <div id="collapseTwo"
-                      class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <input type="checkbox" name="" value="" checked>
-                        100명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 500명 이하 규모 <br>
-                        <input type="checkbox" name="fruits" value="">
-                        1000명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 2000명 이하 규모 <br>
+                  </tr>
+                </thead>
 
-                      </div>
-                    </div>
+              </table>
+
+
+
+              <!-- 드로그앤 드롭 / 테스트 -->
+
+              <h5>
+                <strong>옵션</strong>선택
+                <!-- 검색 modal★ -->
+                <a href="#discountModal" data-toggle="modal"
+                  style="float: right; font-size: 15pt"><i
+                  class="icon-ok"></i>할인 안내</a>
+
+                <!-- 검색 modal★ -->
+                <div id="discountModal" class="modal styled hide fade"
+                  tabindex="-1" role="dialog"
+                  aria-labelledby="mySignupModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close"
+                      data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 id="mySignupModalLabel">
+                      Party <strong>Discount</strong>
+                    </h4>
                   </div>
-                  <div class="accordion-group">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle" data-toggle="collapse"
-                        href="#collapseThree"> <i class="icon-plus"></i>
-                        스태프
-                      </a>
-                    </div>
-                    <div id="collapseThree"
-                      class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <input type="checkbox" name="" value="" checked>
-                        100명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 500명 이하 규모 <br>
-                        <input type="checkbox" name="fruits" value="">
-                        1000명 이하 규모 <br> <input type="checkbox"
-                          name="fruits" value=""> 2000명 이하 규모 <br>
+                  <div class="modal-body">
+                    <form class="form-horizontal">
+                      <table class="table table-striped"
+                        style="font-size: 13px;">
+                        <thead>
+                          <tr>
+                            <th width="10%">#</th>
+                            <th width="50%">이름</th>
+                            <th width="20%">시간</th>
+                            <th width="20%"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>입장</td>
+                            <td>5분</td>
+                            <td>
+                              <button type="submit"
+                                class="btn btn-square btn-theme"
+                                style="border-radius: 10px;">추가</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>공 던지기</td>
+                            <td>60분</td>
+                            <td>
+                              <button type="submit"
+                                class="btn btn-square btn-theme"
+                                style="border-radius: 10px">추가</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>골든 벨</td>
+                            <td>60분</td>
+                            <td>
+                              <button type="submit"
+                                class="btn btn-square btn-theme"
+                                style="border-radius: 10px">추가</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="control-group">
+                        <p class="aligncenter margintop20"
+                          style="font-size: 18px">
+                          행사 기획은 <strong>Party Planner</strong> 와 함께
                       </div>
+                    </form>
+                  </div>
+                </div>
+              </h5>
+              <!-- start: Accordion -->
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                      href="#collapseOne"> <i class="icon-minus"></i>
+                      사회자
+                    </a>
+                  </div>
+                  <div id="collapseOne"
+                    class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      <input type="radio" name="mcGroup" id="null"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
+                      <c:forEach items="${mcList}" var="mc">
+                        <input type="radio" name="mcGroup"
+                          value="${mc.name}$$${mc.price}" id="${mc.name}" 
+                          onchange="handleClick(this)"> ${mc.name} 경력 사회자 <strong>(+${mc.price })</strong>
+                        <br>
+                      </c:forEach>
                     </div>
                   </div>
                 </div>
 
-
-
-                <!--end: Accordion -->
-
-
-
-
-
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                      href="#collapse2"> <i class="icon-plus"></i>
+                      무대
+                    </a>
+                  </div>
+                  <div id="collapse2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <input type="radio" name="stageGroup" value="null"  id="null"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
+                      <c:forEach items="${stageList}" var="stage">
+                        <input type="radio" name="stageGroup"
+                          value="${stage.name}$$${stage.price}" id="${stage.name}"
+                          onchange="handleClick(this)"> ${stage.name} 이하 규모 지원 <strong>(+${stage.price })</strong>
+                        <br>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                      href="#collapse3"> <i class="icon-plus"></i>
+                      조명
+                    </a>
+                  </div>
+                  <div id="collapse3" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <input type="radio" name="lightGroup" value="null" id="null"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
+                      <c:forEach items="${lightList}" var="light">
+                        <input type="radio" name="lightGroup"
+                          value="${light.name}$$${light.price}" id="${light.name}"
+                          onchange="handleClick(this)"> ${light.name} 이하 규모 지원 <strong>(+${light.price })</strong>
+                        <br>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                      href="#collapseTwo"> <i class="icon-plus"></i>
+                      음향
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <input type="radio" name="soundGroup" value="null" id="null"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
+                      <c:forEach items="${soundList}" var="sound">
+                        <input type="radio" name="soundGroup"
+                          value="${sound.name}$$${sound.price}" id="${sound.name}"
+                          onchange="handleClick(this)"> ${sound.name} 이하 규모 지원 <strong>(+${sound.price })</strong>
+                        <br>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse"
+                      href="#collapseThree"> <i class="icon-plus"></i>
+                      스태프
+                    </a>
+                  </div>
+                  <div id="collapseThree"
+                    class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <input type="radio" name="staffGroup" value="null"  id="null"
+                        onchange="handleClick(this)" checked>선택
+                      안함 <br>
+                      <c:forEach items="${staffList}" var="staff">
+                        <input type="radio" name="staffGroup"
+                          value="${staff.name}$$${staff.price}" id="${staff.name}"
+                          onchange="handleClick(this)"> ${staff.name} 이하 규모 지원 <strong>(+${staff.price })</strong>
+                        <br>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="span6">
-                <div class="widget">
-
-
-
-                  <form class="form-search">
-                    <span class="category">
-                      &emsp;인&emsp;&emsp;원&emsp; <input
-                      placeholder="예상 인원 (명)" type="text"
-                      class="input-medium search-query"
-                      style="border-radius: 10px; width: 100px;">
-                    </span> <span class="category" style="">&emsp;설&emsp;&emsp;정&emsp;
-
-                      <button class="btn btn-square btn-theme"
-                        style="border-radius: 10px; width: 108px">추천옵션설정</button>&emsp;
-                      <button class="btn btn-square btn-theme"
-                        style="border-radius: 10px; width: 108px">전체동일설정</button>
-                    </span>
-                  </form>
-                </div>
-                <div class="widget">
-                  <div class="solidline"></div>
-                </div>
-
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#one"
-                    data-toggle="tab"><i class="icon-briefcase"></i>
-                      Day-1</a></li>
-                  <li><a href="#two" data-toggle="tab">Day-2</a></li>
-                  <li><a href="#three" data-toggle="tab">Day-3</a></li>
-                  <li><a href="#three" data-toggle="tab">Day-4</a></li>
-                  <li><a href="#three" data-toggle="tab">Day-5</a></li>
-                  <li><a href="#three" data-toggle="tab">Day-6</a></li>
-                  <li><a href="#three" data-toggle="tab">Day-7</a></li>
-                </ul>
-                <div class="tab-content">
-                  <!-- 첫번째 탭 -->
-                  <div class="tab-pane active" id="one">
-
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-
-                      <span style="font-size: 14pt;"><strong>옵션
-                          선택</strong></span>
-                      <p>
-                        사회자<span style="float: right;"></span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;8년 이상 경력
-                        사회자 <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
-                      <p>
-                        무대<span style="float: right;"></span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;100명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
-                      <p>
-                        조명<span style="float: right;"></span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;500명 이하 규모
-                        (Moving Set 20대 + Console) <span
-                          style="float: right;">&#8361;100,000 <input
-                          type="checkbox" name="" value="" checked></span>
-                      </p>
-                      <p>
-                        음향<span style="float: right;"></span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2000명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
-                      <p>
-                        스태프<span style="float: right;"></span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2000명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
-                    </div>
-
-
-                    <div class="widget">
-                      <div class="solidline"></div>
-                    </div>
-
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-                      <b style="font-size: 15pt;">총 견적 금액 </b><b
-                        style="font-size: 35pt;"><span
-                        style="float: right;"><strong>300,000,000원</strong></span></b>
-                    </div>
-                  </div>
-
-
-
-                  <!-- 두번째 탭 -->
-                  <div class="tab-pane" id="two">
-
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-
-                      <div class="widget">
-
-                        <form class="form-search">
-                          <span class="category"> 예상인원&emsp; <input
-                            placeholder="인원 (명)" type="text"
-                            class="input-medium search-query"
-                            style="border-radius: 10px; width: 70px;">
-                          </span> <span class="category" style="">&emsp;설&emsp;&emsp;&emsp;정&emsp;
-
-                            <button class="btn btn-square btn-theme"
-                              style="border-radius: 10px; width: 85px">추천옵션</button>&nbsp;&nbsp;&nbsp;
-                            <button class="btn btn-square btn-theme"
-                              style="border-radius: 10px; width: 85px">설정저장</button>
-
-                          </span>
-                        </form>
-                      </div>
-                    </div>
-
-                    <div class="widget">
-                      <div class="solidline"></div>
-                    </div>
-
-
-
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-
-
-
-
-                      <span style="font-size: 14pt;"><strong>선택
-                          식순</strong></span>
-                      <p>사회자</p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;8년 이상 경력
-                        사회자<span style="float: right;">30분</span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;복면 가왕<span
-                          style="float: right;">25분</span>
-                      </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;공 돌리기<span
-                          style="float: right;">25분</span>
-                      </p>
-                      <p>
-                        퇴장<span style="float: right;">5분</span>
-                      </p>
-                    </div>
-
-
-                    <div class="widget">
-                      <div class="solidline"></div>
-                    </div>
-
-
-                    <div
-                      style="line-height: 2.3em; padding-left: 30px; padding-right: 30px">
-                      <span style="font-size: 14pt;"><strong>식순
-                          옵션</strong></span>
-                      <p>
-                        도전 골든벨 - 스케치북 (&#8361;5,000) * 50개<span
-                          style="float: right;">&#8361;250,000<i
-                          class="icon-remove"></i></span>
-                      </p>
-                      <p>
-                        도전 골든벨 - 보드마카 (&#8361;300) * 50개<span
-                          style="float: right;">&#8361;15,000<i
-                          class="icon-remove"></i></span>
-                      </p>
-                      <p>
-                        도전 골든벨 - 골든벨 (&#8361;300,000) * 1개<span
-                          style="float: right;">&#8361;300,000<i
-                          class="icon-remove"></i></span>
-                      </p>
-                      <p>
-                        복면가왕 - 복면 (&#8361;5000) * 20개<span
-                          style="float: right;">&#8361;100,000<i
-                          class="icon-remove"></i></span>
-                      </p>
-                      <p>
-                        물풍선 던지기 - 풍선 (&#8361;200) * 1개<span
-                          style="float: right;">&#8361;200<i
-                          class="icon-remove"></i></span>
-                      </p>
-                    </div>
-
-
-                    <div class="widget">
-                      <div class="solidline"></div>
-                    </div>
-                    <div
-                      style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
-                      <b style="font-size: 15pt;">총 견적 금액 </b><b
-                        style="font-size: 35pt;"><span
-                        style="float: right;"><strong>300,000,000원</strong></span></b>
-                    </div>
-                  </div>
-
-                  <!-- -----------------------------------------------------------------둘째 날 탭 끝 -->
-
-
-
-
-
-                  <div class="tab-pane" id="two">
-                    <p>Tale dolor mea ex, te enim assum suscipit
-                      cum, vix aliquid omittantur in. Duo eu cibo
-                      dolorum menandri, nam sumo dicit admodum ei. Ne
-                      mazim commune honestatis cum, mentitum phaedrum
-                      sit et.</p>
-                  </div>
-                  <div class="tab-pane" id="three">
-                    <p>Tale dolor mea ex, te enim assum suscipit
-                      cum, vix aliquid omittantur in. Duo eu cibo
-                      dolorum menandri, nam sumo dicit admodum ei. Ne
-                      mazim commune honestatis cum, mentitum phaedrum
-                      sit et.</p>
-                  </div>
-                </div>
-
-
-                <!-- end divider -->
-              </div>
+              <!--end: Accordion -->
             </div>
+            <div class="span6">
+              <!-- <div class="widget">
+                <form class="form-search">
+                  <span class="category">
+                    &emsp;인&emsp;&emsp;원&emsp; <input
+                    placeholder="예상 인원 (명)" type="text"
+                    class="input-medium search-query"
+                    style="border-radius: 10px; width: 100px;">
+                  </span> <span class="category" style="">&emsp;설&emsp;&emsp;정&emsp;
 
-            <div class="widget">
-              <div class="solidline"></div>
-            </div>
-
-
-            <!-- end span12 -->
-            <div class="row">
-              <div style="text-align: right;">
-                <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">이전</button>
-                <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">다음</button>
+                    <button class="btn btn-square btn-theme"
+                      style="border-radius: 10px; width: 108px">추천옵션설정</button>&emsp;
+                    <button class="btn btn-square btn-theme"
+                      style="border-radius: 10px; width: 108px">전체동일설정</button>
+                  </span>
+                </form>
               </div>
+              <div class="widget">
+                <div class="solidline"></div>
+              </div> -->
+
+              <div style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
+
+                <span style="font-size: 14pt;"><strong>옵션 선택</strong></span>
+                
+                <p>사회자</p>
+                <p id="selectMc">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                <p>무대</p>
+                <p id="selectStage">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                <p>조명</p>
+                <p id="selectLight">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                <p>음향</p>
+                <p id="selectSound">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                <p>스태프</p>
+                <p id="selectStaff">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+              </div>
+
+              <div class="widget">
+                <div class="solidline"></div>
+              </div>
+
+              <div
+                style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
+                <b style="font-size: 15pt;">총 견적 금액 </b><b
+                  style="font-size: 35pt;"><span
+                  style="float: right;" id="price">0원</span></b>
+              </div>
+
+
+              <!-- end divider -->
+            </div>
+          </div>
+
+          <div class="widget">
+            <div class="solidline"></div>
+          </div>
+
+
+          <!-- end span12 -->
+          <div class="row">
+            <div style="text-align: right;">
+              <button type="submit" class="btn btn-square btn-theme"
+                style="border-radius: 10px"  onclick="postForm()">다음</button>
+
+              <form action="option" method="post" id="myForm">
+                <input type="hidden" value="null" id="mc" name="mc">
+                <input type="hidden" value="null" id="stage" name="stage">
+                <input type="hidden" value="null" id="light" name="light">
+                <input type="hidden" value="null" id="sound" name="sound">
+                <input type="hidden" value="null" id="staff" name="staff">
+                <input type="hidden" value="0" id="optionSum" name="optionSum">
+                
+               <%--  <input type="hidden" value="${eplan.num }" id="num" name="num">
+                <input type="hidden" value="${eplan.schedule }" id="schedule" name="schedule">
+                <input type="hidden" value="${eplan.people }" id="people" name="people">
+                <input type="hidden" value="${eplan.startday }" id="startday" name="startday">
+                <input type="hidden" value="${eplan.endday }" id="endday" name="endday">
+                <input type="hidden" value="${eplan.place }" id="place" name="place">
+                <input type="hidden" value="${eplan.id }" id="id" name="id">
+                <input type="hidden" value="${eplan.name }" id="name" name="name">
+                <input type="hidden" value="${eplan.eventSum }" id="eventSum" name="eventSum"> --%>
+              </form>
+              
             </div>
           </div>
         </div>
       </div>
-    </section>
-   <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+    </div>
+  </section>
+  <jsp:include page="/WEB-INF/views/include/footer.jsp" />
 
 </body>
 

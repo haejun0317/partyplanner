@@ -13,5 +13,8 @@ public interface EventPlanDAO {
 	
 	/**이벤트 번호 불러오기*/
 	public EventPlan read(int num)throws Exception;
+	
+	/** 기획서 저장하기 */
+	public void create(EventPlan eventPlan) throws Exception;
 
 }

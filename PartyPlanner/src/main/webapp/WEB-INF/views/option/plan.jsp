@@ -25,7 +25,7 @@
 <link href="/resources/bootstrap/css/flexslider.css" rel="stylesheet" />
 <link href="/resources/bootstrap/css/slitslider.css" rel="stylesheet" />
 <link href="/resources/bootstrap/css/style.css" rel="stylesheet" />
-<!-- Theme skin -->
+<!-- Theme skin -->   
 <link id="t-colors" href="/resources/bootstrap/skins/default.css"
   rel="stylesheet" />
 <!-- boxed bg -->
@@ -71,7 +71,7 @@
 	var mcprice = 0, stageprice = 0, lightprice = 0, staffprice = 0, soundprice = 0;
 	function handleClick(myRadio) {
 		if (myRadio.name == 'mcGroup') {
-			if (myRadio.value == 'no') {
+			if (myRadio.value == 'null') {
 				$("#selectMc")
 						.html(
 								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
@@ -86,7 +86,7 @@
 				mcprice = afterStr[1];
 			}
 		} else if (myRadio.name == 'stageGroup') {
-			if (myRadio.value == 'no') {
+			if (myRadio.value == 'null') {
 				$("#selectStage")
 						.html(
 								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
@@ -103,7 +103,7 @@
 				stageprice = afterStr[1];
 			}
 		} else if (myRadio.name == 'lightGroup') {
-			if (myRadio.value == 'no') {
+			if (myRadio.value == 'null') {
 				$("#selectLight")
 						.html(
 								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
@@ -120,7 +120,7 @@
 				lightprice = afterStr[1];
 			}
 		} else if (myRadio.name == 'soundGroup') {
-			if (myRadio.value == 'no') {
+			if (myRadio.value == 'null') {
 				$("#selectSound")
 						.html(
 								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
@@ -137,7 +137,7 @@
 				soundprice = afterStr[1];
 			}
 		} else {
-			if (myRadio.value == 'no') {
+			if (myRadio.value == 'null') {
 				$("#selectStaff")
 						.html(
 								"&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span>");
@@ -327,7 +327,7 @@
                   <div id="collapseOne"
                     class="accordion-body collapse in">
                     <div class="accordion-inner">
-                      <input type="radio" name="mcGroup" value="no"
+                      <input type="radio" name="mcGroup" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${mcList}" var="mc">
@@ -349,7 +349,7 @@
                   </div>
                   <div id="collapse2" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="stageGroup" value="no"
+                      <input type="radio" name="stageGroup" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${stageList}" var="stage">
@@ -370,7 +370,7 @@
                   </div>
                   <div id="collapse3" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="lightGroup" value="no"
+                      <input type="radio" name="lightGroup" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${lightList}" var="light">
@@ -391,7 +391,7 @@
                   </div>
                   <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="soundGroup" value="no"
+                      <input type="radio" name="soundGroup" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${soundList}" var="sound">
@@ -413,7 +413,7 @@
                   <div id="collapseThree"
                     class="accordion-body collapse">
                     <div class="accordion-inner">
-                      <input type="radio" name="staffGroup" value="no"
+                      <input type="radio" name="staffGroup" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${staffList}" var="staff">
@@ -495,7 +495,7 @@
               <button type="submit" class="btn btn-square btn-theme"
                 style="border-radius: 10px"  onclick="postForm()">다음</button>
 
-              <form action="plan" method="post" id="myForm">
+              <form action="option" method="post" id="myForm">
                 <input type="hidden" value="null" id="mc" name="mc">
                 <input type="hidden" value="null" id="stage" name="stage">
                 <input type="hidden" value="null" id="light" name="light">

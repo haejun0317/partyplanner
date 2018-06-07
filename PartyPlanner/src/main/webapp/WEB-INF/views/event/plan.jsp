@@ -225,7 +225,7 @@
 		});
 	}
 
-	var optionList;
+	var optionList;onOptionCall
 	function onOptionCall(list) {
 		optionList = list;
 		sendEventCallMessage(eventName);
@@ -943,7 +943,7 @@
                   </form>
                 </div>
 
-                <form class="form-search">
+                <!-- <form class="form-search">
                   <span class="category"> 예상시간&emsp; <input
                     placeholder="예상 시간 (분)" type="text"
                     class="input-medium search-query"
@@ -954,7 +954,7 @@
                     <button class="btn btn-square btn-theme"
                       style="border-radius: 10px; width: 108px">전체동일설정</button>
                   </span>
-                </form>
+                </form> -->
               </div>
               <div class="widget">
                 <div class="solidline"></div>
