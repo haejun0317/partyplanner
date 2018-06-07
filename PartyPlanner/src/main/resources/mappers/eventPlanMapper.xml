@@ -45,5 +45,39 @@
 		from event_plan
 		WHERE member_id = #{id}
 	</select>
+	
+	<insert id="create">
+		INSERT INTO event_plan
+		            (num,
+		             schedule, 
+		             <if test="mc != 'null'">mc,</if>
+		             <if test="stage != 'null'">stage,</if> 
+		             <if test="light != 'null'">light,</if> 
+		             <if test="sound != 'null'">sound,</if> 
+		             <if test="staff != 'null'">staff,</if> 
+		             people,
+		             startday,
+		             endday,
+		             place,
+		             member_id,
+		             event_name,
+		             event_sum,
+		             option_sum) 
+		VALUES      (plan_num_seq.nextval, 
+		             #{schedule},
+		             <if test="mc != 'null'">#{mc},</if>
+		             <if test="stage != 'null'">#{stage},</if> 
+		             <if test="light != 'null'">#{light},</if> 
+		             <if test="sound != 'null'">#{sound},</if> 
+		             <if test="staff != 'null'">#{staff},</if>
+		             #{people},
+		             #{startday},
+		             #{endday},
+		             #{place},
+		             #{id},
+		             #{name},
+		             #{eventSum},
+		             #{optionSum})
+	</insert>
 
 </mapper>

@@ -7,7 +7,14 @@ import kr.co.partyplanner.eventplan.domain.EventPlan;
 
 public interface EventPlanService {
 	
+	/**기획서 아이디로 불러오기 서비스 */
+	public List<EventPlan> listPlan(String id)throws Exception;
+	
+	/**이벤트 번호 불러오기 서비스 */
 	public EventPlan read(int num)throws Exception;
 	
-	public List<EventPlan> listPlan(String id)throws Exception;
+	/** 기획서 저장하기 서비스 */
+	public void create(EventPlan eventPlan) throws Exception;
+	
+	
 }

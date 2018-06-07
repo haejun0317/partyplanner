@@ -44,6 +44,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 드로그 앤 드롭 -->
+<!-- AJAX -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 #sortable {
 	list-style-type: none;
@@ -68,8 +70,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	setSchedule();
+	setSum();
 });
 
+/** 식순 분류 후 출력 */
 function setSchedule() {
 	var text = "";
 	var schedule = $("#schedule").val();
@@ -86,6 +90,14 @@ function setSchedule() {
 	}
 	$("#showSchedule").append(text);
 }
+
+/** 값 콤마 찍기 기능 */
+function setSum() {
+	$("[name=comma]").each(function(index,item) {
+		var price = $(item).context.textContent;
+		$(item).html(setComma(price) + "원");
+	})
+}
 </script>
 <script type="text/javascript">
   function setComma(number) {
@@ -101,6 +113,27 @@ function setSchedule() {
 
     return number;
   }
+</script>
+<script type="text/javascript">
+/** 저장 버튼 클릭시 비동기 통신 */
+function savePlan() {
+	$.ajax({
+		method : "GET",
+		url : "save.do",
+		dateType : 'text',
+		success : onSaveCall,
+		error : function() {
+			console.log("실패");
+		}
+	}); 
+}
+
+function onSaveCall(text) {
+	if(text=='success'){
+		$("#save").html("저장완료");
+		$("#save").attr("disabled", "disabled");
+	}
+}
 </script>
 </head>
 
@@ -154,8 +187,8 @@ function setSchedule() {
 
                 <form class="form-search">
                   <span class="category">인&emsp;&emsp;원&emsp; <label>${ePlan.people}명</label>
-                  </span> <span class="category">&emsp;예상시간&emsp; <label>들어가기</label>
-                  </span>
+                  </span> <!-- <span class="category">&emsp;예상시간&emsp; <label>들어가기</label>
+                  </span> -->
                 </form>
 
                 <form class="form-search">
@@ -175,17 +208,17 @@ function setSchedule() {
                 </div>
 
                 <form class="form-search">
-                  <span class="category">물품옵션가격&emsp;&emsp;&emsp;&emsp; <label>${ePlan.eventSum}원</label>
+                  <span class="category">물품옵션가격&emsp;&emsp;&emsp;&emsp; <label name='comma'>${ePlan.eventSum}</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label>${ePlan.optionSum}원</label>
+                  <span class="category">선택옵션가격&emsp;&emsp;&emsp;&emsp; <label name='comma'>${ePlan.optionSum}</label>
                   </span>
                 </form>
 
                 <form class="form-search">
-                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label>${ePlan.eventSum + ePlan.optionSum}원</label>
+                  <span class="category">합&nbsp;&nbsp;계&emsp;금&nbsp;&nbsp;액&emsp;&emsp;&emsp;&emsp; <label name='comma'>${ePlan.eventSum + ePlan.optionSum}</label>
                   </span>
                 </form>
               </div>
@@ -219,15 +252,14 @@ function setSchedule() {
 
 
                     <div id="plangoods" style="line-height: 2.3em; padding-left: 30px; padding-right: 30px">
-                      <span style="font-size: 14pt;"><strong>식순
-                          옵션</strong></span>
+                      <span style="font-size: 14pt;"><strong>식순 옵션</strong></span>
                       <c:forEach var="plangood" items="${pgList}">
                         <c:forEach var="goods" items="${goodsList}">
                           <c:if test="${plangood.goodsName eq goods.name}">
                             <p price='${goods.price * plangood.amount}'>
                             ${plangood.goodsName} (&#8361;${goods.price}) * ${plangood.amount}개<span
                             style="float: right;">&#8361;${goods.price * plangood.amount}</span>
-                            </p>
+                            </p>  
                           </c:if>
                         </c:forEach>
                       </c:forEach>
@@ -239,7 +271,7 @@ function setSchedule() {
                       style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
                       <b style="font-size: 14pt;">식순 견적 금액 </b><b
                         style="font-size: 30pt;"><span
-                        style="float: right;"><strong>${ePlan.eventSum}</strong></span></b>
+                        style="float: right;" name='comma'>${ePlan.eventSum}</span></b>
                     </div>
                   </div>
 
@@ -253,53 +285,46 @@ function setSchedule() {
                       <p>
                         사회자<span style="float: right;"></span>
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;8년 이상 경력
-                        사회자 <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
+                      <c:forEach var="mc" items="${mcList}">
+                        <c:if test="${mc.name eq ePlan.mc}">
+                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${mc.name } 이상 경력 사회자 <span style="float: right;">&#8361;${mc.price }</span></p>
+                        </c:if>
+                      </c:forEach>
+                      
                       <p>
                         무대<span style="float: right;"></span>
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;100명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
+                      <c:forEach var="stage" items="${stageList}">
+                        <c:if test="${stage.name eq ePlan.stage}">
+                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${stage.name } 이하 규모 <span style="float: right;">&#8361;${stage.price }</span></p>
+                        </c:if>
+                      </c:forEach>
+                      
                       <p>
                         조명<span style="float: right;"></span>
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;500명 이하 규모
-                        (Moving Set 20대 + Console) <span
-                          style="float: right;">&#8361;100,000 <input
-                          type="checkbox" name="" value="" checked>
-                        </span>
-                      </p>
+                      <c:forEach var="light" items="${lightList}">
+                        <c:if test="${light.name eq ePlan.light}">
+                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${light.name } 이하 규모 <span style="float: right;">&#8361;${light.price }</span></p>
+                        </c:if>
+                      </c:forEach>
+                      
                       <p>
                         음향<span style="float: right;"></span>
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2000명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
+                      <c:forEach var="sound" items="${soundList}">
+                        <c:if test="${sound.name eq ePlan.sound}">
+                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${sound.name } 이하 규모 <span style="float: right;">&#8361;${sound.price }</span></p>
+                        </c:if>
+                      </c:forEach>
                       <p>
                         스태프<span style="float: right;"></span>
                       </p>
-                      <p>
-                        &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2000명 이하 규모
-                        <span style="float: right;">&#8361;100,000
-                          <input type="checkbox" name="" value=""
-                          checked>
-                        </span>
-                      </p>
+                      <c:forEach var="staff" items="${staffList}">
+                        <c:if test="${staff.name eq ePlan.staff}">
+                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${staff.name } 이하 규모 <span style="float: right;">&#8361;${staff.price }</span></p>
+                        </c:if>
+                      </c:forEach>
                     </div>
 
 
@@ -311,7 +336,7 @@ function setSchedule() {
                       style="line-height: 2.0em; padding-left: 30px; padding-right: 30px">
                       <b style="font-size: 14pt;">옵션 견적 금액 </b><b
                         style="font-size: 30pt;"><span
-                        style="float: right;"><strong>10,000,000원</strong></span></b>
+                        style="float: right;" name='comma'>${ePlan.optionSum }</span></b>
                     </div>
                   </div>
                 </div>
@@ -319,14 +344,10 @@ function setSchedule() {
             </div>
 
             <div class="row">
-
+            
               <div style="text-align: right;">          
-                <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">이전</button>
-                <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">저장</button>
-                  <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">인쇄</button>
+                <button type="button" class="btn btn-square btn-theme"
+                  style="border-radius: 10px" onclick="savePlan()" id='save'>저장</button>
                   <button type="submit" class="btn btn-square btn-theme"
                   style="border-radius: 10px">확인</button>
               </div>

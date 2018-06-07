@@ -15,15 +15,20 @@ public class EventPlanServiceImpl implements EventPlanService {
 	@Inject
 	EventPlanDAO dao;
 
+	
+	@Override
+	public List<EventPlan> listPlan(String id) throws Exception {
+		return dao.listplan(id);
+	}
+	
 	@Override
 	public EventPlan read(int num) throws Exception {
 		return dao.read(num);
 	}
 
-	
 	@Override
-	public List<EventPlan> listPlan(String id) throws Exception {
-		return dao.listplan(id);
+	public void create(EventPlan eventPlan) throws Exception {
+		dao.create(eventPlan);
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.partyplanner.event.domain.Goods;
 import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.option.domain.Light;
 import kr.co.partyplanner.option.domain.Mc;
@@ -27,9 +28,10 @@ import kr.co.partyplanner.option.service.McService;
 import kr.co.partyplanner.option.service.SoundService;
 import kr.co.partyplanner.option.service.StaffService;
 import kr.co.partyplanner.option.service.StageService;
+import kr.co.partyplanner.plangoods.domain.PlanGoods;
 
 @Controller
-@RequestMapping("/option/*")
+@RequestMapping("/event/*")
 public class OptionController {
 
 	Logger logger = Logger.getLogger(OptionController.class);
@@ -45,7 +47,7 @@ public class OptionController {
 	@Inject
 	private LightService lightService;
 
-	@RequestMapping(value = "/plan", method = RequestMethod.GET)
+	@RequestMapping(value = "/option", method = RequestMethod.GET)
 	public void planGET(Model model, HttpSession session) throws Exception {
 		
 		List<Mc> mcList = mcService.listAll();
@@ -65,7 +67,7 @@ public class OptionController {
 	
 	}
 	
-	@RequestMapping(value = "/plan", method = RequestMethod.POST)
+	@RequestMapping(value = "/option", method = RequestMethod.POST)
 	public String planPOST(@ModelAttribute EventPlan optionPlan, HttpSession session) throws Exception{
 		
 		EventPlan ePlan = (EventPlan)session.getAttribute("ePlan");
@@ -75,24 +77,32 @@ public class OptionController {
 		ePlan.setStaff(optionPlan.getStaff());
 		ePlan.setStage(optionPlan.getStage());
 		ePlan.setOptionSum(optionPlan.getOptionSum());
-		session.setAttribute("totalPlan", ePlan);
 		return "redirect:/event/check";
 	}
 	
-	/*
-	public String plan(EventPlan ePlan, RedirectAttributes rttr) throws Exception {
-		logger.info("plan....post");
-		logger.info(ePlan);
+	@RequestMapping(value ="/check", method =RequestMethod.GET)
+	public void ChecklistAll(Model model, HttpSession session)throws Exception{
+		logger.info("check...get");
+		EventPlan ePlan = (EventPlan)session.getAttribute("ePlan");
+		List<PlanGoods> pgList = (List<PlanGoods>) session.getAttribute("pgList");
+		for (PlanGoods planGoods : pgList) {
+			logger.info(planGoods);
+		}
+		List<Goods> goodsList = (List<Goods>) session.getAttribute("goodsList");
+		List<Mc> mcList = mcService.listAll();
+		List<Staff> staffList = staffService.listAll();
+		List<Sound> soundList = soundService.listAll();
+		List<Stage> stageList = stageService.listAll();
+		List<Light> lightList = lightService.listAll();
 		
-		rttr.addAttribute("schedule", ePlan.getSchedule());
-		rttr.addAttribute("people", ePlan.getPeople());
-		rttr.addAttribute("startday", ePlan.getStartday());
-		rttr.addAttribute("endday", ePlan.getEndday());
-		rttr.addAttribute("place", ePlan.getPlace());
-		rttr.addAttribute("id", ePlan.getId());
-		rttr.addAttribute("name", ePlan.getName());
-		rttr.addAttribute("sum", ePlan.getSum());
-		return "redirect:/option/plan";
+		model.addAttribute("ePlan", ePlan);
+		model.addAttribute("pgList", pgList);
+		model.addAttribute("goodsList",goodsList);
+		model.addAttribute("mcList", mcList);
+		model.addAttribute("staffList", staffList);
+		model.addAttribute("soundList", soundList);
+		model.addAttribute("stageList", stageList);
+		model.addAttribute("lightList", lightList);
+		logger.info(ePlan);
 	}
-	*/
 }

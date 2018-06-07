@@ -40,7 +40,7 @@ public class EventController {
 	Logger logger = Logger.getLogger(EventController.class);
 
 	@Inject
-	private EventService evnetService;
+	private EventService eventService;
 
 	@Inject
 	private EventScheduleService eventScheduleService;
@@ -54,7 +54,7 @@ public class EventController {
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public void registGET(Model model) throws Exception {
 		logger.info("select get............");
-		List<Event> list = evnetService.listAll();
+		List<Event> list = eventService.listAll();
 
 		model.addAttribute("list", list);
 	}
@@ -62,12 +62,12 @@ public class EventController {
 	@RequestMapping(value = "/plan", method = RequestMethod.GET)
 	public void plan(Model model, String event) throws Exception {
 		logger.info("cus............");
-		Event e = evnetService.read(event);
+		Event e = eventService.read(event);
 
 
 		model.addAttribute("event", e);
 	}
-	
+	 	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
 	public String plan(EventPlan ePlan,String totalGoods, HttpSession session) throws Exception {
 		logger.info("plan....post");
@@ -92,12 +92,7 @@ public class EventController {
 		session.setAttribute("goodsList",goodsList);
 		session.setAttribute("pgList", pgList);
 		session.setAttribute("ePlan", ePlan);
-		return "redirect:/option/plan";
-	}
-	
-	@RequestMapping(value = "/option", method = RequestMethod.GET)
-	public void option(Model model) throws Exception {
-		logger.info("cus............");
+		return "redirect:/event/option";
 	}
 
 	/** 식순 검색하는 modal 비동기 통신 */

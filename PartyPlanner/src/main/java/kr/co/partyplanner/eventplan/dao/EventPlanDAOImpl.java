@@ -28,6 +28,11 @@ public class EventPlanDAOImpl implements EventPlanDAO {
 		return session.selectOne(namespace+".read" ,num);
 	}
 
+	@Override
+	public void create(EventPlan eventPlan) throws Exception {
+		session.insert(namespace+".create", eventPlan);
+	}
+
 
 
 }
