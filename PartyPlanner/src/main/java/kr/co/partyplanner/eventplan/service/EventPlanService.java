@@ -4,6 +4,7 @@ package kr.co.partyplanner.eventplan.service;
 import java.util.List;
 
 import kr.co.partyplanner.eventplan.domain.EventPlan;
+import kr.co.partyplanner.plangoods.domain.PlanGoods;
 
 public interface EventPlanService {
 	

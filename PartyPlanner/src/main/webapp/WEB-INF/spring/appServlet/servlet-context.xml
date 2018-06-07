@@ -23,6 +23,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- AOP 자동 Proxy 객체 생성을 위한 설정 -->
+	<aop:aspectj-autoproxy />
+	
 	<context:component-scan base-package="kr.co.partyplanner" />
 	
 	

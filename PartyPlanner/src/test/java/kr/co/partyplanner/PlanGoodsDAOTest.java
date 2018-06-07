@@ -29,11 +29,23 @@ public class PlanGoodsDAOTest {
 	private PlanGoodsDao dao;
 	
 	/** name 해당 이벤트 정보 테스트 */
-	@Test
+//	@Test
 	public void testRead() throws Exception{
-		
 		PlanGoods plangoods = dao.read("물풍선");
 		logger.info(plangoods);
+	}
+	
+	/** 기획서별 물품 생성 테스트 */
+	@Test
+	public void testCreate() throws Exception{
+		PlanGoods planGoods = new PlanGoods();
+		planGoods.setPlanNum(42);
+		planGoods.setGoodsName("CD");
+		planGoods.setAmount(10);
+		
+		dao.create(planGoods);
+		
+		logger.info("물품 생성");
 	}
 
 }

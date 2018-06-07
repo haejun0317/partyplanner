@@ -13,4 +13,14 @@
 		WHERE  goods_name = #{goodsName}
 	</select>
 	
+	<insert id="create">
+		INSERT INTO plan_goods
+		            (plan_num,
+		             goods_name,
+		             amount) 
+		VALUES      (plan_num_seq.CURRVAL,
+		             #{goodsName},
+		             #{amount})
+	</insert>
+	
 </mapper>

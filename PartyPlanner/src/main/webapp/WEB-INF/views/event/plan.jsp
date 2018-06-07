@@ -711,6 +711,8 @@
 						document.getElementById('sample4_roadAddress').value = fullRoadAddr;
 					}
 				}).open();
+		
+		$("#restAddress").focus();
 	}
 </script>
 </head>
@@ -911,7 +913,7 @@
               <div class="widget">
                 <div class="widget">
                   <form class="form-search">
-                    <span class="category">장&emsp;&emsp;소&emsp; <input
+                    <span class="category" onclick="sample4_execDaumPostcode()">장&emsp;&emsp;소&emsp; <input
                       placeholder="장소 (명)" type="text"
                       class="input-medium search-query"
                       style="border-radius: 10px; width: 315px; margin-right: 10px"
