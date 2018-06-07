@@ -75,7 +75,7 @@
 	</update>
 	
 	<update id="keepLogin">
-		update member set sessionKey = #{sessionId}, sessionLimit = #{next} where id = #{id}
+		update member set sessionKey = #{sessionId}, sessionLimit = to_char(#{next}) where id = #{id}
 	
 	</update>
 	

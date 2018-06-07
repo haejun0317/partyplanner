@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@page import="kr.co.partyplanner.member.domain.Member"%>
+<% Member member = (Member)session.getAttribute("Member");%>
 <!DOCTYPE html>
 <html>
 
@@ -661,7 +664,7 @@
 		$("#startday").val($("#from").val());
 		$("#endday").val($("#to").val());
 		$("#name").val(eventName);
-		$("#id").val("admin");
+		$("#id").val($("#saveLoginId").val());
 		var goods = "";
 		$("#goodsList p").each(function(index,item) {
 			goods += $(item).attr("amount") +"$$"+ $(item).attr("product") + "##";
@@ -1019,6 +1022,7 @@
             <input type="hidden" value="null" id="name" name="name">
             <input type="hidden" value="0" id="eventSum" name="eventSum">
             <input type="hidden" value="null" id="totalGoods" name="totalGoods">
+            <input type="hidden" value="<%=member.getId() %>" id="saveLoginId" name="saveLoginId">
           </form>
         </div>
       </div>

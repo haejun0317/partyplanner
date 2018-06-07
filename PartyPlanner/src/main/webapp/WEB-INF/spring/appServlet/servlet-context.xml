@@ -33,17 +33,19 @@
 		class="kr.co.partyplanner.interceptor.LoginInterceptor"></beans:bean>
 		<beans:bean id="authInterceptor"
 		class="kr.co.partyplanner.interceptor.AuthInterceptor"></beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
-		
+		<!-- 여기에 등록된 패스들은, 회원이 아닐 때 접근을 못하게함.
+		     접근을 못하게 하고 원하는 곳으로 이동하게 시킴.
 		<interceptor>
-			<mapping path="/member/regist" />
+			<mapping path="/event/select" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
-		 
+		 -->
 	</interceptors>
 
 </beans:beans>
