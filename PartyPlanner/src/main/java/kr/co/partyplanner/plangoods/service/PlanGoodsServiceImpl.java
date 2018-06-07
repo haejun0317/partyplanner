@@ -15,10 +15,13 @@ public class PlanGoodsServiceImpl implements PlanGoodsService {
 	@Inject
 	private PlanGoodsDao dao;
 	
-
 	@Override
 	public PlanGoods read(String name) throws Exception{
-		
 		return dao.read(name);
+	}
+
+	@Override
+	public void create(PlanGoods planGoods) throws Exception {
+		dao.create(planGoods);
 	}
 }

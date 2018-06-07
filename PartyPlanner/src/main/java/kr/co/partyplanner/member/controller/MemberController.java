@@ -3,6 +3,8 @@ package kr.co.partyplanner.member.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +32,7 @@ import kr.co.partyplanner.member.service.MemberServcie;
 import kr.co.partyplanner.party.service.PartyService;
 import kr.co.partyplanner.partyjoin.domain.PartyJoin;
 import kr.co.partyplanner.partyjoin.service.PartyJoinService;
-import kr.co.partyplanner.reply.service.ReplyService;
+
 
 @Controller
 @RequestMapping("/member/*")
@@ -72,6 +74,12 @@ public class MemberController {
 		logger.info("result get............");
 	}
 	
+	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+	public void login(Model model) {
+		logger.info("Welcome home!");
+		
+	}
+	
 	/** 로그인 부분 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
@@ -79,12 +87,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	public String loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
 		Member mem = service.login(dto);
-		if(mem == null) {
-			return ;
+		
+		if(mem != null) {
+			session.setAttribute("Member",mem);
 		}
-		model.addAttribute("Member",mem);
+		
 		
 		if (dto.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7;
@@ -94,15 +103,17 @@ public class MemberController {
 
 			service.keepLogin(mem.getId(), session.getId(), sessionLimit);
 		}
+		return "redirect:/";
+		
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-		Object obj = session.getAttribute("login");
+		Object obj = session.getAttribute("Member");
 		
 		if(obj != null) {
 			Member mem = (Member)obj;
-			session.removeAttribute("login");
+			session.removeAttribute("Member");
 			session.invalidate();
 			
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
@@ -116,7 +127,7 @@ public class MemberController {
 			}
 		}
 		
-		return "member/logout";
+		return "redirect:/";
 	}
 	
 	

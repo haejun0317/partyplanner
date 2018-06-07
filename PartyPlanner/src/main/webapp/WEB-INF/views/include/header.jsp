@@ -1,6 +1,11 @@
+<%@page import="kr.co.partyplanner.member.domain.Member"%>
 <%@ page contentType="text/html; charset=utf-8"%>
+<% Member member = (Member)session.getAttribute("Member");%>
+
+<!-- JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <div id="wrapper">
   <!-- toggle top area -->
@@ -37,68 +42,20 @@
         <div class="span12">
           <div class="headnav">
             <ul>
-            
-
-              
-              <c:choose>
-                  <c:when test="${not empty login }">
-                      <li><i class="icon-user"></i>${login.name} 님 환영합니다.</li>
-                       <li><a href="../member/logout" >Logout</a></li>
-                       <li><a href="../party/party4?id=${login.id}" >my page</a></li>
-                  </c:when>
-                  
-                  <c:otherwise>
-                       <li><a href="../member/regist"><i
+               <% if(member != null){ %>
+                       <li><i class="icon-user"></i><%=member.getName() %> 님 환영합니다.</li>
+                       <li><a href="/member/logout" >Logout</a></li>
+                       <li><a href="/member/myPage?id=<%=member.getId() %>" >my page</a></li>
+               <% }else{ %>
+                       <li><a href="/member/regist"><i
                        class="icon-user"></i> Sign up</a></li>
-                       <li><a href="#mySignin" data-toggle="modal">Sign
+                       <li><a href="/member/loginPage">Sign
                        in</a></li>
-                  </c:otherwise>
-              </c:choose>
+               <% } %>
               
             </ul>
           </div>
-          <!-- Sign in Modal -->
-          <div id="mySignin" class="modal styled hide fade"
-            tabindex="-1" role="dialog"
-            aria-labelledby="mySigninModalLabel" aria-hidden="true">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"
-                aria-hidden="true">×</button>
-              <h4 id="mySigninModalLabel">
-                Login to your <strong>account</strong>
-              </h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-horizontal" action="/member/loginPost" method="post">
-                <div class="control-group">
-                  <label class="control-label" for="inputText">Username</label>
-                  <div class="controls">
-                    <input type="text" id="inputText"
-                      placeholder="Username" name="id">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="inputSigninPassword">Password</label>
-                  <div class="controls">
-                    <input type="password" id="inputSigninPassword"
-                      placeholder="Password" name="passwd">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
-                  <label><input type="checkbox" name ="useCookie"> Remember me</label>
-                    <button type="submit" class="btn">Sign in</button>
-                  </div>
-                  <p class="aligncenter margintop20">
-                    Forgot password? <a href="#myReset"
-                      data-dismiss="modal" aria-hidden="true"
-                      data-toggle="modal">Reset</a>
-                  </p>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- end signin modal -->
+         
         </div>
       </div>
       <div class="row">

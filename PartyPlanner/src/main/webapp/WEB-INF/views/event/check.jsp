@@ -344,7 +344,6 @@ function onSaveCall(text) {
             </div>
 
             <div class="row">
-            
               <div style="text-align: right;">          
                 <button type="button" class="btn btn-square btn-theme"
                   style="border-radius: 10px" onclick="savePlan()" id='save'>저장</button>

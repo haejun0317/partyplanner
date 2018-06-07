@@ -20,7 +20,11 @@ public class PlanGoodsDaoImpl implements PlanGoodsDao {
 	/**파티 선택 보기*/
 	@Override
 	public PlanGoods read(String name) throws Exception{
-		
 		return sqlSession.selectOne(namespace+".read",name);
+	}
+
+	@Override
+	public void create(PlanGoods planGoods) throws Exception {
+		sqlSession.insert(namespace+".create",planGoods);
 	}
 }

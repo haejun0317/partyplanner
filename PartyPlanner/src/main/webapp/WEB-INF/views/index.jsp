@@ -220,7 +220,7 @@
         <!-- Portfolio Projects -->
         <div class="row">
           <div class="span12">
-            <h4 class="heading">Some of recent <strong>works</strong></h4>
+            <h4 class="heading">Event <strong>Portfolio</strong></h4>
             <div class="row">
               <section id="projects">
                 <ul id="thumbs" class="portfolio">

@@ -43,7 +43,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	        	 
 	         }
 	         
-	         response.sendRedirect("/member/regist");
+	         //회원이 아니면 회원이 원하는 곳이 아닌
+	         //밑에 정해진 주소로 이동하게 함.
+	         response.sendRedirect("/");
 	         return false;
 	      }
 	      return true;
