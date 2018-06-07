@@ -56,7 +56,7 @@ public class PartyController {
 		logger.info("show all list...........");
 		model.addAttribute("list",partyservice.listAll());
 	}
-	@RequestMapping(value="/viewDetails", method = RequestMethod.GET)
+	@RequestMapping(value="/viewdetails", method = RequestMethod.GET)
 	public void read(Model model,int num,String id) throws Exception{
 		Party party = partyservice.read(num);
 		model.addAttribute("party",party);
@@ -103,7 +103,7 @@ public class PartyController {
 	
 	//여기까지 정훈이꺼
 	/** 참가 신청 페이지 */
-	@RequestMapping(value ="/partyJoin", method =RequestMethod.GET)
+	@RequestMapping(value ="/partyjoin", method =RequestMethod.GET)
 	public void listAll(Model model,int num,String id)throws Exception{
 		//String id추가 id
 		logger.info("show all list");
@@ -112,7 +112,7 @@ public class PartyController {
 	}
 	
 	/** 참가 완료 페이지 */
-	@RequestMapping(value ="/joinCompleted", method =RequestMethod.GET)
+	@RequestMapping(value ="/joincompleted", method =RequestMethod.GET)
 	public void clistAll(Model model,int num,String id)throws Exception{
 		logger.info("show all clist");
 		
