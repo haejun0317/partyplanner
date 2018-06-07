@@ -32,6 +32,28 @@
   <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
 </head>
 <script>
+/* function go() {
+    var tmp = $('[name=box]').is(':checked');
+    alert(tmp); 
+    
+    if(!($('.box').is(":checked"))){
+    	alert('이용야ㄱ관에 동의 안했습니다');
+    	return false;
+    }
+} */
+
+function checkSelect() {
+	if($("#box").is(':checked')){
+		$("#chbox").remove();
+		location.href=$(arguments[0]).attr("url")
+	}else{
+		$("#chbox").html("<b>필수 약관에 동의 하세요.</b>")
+	}
+}
+</script>
+
+
+<script>
 function selectAll(source) {
     var checkboxes = document.getElementsByName('box');
     for(var i=0; i<checkboxes.length; i++) {
@@ -59,8 +81,25 @@ function selectAll(source) {
       <form  action="read" method="post">
        <div style="text-align: center;">
          <input type="hidden" id= "orderNum" name="orderNum"value="2">
-       내&emsp;&nbsp;용&nbsp; : 동의합니까?
-      <br>
+             <div style="font-size: 10pt;">
+                <b style="color: black;">&emsp;* 모임의 신청/취소/변경은 참여신청
+                  기간 내에만 가능합니다.</b><br>
+                <p></p>
+                <b>&emsp;* 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수
+                  있습니다.</b><br>
+                <p></p>
+                <b>&emsp;* 모임 또는 그룹의 설정, 모집정원 초과 여부에 따라 대기자로 선정될 수
+                  있습니다. 자세한 사항은 FAQ를 확인해주세요.</b><br>
+                <p></p>
+                <b>&emsp;* 파티플래너 결제서비스를 이용하는 모임은 개설자의 사업자 여부에 따라
+                  결제증빙 발행이 가능합니다. 자세한 사항은 FAQ를 확인해 주세요.</b><br>
+                <p></p>
+                <b>&emsp;* 개설자 선정방식 또는 방식의 모임 참여 확인은 개설자에게 문의 바랍니다.</b><br>
+                <p></p>
+                <b>&emsp;* 파티플래너는 참여신청 기능을 제공하는 회사로 모임개설자(주최측)가
+                  아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다.</b><br>
+                <br>
+             </div>
       <p></p>
     <!--    <button id="btnUp" class="btn btn-theme" type="submit"
               style="width: 50px; height: 30px" onclick="comment()">등록</button> -->
@@ -130,18 +169,18 @@ function selectAll(source) {
                 <div class="span12" >
                  <div class="wrapper">
                   <div class="testimonial" style="border-radius: 10px">
-
-                    <input type="checkbox" value="box1" name="box" onclick="selectAll(this)"><strong style="color: black;">전체동의</strong><input type="checkbox" name="box" value="box2"style="margin-left: 40px; color: b"><strong style="color: black;">(필수)개인정보 3자 제공 동의</strong> <a href="#modal"  data-toggle="modal" style="margin-left: 40px;">내용보기</a>
+                    <input type="checkbox" value="box1" name="box" onclick="selectAll(this)"><strong style="color: black;">전체동의</strong><input type="checkbox" id ="box" name="box" value="box2"style="margin-left: 40px; color: b"><strong style="color: black;"> (필수)개인정보 3자 제공 동의</strong><input type="checkbox" name="box" value="box2"style="margin-left: 40px; color: b"><strong style="color: black;">(선택)파티 플래너가 제공하는 소식 받기</strong> <a href="#modal"  data-toggle="modal" style="margin-left: 40px;">내용보기</a>
                    </div>
                   </div>
                 </div>
             </article>
             
             <div style="text-align: center;">
-             <a href="joinCompleted?num=${Party.num}&id=${Member.id}" class="btn btn-blue">신청하기</a>
+             <p id="chbox" style="color: red">
+             </p>
+             <button class="btn btn-blue" url='joinCompleted?num=${Party.num}&id=${Member.id}' type="button" id='join' onclick="checkSelect(this)" >신청하기</button>
              <a href="#" class="btn btn-red">취소하기</a>
             </div>
-            
           </div>
         </div>
       </div>
