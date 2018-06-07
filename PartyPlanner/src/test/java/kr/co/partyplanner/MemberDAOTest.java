@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.partyplanner.member.dao.MemberDAO;
 import kr.co.partyplanner.member.domain.Member;
+import kr.co.partyplanner.member.dto.LoginDTO;
 
 
 
@@ -22,8 +23,9 @@ public class MemberDAOTest {
 	@Inject
 	private MemberDAO dao;
 	
+	
 	/** 회원가입 생성 테스트 */
-	@Test
+	//@Test
 	public void testCreate() throws Exception {
 		Member member = new Member();
 		member.setId("testtt");
@@ -36,6 +38,20 @@ public class MemberDAOTest {
 		
 		logger.info("회원 생성 완료");
 	}
+	
+	/** 로그인 생성 테스트 
+	//@Test
+	public void testLogin() throws Exception {
+		LoginDTO dto = new LoginDTO();
+		dto.setId("haejun0317");
+		dto.setPasswd("haejun");
+		dao.login(dto);
+		
+		
+		logger.info("회원 로그인 완료");
+	}
+	*/
+	
 	
 
 }

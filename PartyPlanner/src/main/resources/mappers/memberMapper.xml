@@ -72,7 +72,10 @@
 		</set>
 		WHERE id = #{id}
 	
+	</update>
 	
+	<update id="keepLogin">
+		update member set sessionKey = #{sessionId}, sessionLimit = #{next} where id = #{id}
 	
 	</update>
 	
