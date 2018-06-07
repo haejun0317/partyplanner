@@ -22,4 +22,9 @@ public class StageDAOImpl implements StageDAO {
 		return session.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public Stage read(String name) throws Exception {
+		return session.selectOne(namespace+".read", name);
+	}
+
 }

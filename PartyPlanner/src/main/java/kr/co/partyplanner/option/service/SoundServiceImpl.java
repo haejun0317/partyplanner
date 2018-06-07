@@ -18,5 +18,9 @@ public class SoundServiceImpl implements SoundService {
 	public List<Sound> listAll() throws Exception {
 		return dao.listAll();
 	}
+	@Override
+	public Sound read(String name) throws Exception {
+		return dao.read(name);
+	}
 
 }

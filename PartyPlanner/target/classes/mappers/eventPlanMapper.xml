@@ -44,6 +44,7 @@
 		option_sum "optionSum"
 		from event_plan
 		WHERE member_id = #{id}
+		ORDER BY num desc
 	</select>
 	
 	<insert id="create">

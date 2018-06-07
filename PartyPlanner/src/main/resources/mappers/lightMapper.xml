@@ -11,5 +11,13 @@
 		FROM   light
 		ORDER  BY price
 	</select>
-	<!-- TO_CHAR(price,'999,999,999') price -->
+	
+	<select id="read" resultType="Light">
+		SELECT NAME, 
+		       price,
+		       profile 
+		FROM   light
+		WHERE  NAME = #{value}
+		ORDER  BY price
+	</select>
 </mapper>

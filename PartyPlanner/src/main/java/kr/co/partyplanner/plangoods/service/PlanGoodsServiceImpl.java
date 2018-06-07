@@ -1,6 +1,8 @@
 package kr.co.partyplanner.plangoods.service;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
@@ -23,5 +25,10 @@ public class PlanGoodsServiceImpl implements PlanGoodsService {
 	@Override
 	public void create(PlanGoods planGoods) throws Exception {
 		dao.create(planGoods);
+	}
+
+	@Override
+	public List<PlanGoods> listGodods(int num) throws Exception {
+		return dao.listGodods(num);
 	}
 }

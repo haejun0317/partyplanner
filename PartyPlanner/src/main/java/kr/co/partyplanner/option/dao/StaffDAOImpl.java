@@ -21,4 +21,9 @@ public class StaffDAOImpl implements StaffDAO {
 		return session.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public Staff read(String name) throws Exception {
+		return session.selectOne(namespace+".read", name);
+	}
+
 }

@@ -22,4 +22,9 @@ public class McDAOImpl implements McDAO {
 		return session.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public Mc read(String name) throws Exception {
+		return session.selectOne(namespace+".read", name);
+	}
+
 }

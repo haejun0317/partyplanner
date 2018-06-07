@@ -21,4 +21,9 @@ public class SoundDAOImpl implements SoundDAO {
 		return session.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public Sound read(String name) throws Exception {
+		return session.selectOne(namespace+".read", name);
+	}
+
 }

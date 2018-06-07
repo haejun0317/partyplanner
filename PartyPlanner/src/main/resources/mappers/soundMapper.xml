@@ -11,4 +11,13 @@
 		FROM   sound
 		ORDER  BY price
 	</select>
+	
+	<select id="read" resultType="Sound">
+		SELECT NAME, 
+		       price,
+		       profile 
+		FROM   sound
+		WHERE  NAME = #{value}
+		ORDER  BY price
+	</select>
 </mapper>

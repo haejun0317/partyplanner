@@ -28,6 +28,11 @@ public class GoodsDAOImpl implements GoodsDAO {
 	public List<Goods> listAll() throws Exception {
 		return session.selectList(namespace+".listAll");
 	}
+
+	@Override
+	public Goods readGoods(String name) throws Exception {
+		return session.selectOne(namespace+".readGoods", name);
+	}
 	
 
 }
