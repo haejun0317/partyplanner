@@ -21,5 +21,9 @@ public interface PartyService {
 	
 	/** 모집인원 카운트 하는것*/
 	public int joinCount(int num) throws Exception;
+	
+	/** 파티 등록*/
+	public void create(Party party)throws Exception;
+	
 
 }

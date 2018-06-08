@@ -26,5 +26,7 @@
 		
 		<typeAlias type="kr.co.partyplanner.partyjoin.domain.PartyJoin" alias="PartyJoin"/>
 		<typeAlias type="kr.co.partyplanner.eventplan.domain.EventPlan" alias="EventPlan"/>
+		
+		<typeAlias type="kr.co.partyplanner.contact.domain.Contact" alias="Contact"/>
 	</typeAliases>
 </configuration>

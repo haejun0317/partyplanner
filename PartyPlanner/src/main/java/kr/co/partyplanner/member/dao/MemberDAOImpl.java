@@ -67,4 +67,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne(namespace + ".checkUserWithSessionKey", value);
 	}
 
+	/** 멤버 읽기 */
+	@Override
+	public Member read(String id) throws Exception {
+		return session.selectOne(namespace + ".read", id); // MemberMapper의 read
+	}
+
 }

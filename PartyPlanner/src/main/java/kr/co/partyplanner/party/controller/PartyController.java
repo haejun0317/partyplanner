@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -56,12 +58,13 @@ public class PartyController {
 		logger.info("show all list...........");
 		model.addAttribute("list",partyservice.listAll());
 	}
-	@RequestMapping(value="/viewDetails", method = RequestMethod.GET)
-	public void read(Model model,int num,String id) throws Exception{
+	@RequestMapping(value="/read", method = RequestMethod.GET)
+	public void read(Model model,int num, HttpSession session ) throws Exception{
 		Party party = partyservice.read(num);
+		Member member = (Member)session.getAttribute("Member");
 		model.addAttribute("party",party);
 		model.addAttribute("count",partyservice.joinCount(num));
-		model.addAttribute("member",memberservice.mread(id));
+		model.addAttribute("member",member);
 		model.addAttribute("pmember",memberservice.mread(party.getMember()));
 		model.addAttribute("replyList",replyservice.listAll(num));
 		
@@ -129,23 +132,29 @@ public class PartyController {
 	
 	//여기까지 서영이꺼
 	/** 파티 등록 */
-	@RequestMapping(value="/registe", method=RequestMethod.GET)
-		public void partyregisterGET(Party party, Model model, String id)throws Exception{
-		
-		model.addAttribute("member", memberservice.mread(id));
+	/** 파티 등록 */
+	@RequestMapping(value = "/regist", method = RequestMethod.GET)
+	public void registGET(Party party, Model model, @RequestParam("id") String id) throws Exception {
+
+		model.addAttribute("member", memberservice.read(id));
 		logger.info("파티등록 get.......!");
+		logger.info("전달받은 객체:" + party);
+
 	}
 
-	@RequestMapping(value="/registe", method=RequestMethod.POST)
-	public String partyregisterPost(Party party, Model model)throws Exception{
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	public String registPost(Party party, Model model, RedirectAttributes rttr) throws Exception {
 		
-		
-		logger.info("파티등록 post......!");
+		logger.info("파티등록 post.............!");
+		logger.info("전달받은 객체:" + party);
 		logger.info(party.toString());
 		
-		model.addAttribute("result","success");
-
-		return "redirect:/list";
+		partyservice.create(party);
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		
+		return "redirect:/party/list";
 	}
 	
 }
