@@ -1,7 +1,5 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Calendar"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -274,9 +272,8 @@ $(document).ready(function(){
                 <tr>
                   <th style="text-align: center;">기획서번호</th>
                   <th style="text-align: center;">행 사 명</th>
-                  <th style="text-align: center;">행사식순</th>
                   <th style="text-align: center;">장 소</th>
-                  <th style="text-align: center;">신 청 자</th>
+                  <th style="text-align: center;">파티기간</th>
                   <th></th>
                 </tr>
               </thead>
@@ -284,12 +281,11 @@ $(document).ready(function(){
 
                 <c:forEach items="${EventPlan}" var="plan">
                   <tr>
-                    <td style="text-align: center;"><b>${plan.num}</b></td>
-                    <td style="text-align: center;"><b>${plan.name}</b></td>
-                    <td style="text-align: center;"><b>${plan.schedule}</b></td>
+                    <td style="text-align: center; width: 9%"><b>${plan.num}</b></td>
+                    <td style="text-align: center; width: 8%"><b>${plan.name}</b></td>
                     <td style="text-align: center;"><b>${plan.place}</b></td>
-                    <td style="text-align: center;"><b>${plan.id}</b></td>
-                    <td></td>
+                    <td style="text-align: center;"><b>${plan.startday} ~ <br>${plan.endday}</b></td>
+                    <td style="text-align: center; width: 15%"><button class='btn btn-theme' style='border-radius: 10px;' onclick="location.href='plan?num=${plan.num}'">상세 보기</button></td>
                   </tr>
                 </c:forEach>
 
