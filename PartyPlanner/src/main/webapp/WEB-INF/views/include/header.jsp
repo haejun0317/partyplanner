@@ -79,12 +79,15 @@
                       <li><a href="../about">회사소개</a></li>
                       <li><a href="portfolio-4cols.html">포트폴리오</a></li>
                     </ul></li>
-                  <li class="dropdown"><a href="../event/select">Plan</a>
+                  <li class="dropdown"><a href="/event/select">Plan</a>
                   </li>
-                  <li class="dropdown"><a href="../party/list">Share</a>
+                  <li class="dropdown"><a href="/party/list">Share<i class="icon-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/party/regist">파티개설</a></li>
+                      <li><a href="/party/list">전체보기</a></li>
+                    </ul>
                   </li>
-                  <li class="dropdown"><a href="#">Board <i
-                      class="icon-angle-down"></i></a>
+                  <li class="dropdown"><a href="#">Board <i class="icon-angle-down"></i></a>
                     <ul class="dropdown-menu">
                       <li><a href="blog-left-sidebar.html">리뷰</a></li>
                       <li class="dropdown"><a href="#">help <i
@@ -95,8 +98,8 @@
                           <li><a href="../">Q&A</a></li>
                         </ul></li>
                       <li><a href="../">이벤트</a></li>
-
-                    </ul></li>
+                    </ul>
+                   </li>
                   <li><a href="../contact/contact">Contact </a></li>
                 </ul>
               </nav>

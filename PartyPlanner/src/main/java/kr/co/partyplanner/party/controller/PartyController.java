@@ -109,25 +109,25 @@ public class PartyController {
 	//여기까지 정훈이꺼
 	/** 참가 신청 페이지 */
 	@RequestMapping(value ="/partyjoin", method =RequestMethod.GET)
-	public void listAll(Model model,int num,String id)throws Exception{
+	public void listAll(Model model,int num,HttpSession session)throws Exception{
 		//String id추가 id
+		Member member = (Member)session.getAttribute("Member");
 		logger.info("show all list");
 		model.addAttribute("Party", partyservice.read(num));
-		model.addAttribute("Member", memberservice.mread(id));
+		model.addAttribute("Member", member);
 	}
 	
 	/** 참가 완료 페이지 */
-	@RequestMapping(value ="/joincompleted", method =RequestMethod.GET)
-	public void clistAll(Model model,int num,String id)throws Exception{
-		logger.info("show all clist");
-		
+	@RequestMapping(value ="/joinCompleted", method =RequestMethod.GET)
+	public void clistAll(Model model,int num,HttpSession session)throws Exception{
+		Member member = (Member)session.getAttribute("Member");
 		PartyJoin pj = new PartyJoin();
-		pj.setId(id);
+		pj.setId(member.getId());
 		pj.setNum(num);
 		partyjoinservice.create(pj);
 		
 		model.addAttribute("Party", partyservice.read(num));
-		model.addAttribute("Member", memberservice.mread(id));
+		model.addAttribute("Member", member);
 	}
 	
 	
@@ -136,11 +136,10 @@ public class PartyController {
 	/** 파티 등록 */
 	/** 파티 등록 */
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
-	public void registGET(Party party, Model model, @RequestParam("id") String id) throws Exception {
-
-		model.addAttribute("member", memberservice.read(id));
+	public void registGET(Model model, HttpSession session) throws Exception {
+		Member member = (Member)session.getAttribute("Member");
+		model.addAttribute("member", memberservice.read(member.getId()));
 		logger.info("파티등록 get.......!");
-		logger.info("전달받은 객체:" + party);
 
 	}
 

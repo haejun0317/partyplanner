@@ -356,7 +356,6 @@ function onSaveCall(text) {
         </div>
       </div>
     </section>
-    
    <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 
 </body>

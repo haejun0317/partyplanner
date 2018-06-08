@@ -27,7 +27,20 @@
              image 
 		FROM member
 	</select>
-	
+	<!-- 멤버 읽기 -->
+   <select id="read" resultType="Member">
+		SELECT id, 
+		       passwd, 
+		       NAME, 
+		       email, 
+		       phone, 
+		       image, 
+		       To_char(regdate, 'YYYY-MM-DD DAY') regdate, 
+		       mileage, 
+		       black 
+		FROM   member 
+		WHERE  id = #{id}
+   </select>
 	
 	<select id="mread" resultType="Member">
 		SELECT id, 

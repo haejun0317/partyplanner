@@ -8,6 +8,7 @@
 <html>
 
 <head>
+<title>파티 참가</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -178,7 +179,7 @@ function selectAll(source) {
             <div style="text-align: center;">
              <p id="chbox" style="color: red">
              </p>
-             <button class="btn btn-blue" url='joinCompleted?num=${Party.num}&id=${Member.id}' type="button" id='join' onclick="checkSelect(this)" >신청하기</button>
+             <button class="btn btn-blue" url='joinCompleted?num=${Party.num}' type="button" id='join' onclick="checkSelect(this)" >신청하기</button>
              <a href="#" class="btn btn-red">취소하기</a>
             </div>
           </div>

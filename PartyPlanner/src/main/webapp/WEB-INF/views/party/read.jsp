@@ -12,6 +12,7 @@
 <html>
 
 <head>
+<title>파티 상세보기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
@@ -133,14 +134,15 @@
       <div class="row">
         <div class="span4">
           <div class="inner-heading">
-            <h2>View_Details</h2>
+            <h2>파티 상세보기</h2>
           </div>
         </div>
         <div class="span8">
           <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home"></i></a><i
+            <li><a href="/"><i class="icon-home"></i></a><i
+              class="icon-angle-right"></i>Share<i
               class="icon-angle-right"></i></li>
-            <li><a href="#">PartyPlanner</a>
+            <li><a href="#">파티 상세보기</a>
           </ul>
         </div>
       </div>
@@ -190,7 +192,7 @@
           <c:choose>
             <c:when test="${from gt now}">
               신청기간<b> &emsp;<strong>${party.recstart} ~
-                  ${party.recend}</strong>&emsp;&emsp; <a id="dd" href="#"
+                  ${party.recend}</strong>&emsp;&emsp; <a href="partyjoin?num=${party.num}"
                 class="btn btn-theme">신청하기</a></b>
             </c:when>
            

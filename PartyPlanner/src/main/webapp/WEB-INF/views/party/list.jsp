@@ -99,7 +99,6 @@ return date;
 }
 });
 </script>
-
 <script>
 $(document).ready(function() {
    /**검색종류
@@ -135,7 +134,7 @@ $(document).ready(function() {
          success:function (searchList){
             var text ="";
             for ( var i in searchList) {
-               text += "<div class='span2' partyajax_place='"+searchList[i].place+"' partyajax_name='"+searchList[i].name+"'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
+               text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
                text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px;' class='img-polaroid' />";
                text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
                text += "<li>"+searchList[i].recruit+"명<a href='/party/read?num="+searchList[i].num+"' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>";
@@ -150,32 +149,6 @@ $(document).ready(function() {
    });
 });
 </script>
-<script>
-function soon(lately) {
-   $.ajax({
-      type:'get',
-      url:'search.do',
-      dataType:"json",
-      data:{
-         lately:lately
-      },
-      success:function(searchList){
-         var text ="";
-         for ( var i in searchList) {
-            text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-            text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px;' class='img-polaroid' />";
-            text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
-            text += "<li>"+searchList[i].recruit+"명<a href='/party/read?num="+searchList[i].num+"' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>";
-         }
-         $("#visible").html(text);
-      },
-      error:function(){
-         console.log("오류");
-      }
-   });
-}
-</script>
-
 <script>
 $(document).ready(function() {
 /**최근순 lately */
@@ -204,9 +177,10 @@ $('#lately').click(function() {
             console.log("오류");
          }
       });
+      
    }
-});   
-/*마감순 deadline*/
+   });   
+   /*마감순 deadline*/
 $('#deadline').click(function() {
    var targetElement = $(event.target);
    var deadlineValue = $('#deadline').val();
@@ -241,21 +215,25 @@ $('#deadline').click(function() {
 
 });
 </script>
+<!-- 지도에 보여주는 파티정보스타일 -->
 <style>
-.category {   display: inline-block;}
-/* nav tag */
-nav ul {
-   padding-top: 10px;
-} /*  상단 여백 10px ,  */
-nav ul li {
-   display: inline; /*  세로나열을 가로나열로 변경 */
-   border-left: 1px solid #999; /* 각 메뉴의 왼쪽에 "|" 표시(분류 표시) */
-   font: bold 12px Dotum; /* 폰트 설정 - 12px의 돋움체 굵은 글씨로 표시 */
-   padding: 0 10px; /* 각 메뉴 간격 */
-}
-nav ul li:first-child {   border-left: none;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
 </style>
 </head>
+
 <body>
   <jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- 바디부분 -->
@@ -264,7 +242,7 @@ nav ul li:first-child {   border-left: none;}
       <div class="row">
         <div class="span6">
           <div class="widget">
-            <form class="form-search">카테고리&emsp;<select id="categorySearch" name="categorySearch" style="width: 150px; border-radius: 10px;">
+            <form class="form-search">카테고리&emsp;<select id="categorySearch" name="categorySearch" style="width: 150px; border-radius: 10px; display: inline-block;">
                 <option value="" selected="selected">--선택--</option>
                 <option value="교육">교육</option>
                 <option value="강연">강연</option>
@@ -284,14 +262,14 @@ nav ul li:first-child {   border-left: none;}
                 <option value="여행">여행</option>
                 <option value="후원금 모금">후원금 모금</option>
                 <option value="기타">기타</option>
-              </select>&emsp;요&emsp;&emsp;&emsp;일&emsp;<select id="week" name="categorySearch" style="width: 150px; border-radius: 10px;">
+              </select>&emsp;요&emsp;&emsp;&emsp;일&emsp;<select id="week" name="categorySearch" style="width: 150px; border-radius: 10px; display: inline-block;">
               <option value="" selected="selected">--선택--</option>
               <option value="weekday">주중</option>
               <option value="weekend">주말</option>
               </select>
             </form>
           </div>
-          <form class="form-search">지&emsp;&emsp;역&emsp;<select id="place" name="categorySearch" style="width: 150px; border-radius: 10px;">
+          <form class="form-search">지&emsp;&emsp;역&emsp;<select id="place" name="categorySearch" style="width: 150px; border-radius: 10px; display: inline-block;">
               <option value="" selected="selected">--선택--</option>
               <option value="서울">서울특별시</option>
               <option value="인천">인천광역시</option>
@@ -309,7 +287,7 @@ nav ul li:first-child {   border-left: none;}
               <option value="충청북도">충청북도</option>
               <option value="충청남도">충청남도</option>
               <option value="제주">제주도</option>
-            </select>&emsp;시&emsp;&emsp;&emsp;간&emsp;<select id="time" name="categorySearch" style="width: 150px; border-radius: 10px;">
+            </select>&emsp;시&emsp;&emsp;&emsp;간&emsp;<select id="time" name="categorySearch" style="width: 150px; border-radius: 10px; display: inline-block;">
               <option value="" selected="selected">--선택--</option>
               <option value="오전">오전</option>
               <option value="오후">오후</option>
@@ -320,7 +298,7 @@ nav ul li:first-child {   border-left: none;}
           </form>
           
           <form class="form-search">
-            비&emsp;&emsp;용&emsp;<select id="price" name="categorySearch" style="width: 150px; border-radius: 10px">
+            비&emsp;&emsp;용&emsp;<select id="price" name="categorySearch" style="width: 150px; border-radius: 10px; display: inline-block;">
               <option value="1" selected="selected">--선택--</option>
               <option value="100000">10만원 이하</option>
               <option value="500000">10~50만원</option>
@@ -330,23 +308,17 @@ nav ul li:first-child {   border-left: none;}
             </select>&emsp;파티&emsp;기간&emsp;<input type="text" id="datepicker" style="width: 100px; border-radius: 10px;">
             ~ <input type="text" id="datepicker1" style="width: 100px; border-radius: 10px;">
           </form>
-          <div class="row"><div class="span6"><div class="solidline"></div></div></div>
-          <div class="span3">
-            <h4>모임</h4>
-          </div>
-          <nav style="margin-top: 40px;">
+          <div class="row"><div class="span6"><div class="solidline">
+          </div></div></div><h4>모임</h4>
+          <nav style="margin-top: -60px;  padding-top: 10px;">
             <ul class="slides" id="soon" style="float: right;">
-              <li><input type="button" class="btn btn-square btn-theme"
-                          style="border-radius: 10px;" value ="모임 만들기"></li>
-              <li><input type="button" class="btn btn-orange" id="lately" value="최근순"
-               style="border-radius: 10px;"></li>
-              <li><input type="button" class="btn btn-theme" id="deadline" value="마감순"
-               style="border-radius: 10px;"></li>
+              <li style="border-left: none; display: inline; font: bold 12px Dotum; padding: 0 10px;"><input type="button" class="btn btn-orange" id="lately" value="최근순"></li>
+              <li style="border-left: none; display: inline; font: bold 12px Dotum; padding: 0 10px;"><input type="button" class="btn btn-theme" id="deadline" value="마감순"></li>
             </ul>
           </nav>
           <div class="row">
             <div class="span6">
-              <div class="solidline"></div>
+              <div class="solidline" ></div>
             </div>
           </div>
 <!-- 검색 결과 보여주기 -->
@@ -366,10 +338,13 @@ nav ul li:first-child {   border-left: none;}
    $(".span2").each(function(index){
       var place = $(this).attr("party_place");
       var name = $(this).attr("party_name");
-      navi(place, name);
+      var img = $(this).attr("party_image");
+      console.log(img);
+      navi(place, name, img);
    });
 }); 
 </script>
+ 
  
 <c:forEach items="${list}" var="party">
  <script>
@@ -398,10 +373,9 @@ nav ul li:first-child {   border-left: none;}
   */
   
   /*무한 스크롤 처음 9개만 보기*/
-  $("#visible").append("<div class='span2' party_place='${party.place}' party_name='${party.name}'><ul class='slides'><li><a href='/party/read?num=${party.num}'><img src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 100%; height: 200px;' class='img-polaroid' /></a></li><li><a href='/party/read?num=${party.num}'>${party.name}</a></li><li>${party.recruit}명<a href='/party/read?num=${party.num}' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>");
+  $("#visible").append("<div class='span2' party_place='${party.place}' party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'><ul class='slides'><li><a href='/party/read?num=${party.num}'><img src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 100%; height: 200px;' class='img-polaroid' /></a></li><li><a href='/party/read?num=${party.num}'>${party.name}</a></li><li>${party.recruit}명<a href='/party/read?num=${party.num}' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>");
   </script>
 </c:forEach>
-
 <script>
 var markers = [];
 var marker;
@@ -423,7 +397,7 @@ var zoomControl = new daum.maps.ZoomControl();
 map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
 /*지도 호출을 위한 함수 선언*/
-function navi(place, name) {
+function navi(place, name, img) {
    //주소-좌표 변환 객체를 생성합니다
    var geocoder = new daum.maps.services.Geocoder();
 
@@ -452,7 +426,17 @@ function navi(place, name) {
            markers.push(marker);
            // 마커에 표시할 인포윈도우를 생성합니다 
            var infowindow = new daum.maps.InfoWindow({
-               content: '<div>'+name+'</div>' // 인포윈도우에 표시할 내용
+               content: '<div class="info"><div class="title">'+name+ 
+               '        </div>' + 
+               '        <div class="body">' + 
+               '            <div class="img">' +
+               '                <img src='+img+' width="73" height="70">' +
+               '           </div>' + 
+               '            <div class="desc">' + 
+               '                <div class="ellipsis">'+place+'</div>' + 
+               //'                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+               '        </div>' + 
+               '</div>'
            });
            
            
@@ -493,11 +477,6 @@ function navi(place, name) {
    } 
    });
 }
- 
-//마커에 클릭이벤트를 등록합니다
-/*  daum.maps.event.addListener(marker, 'click', function() {
-     zoomOut();  
-});   */
 
 //배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
 function setMarkers(map) {

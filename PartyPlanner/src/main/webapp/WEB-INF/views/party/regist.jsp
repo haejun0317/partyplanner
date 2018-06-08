@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>파티 개설하기 페이지</title>
+<title>파티 개설</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -188,25 +188,6 @@ $("#pay").change(function(){
 	
 	
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    /** 이벤트 처리*/
    /** 이미지 업로드*/
@@ -518,10 +499,10 @@ $("#pay").change(function(){
 
         <div class="span8">
           <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home"></i></a><i
+            <li><a href="/"><i class="icon-home"></i></a><i
               class="icon-angle-right"></i></li>
-            <li><a href="#">Features</a><i class="icon-angle-right"></i></li>
-            <li class="active">Typography</li>
+            <li><a href="/party/list">Share</a><i class="icon-angle-right"></i></li>
+            <li class="active">파티개설</li>
           </ul>
 
         </div>
@@ -539,7 +520,7 @@ $("#pay").change(function(){
         <tbody>
           <tr>
             <!-- 첫번째 열 -->
-            <td width="20%" style='text-align: center;'><font size=5><b>모임명</b></font></td>
+            <td width="20%" style='text-align: center;'><font size=3>모임명</font></td>
             <td width="80%"><input type="hidden" name="name"
               value=""> <input class="form-control"
               name="name" id='partyNames' type="text"
@@ -548,7 +529,7 @@ $("#pay").change(function(){
           </tr>
           <tr>
             <!-- 두번째 열 -->
-            <td style='text-align: center'><font size=5><b>모임 카테고리</b></font></td>
+            <td style='text-align: center'><font size=3>모임 카테고리</font></td>
             <td><select name="category" id="newCategory"
               class="form-control"
               style="border-radius: 10px;">
@@ -575,7 +556,7 @@ $("#pay").change(function(){
             </select></td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=5><b>대표 사진 등록</b></font></td>
+            <td style='text-align: center'><font size=3>대표 사진 등록</font></td>
             <td>
               <div class="filebox">
                 <input id="upload-name" value="null" disabled="disabled"
@@ -587,12 +568,12 @@ $("#pay").change(function(){
             </td>
           </tr>
         <tr>
-            <td style='text-align: center'><font size=5><b>인원 모집 기간</b></font></td>
+            <td style='text-align: center'><font size=3>인원 모집 기간</font></td>
             <td>
               <div class="input-group bootstrap-timepicker timepicker">
                 <input name="recstart" id="recstarts" type="date"
                   style="border-radius: 10px;" 
-                  format="dd/MM/yyyy"> <font size=4>~</font> <input
+                  format="dd/MM/yyyy"> <font size=3>~</font> <input
                   name="recends" id="recends" type="date"
                   style="border-radius: 10px;">
                
@@ -601,17 +582,17 @@ $("#pay").change(function(){
           </tr>
 
             <tr>
-            <td style='text-align: center'><font size=5><b>파티 기간</b></font></td>
+            <td style='text-align: center'><font size=3>파티 기간</font></td>
             <td>
               <div class="input-group bootstrap-timepicker timepicker">
-                <input name="startdate" id="startdates" type="date" style="border-radius: 10px;" format="dd/MM/yyyy"> <font size=4>~</font> 
+                <input name="startdate" id="startdates" type="date" style="border-radius: 10px;" format="dd/MM/yyyy"> <font size=3>~</font> 
                 <input name="enddate" id="enddates" type="date" style="border-radius: 10px;">
-                <font size=4>시간 : </font><input type="time" name="partytime" id="partytime" style="border-radius: 10px; , width: 100px;" class="form-control" > 
+                <font size=3>시간 : </font><input type="time" name="partytime" id="partytime" style="border-radius: 10px; , width: 100px;" class="form-control" > 
               </div>
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=5><b>모임 장소</b></font></td>
+            <td style='text-align: center'><font size=3>모임 장소</font></td>
             <td>
               <form name="place">
                 <!-- input type="text" name='place' id="sample6_postcode" placeholder="우편번호" style="border-radius: 10px;"--> 
@@ -623,20 +604,20 @@ $("#pay").change(function(){
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=5><b>모집 인원</b></font></td>
+            <td style='text-align: center'><font size=3>모집 인원</font></td>
             <td><input type="number" id="recruits" name="recruit"
               style="border-radius: 10px;"
               style="width: 100px;" step="10" placeholder="인원 수(명)">
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=5><b>신청 방법1</b></font></td>
+            <td style='text-align: center'><font size=3>신청 방법1</font></td>
             <td>
               <div>
-                <input type="radio" name="price" id="nopay" value="null" onclick = "selectApply()"> 
-                <font size=4>무료신청&emsp;</font> 
+                <input type="radio" name="price" id="nopay" value="0" onclick = "selectApply()"> 
+                <font size=3>무료신청&emsp;</font> 
                 <input type="radio" name="price" id="pay" value="Y" onclick = "selectApply()">
-                <font size=4><span style="line-spacing: 10%">유료신청 
+                <font size=3><span style="line-spacing: 10%">유료신청 
                 <input type="text" name="charged" id="payNum" style="border-radius: 10px;" style="width: 100px;"> 
                 <input type="hidden" name="price" value=""><br>    
                 </span>
@@ -645,32 +626,32 @@ $("#pay").change(function(){
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=5><b>신청 방법2</b></font></td>
+            <td style='text-align: center'><font size=3>신청 방법2</font></td>
             <td>
               <div>
                 <input type="radio" name="isname" id="name" value="N"  onclick="selectName()"> 
-                <font size=4>실명신청&emsp;</font> 
+                <font size=3>실명신청&emsp;</font> 
                 <input type="radio" name="isname" id="nonames" value="Y" onclick="selectName()">
-                <font size=4>익명 신청</font> 
+                <font size=3>익명 신청</font> 
               </div>
             </td>
           </tr>
           
           <tr>
-            <td style='text-align: center'><font size=5><b>프리미엄 등록</b></font></td>
+            <td style='text-align: center'><font size=3>프리미엄 등록</font></td>
          
             <td>
            
               <div>
               <form name="premium">
                 <span><input type="radio" name="premium" id='nopremiums' value='N' onclick="selectPremium()">
-                  <font size=4>미등록&emsp;</font></span> <span style="">&emsp;
+                  <font size=3>미등록&emsp;</font></span> <span style="">&emsp;
                   <input type="radio" name="premium" id='premiums' value='Y' onclick="selectPremium()"> 
-                  <font size=4>등록&emsp;</font></span><br> <b>
+                  <font size=3>등록&emsp;</font></span><br> 
                   
-                  <span><font size=4>보유 마일리지</font>&emsp; ${member.mileage}
-                </span></b> <b><font size=4>&emsp;&emsp;마일리지 사용&emsp;</font> 
-                <input type="number" id="usemileage" name="mileage" style="border-radius: 10px;" style="width: 100px;" min="500" max="1000" step="10"></b>
+                  <span><font size=3>보유 마일리지</font>&emsp; ${member.mileage}
+                </span> <font size=3>&emsp;&emsp;마일리지 사용&emsp;</font> 
+                <input type="number" id="usemileage" name="mileage" style="border-radius: 10px;" style="width: 100px;" min="500" max="1000" step="10">
                 </form>
               </div>
          
@@ -679,11 +660,11 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=5><b>그룹 설정</b></font></td>
+            <td style='text-align: center'><font size=3>그룹 설정</font></td>
             <td>
               <form name="partner">
                 <input type="checkbox" name="partner" id="isgroups" value='Y' onclick="companyCheck()"> 
-                <font size=4>동반인원 여부</font>
+                <font size=3>동반인원 여부</font>
                 <!--input class="form-control" style="border-radius: 10px;" name="pNum" id="groupnum" type="number" style="width: 100px;" 
           min="1" max="100" onChange = "selPartner()"-->
           <input type="text" id="groupNum" disabled/>
@@ -694,7 +675,7 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=5><b>모임 소개</b></font></td>
+            <td style='text-align: center'><font size=3>모임 소개</font></td>
             <td>
               <div>
                 <!-- 스마트 에디터 시작 부분 -->
@@ -708,7 +689,7 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=5><b>출석 확인 번호</b></font></td>
+            <td style='text-align: center'><font size=3>출석 확인 번호</font></td>
             <td><input class="form-control" style="border-radius: 10px;" id="checks" name="checknum" type="text" placeholder="12345" >
             </td>
           </tr>
@@ -727,7 +708,7 @@ $("#pay").change(function(){
     <div class="container">
         <span style="line-height: 10%"><br></span>
         <div>
-          <label for="infoCheck"><font size=5>정보제공 동의 설정</font></label>
+          <label for="infoCheck"><font size=3>정보제공 동의 설정</font></label>
           <span style="line-height: 70%"> <textarea
               name="textarea3"
               style="resize: none; width: 1200px; height: 200px; border-radius: 10px;"
@@ -741,7 +722,7 @@ $("#pay").change(function(){
 * 개설자 선정방식 또는 개설자 통장입금 방식의 모임 참여/결제 확인은 개설자에게 문의 바랍니다.
 * 온오프믹스는 참여신청 및 참가비 결제 기능을 제공하는 회사로 모임개설자(주최측)가 아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다."></textarea></span>
           <input type="checkbox" name="infoCheck" id="infocheck"
-            value="Y" onclick="selInfoCheck()"> <font size=4>제3자
+            value="Y" onclick="selInfoCheck()"> <font size=3>제3자
             정보제공 동의</font>
         </div>
         <span style="line-height: 70%"><br></span>
