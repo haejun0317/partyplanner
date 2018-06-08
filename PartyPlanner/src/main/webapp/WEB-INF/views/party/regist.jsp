@@ -516,7 +516,7 @@ $("#pay").change(function(){
     <div class="container">
      <!--  테이블 들어갈곳 -->
       <!-- <h4>Default styles</h4> -->
-      <table class="table">
+      <table class="table" >
         <tbody>
           <tr>
             <!-- 첫번째 열 -->
@@ -560,10 +560,10 @@ $("#pay").change(function(){
             <td>
               <div class="filebox">
                 <input id="upload-name" value="null" disabled="disabled"
-                  style="border-radius: 10px; height: 30px;"> <label
-                  for="ex_filename" style="border-radius: 10px;">업로드</label>
+                  style="border-radius: 8px; height: 25px;"> <label
+                  for="ex_filename" style="border-radius: 10px;" >업로드</label>
                 <input type="file" name="image" id="ex_filename"
-                  class="upload-hidden">
+                 class="btn btn-theme">
               </div>
             </td>
           </tr>
@@ -599,7 +599,7 @@ $("#pay").change(function(){
                
                 <input type="text" name='place' id="sample6_address" placeholder="주소" onchange="selTextPost()" style="border-radius: 10px;"> 
                 <input type="text" name='place' id="sample6_address2" placeholder="상세주소"  style="border-radius: 10px;">
-                 <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border-radius: 10px; height: 30px;"><br>
+                 <input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호" style="border-radius: 10px; height: 30px;"><br>
               </form>
             </td>
           </tr>
@@ -638,6 +638,7 @@ $("#pay").change(function(){
           </tr>
           
           <tr>
+          
             <td style='text-align: center'><font size=3>프리미엄 등록</font></td>
          
             <td>
@@ -660,14 +661,15 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=3>그룹 설정</font></td>
+          
+            <td style='text-align: center'><font size=3><p>그룹 설정</p></font></td>
             <td>
               <form name="partner">
                 <input type="checkbox" name="partner" id="isgroups" value='Y' onclick="companyCheck()"> 
                 <font size=3>동반인원 여부</font>
                 <!--input class="form-control" style="border-radius: 10px;" name="pNum" id="groupnum" type="number" style="width: 100px;" 
           min="1" max="100" onChange = "selPartner()"-->
-          <input type="text" id="groupNum" disabled/>
+          <input type="text" id="groupNum" disabled  style="border-radius: 8px;"/>
                 <input type="hidden" name="partner" value="">
                 <!-- 동반인원 체크박스에 해당 -->
               </form>
@@ -680,10 +682,10 @@ $("#pay").change(function(){
               <div>
                 <!-- 스마트 에디터 시작 부분 -->
 
-                <textarea  name="content" id="contents" cols="30" rows="10"
+                <pre style="background-color: white; border-color: white;"><textarea  name="content" id="contents" cols="30" rows="10"
                   title="카페설명" name="content" id="content"
                   class="input_txt3 __byte(1~100) __notnull"
-                  maxlength="200" style="width: 100%;"  ></textarea>
+                  maxlength="200" style="width: 100%;"  ></textarea></pre>
               </div>
             </td>
           </tr>
@@ -709,18 +711,28 @@ $("#pay").change(function(){
         <span style="line-height: 10%"><br></span>
         <div>
           <label for="infoCheck"><font size=3>정보제공 동의 설정</font></label>
-          <span style="line-height: 70%"> <textarea
-              name="textarea3"
-              style="resize: none; width: 1200px; height: 200px; border-radius: 10px;"
-              id="textarea3" readonly="readonly"
-              placeholder="모임신청 / 신청취소 안내
-* 모임의 신청/취소/변경/환불은 참여신청 기간 내에만 가능합니다.
-* 결제한 유료모임은 환불 시 결제 수단과 환불 시점에 따라 수수료가 부과될 수 있습니다. 자세한 사항은 취소/환불약관을 확인해주세요.
-* 결제, 환불, 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수 있습니다.
-* 모임 또는 그룹의 설정, 모집정원 초과 여부에 따라 대기자로 선정될 수 있습니다. 자세한 사항은 FAQ를 확인해주세요.
-* 온오프믹스 결제서비스를 이용하는 모임은 개설자의 사업자 여부에 따라 결제증빙 발행이 가능합니다. 자세한 사항은 FAQ를 확인해 주세요.
-* 개설자 선정방식 또는 개설자 통장입금 방식의 모임 참여/결제 확인은 개설자에게 문의 바랍니다.
-* 온오프믹스는 참여신청 및 참가비 결제 기능을 제공하는 회사로 모임개설자(주최측)가 아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다."></textarea></span>
+            <div class="testimonial2" style="text-align: left;">
+                <h6></h6>
+                <b style="color: black;">&emsp;* 모임의 신청/취소/변경은 참여신청
+                  기간 내에만 가능합니다.</b><br>
+                <p></p>
+                <b>&emsp;* 참여신청 수정/취소, 참여상태 확인, 참여내역 확인은 마이페이지에서 할 수
+                  있습니다.</b><br>
+                <p></p>
+                <b>&emsp;* 모임 또는 그룹의 설정, 모집정원 초과 여부에 따라 대기자로 선정될 수
+                  있습니다. 자세한 사항은 FAQ를 확인해주세요.</b><br>
+                <p></p>
+                <b>&emsp;* 파티플래너 결제서비스를 이용하는 모임은 개설자의 사업자 여부에 따라
+                  결제증빙 발행이 가능합니다. 자세한 사항은 FAQ를 확인해 주세요.</b><br>
+                <p></p>
+                <b>&emsp;* 개설자 선정방식 또는 방식의 모임 참여 확인은 개설자에게 문의 바랍니다.</b><br>
+                <p></p>
+                <b>&emsp;* 파티플래너는 참여신청 기능을 제공하는 회사로 모임개설자(주최측)가
+                  아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다.</b><br>
+                <h6></h6>
+              </div>
+          
+          
           <input type="checkbox" name="infoCheck" id="infocheck"
             value="Y" onclick="selInfoCheck()"> <font size=3>제3자
             정보제공 동의</font>
@@ -730,9 +742,9 @@ $("#pay").change(function(){
         <!-- 서영이2 -->
         <div style="text-align: center">
           <button onclick="postForm()" id="addParty" type="submit" 
-            value='add party' class="btn-medium btn-rounded">파티 등록</button>
-          <input type="reset" class="btn-medium btn-rounded"
-            value="delparty" id="replyDelPBtn" onclick="location.href='/'"/>
+            value='add party' class="btn btn-theme">등록</button>
+          <input type="reset" class="btn btn-theme"
+            value="취소" id="replyDelPBtn" onclick="location.href='/'"/>
         </div>
  
       

@@ -237,7 +237,7 @@
                 <c:when test="${join eq 'join'}">
                   신청기간<b> &emsp;<strong>${party.recstart} ~
                   ${party.recend}</strong>&emsp;&emsp; <button onclick="location.href='partyjoin?num=${party.num}'"
-                class="btn btn-theme" disabled="disabled">신청완료</button></b>
+                class="btn btn-theme" disabled="disabled" style="border-color:  white; color: black;"><b>신청완료</b></button></b>
                 </c:when>
                 <c:otherwise>
                   신청기간<b> &emsp;<strong>${party.recstart} ~
