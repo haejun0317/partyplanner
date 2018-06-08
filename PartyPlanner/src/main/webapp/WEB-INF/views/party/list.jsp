@@ -336,8 +336,12 @@ nav ul li:first-child {   border-left: none;}
           </div>
           <nav style="margin-top: 40px;">
             <ul class="slides" id="soon" style="float: right;">
-              <li><input type="button" class="btn btn-orange" id="lately" value="최근순"></li>
-              <li><input type="button" class="btn btn-theme" id="deadline" value="마감순"></li>
+<li><input type="button" class="btn btn-square btn-theme"
+                          style="border-radius: 10px;" value ="모임 만들기"></li>
+              <li><input type="button" class="btn btn-orange" id="lately" value="최근순"
+               style="border-radius: 10px;"></li>
+              <li><input type="button" class="btn btn-theme" id="deadline" value="마감순"
+               style="border-radius: 10px;"></li>
             </ul>
           </nav>
           <div class="row">
