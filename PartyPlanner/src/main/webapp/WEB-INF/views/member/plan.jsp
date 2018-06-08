@@ -266,36 +266,58 @@ function setSum() {
                       <p>
                         사회자<span style="float: right;"></span>
                       </p>
-                        <c:if test="${mc.name eq null}">
-                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${mc.name } 이상 경력 사회자 <span style="float: right;">&#8361;${mc.price }</span></p>
-                        </c:if>
-                      
+                        <c:choose>
+                          <c:when test="${mc.name eq null}">
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                          </c:when>
+                          <c:otherwise>
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${mc.name } 이상 경력 사회자 <span style="float: right;">&#8361;${mc.price }</span></p>
+                          </c:otherwise>
+                        </c:choose>
                       <p>
                         무대<span style="float: right;"></span>
                       </p>
-                        <c:if test="${stage.name eq null}">
-                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${stage.name } 이하 규모 <span style="float: right;">&#8361;${stage.price }</span></p>
-                        </c:if>
-                      
+                        <c:choose>
+                          <c:when test="${stage.name eq null}">
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                          </c:when>
+                          <c:otherwise>
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${stage.name } 이하 규모 <span style="float: right;">&#8361;${stage.price }</span></p>
+                          </c:otherwise>
+                        </c:choose>
                       <p>
                         조명<span style="float: right;"></span>
                       </p>
-                        <c:if test="${light.name eq null}">
-                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${light.name } 이하 규모 <span style="float: right;">&#8361;${light.price }</span></p>
-                        </c:if>
-                      
+                        <c:choose>
+                          <c:when test="${light.name eq null}">
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                          </c:when>
+                          <c:otherwise>
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${light.name } 이하 규모 <span style="float: right;">&#8361;${light.price }</span></p>
+                          </c:otherwise>
+                        </c:choose>
                       <p>
                         음향<span style="float: right;"></span>
                       </p>
-                        <c:if test="${sound.name eq null}">
-                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${sound.name } 이하 규모 <span style="float: right;">&#8361;${sound.price }</span></p>
-                        </c:if>
+                        <c:choose>
+                          <c:when test="${sound.name eq null}">
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                          </c:when>
+                          <c:otherwise>
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${sound.name } 이하 규모 <span style="float: right;">&#8361;${sound.price }</span></p>
+                          </c:otherwise>
+                        </c:choose>
                       <p>
                         스태프<span style="float: right;"></span>
                       </p>
-                        <c:if test="${staff.name eq null}">
-                          <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${staff.name } 이하 규모 <span style="float: right;">&#8361;${staff.price }</span></p>
-                        </c:if>
+                        <c:choose>
+                          <c:when test="${staff.name eq null}">
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;선택 안함<span style='float: right;'>&#8361;0</span></p>
+                          </c:when>
+                          <c:otherwise>
+                            <p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;${staff.name } 이하 규모 <span style="float: right;">&#8361;${staff.price }</span></p>
+                          </c:otherwise>
+                        </c:choose>
                     </div>
 
 
@@ -317,7 +339,7 @@ function setSum() {
             <div class="row">
               <div style="text-align: right;">          
                   <button class="btn btn-square btn-theme"
-                  style="border-radius: 10px" onclick="location.href='mypage?id=<%=member.getId() %>">목록</button>
+                  style="border-radius: 10px" onclick="location.href='myPage?id=<%=member.getId() %>">목록</button>
               </div>
             </div>
 
