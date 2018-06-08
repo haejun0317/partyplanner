@@ -12,7 +12,7 @@ import kr.co.partyplanner.member.dto.LoginDTO;
 
 @Service
 public class MemberServiceImpl implements MemberServcie {
-	
+
 	@Inject
 	private MemberDAO dao;
 
@@ -21,20 +21,20 @@ public class MemberServiceImpl implements MemberServcie {
 	public void regist(Member member) throws Exception {
 		dao.create(member);
 	}
-	
-	/**회원 정보 리스트 출력*/
+
+	/** 회원 정보 리스트 출력 */
 	@Override
 	public List<Member> member() throws Exception {
 		return dao.member();
 	}
 
-	/**회원 정보 아이디로 검색 */
+	/** 회원 정보 아이디로 검색 */
 	@Override
 	public Member mread(String id) throws Exception {
 		return dao.mread(id);
 	}
 
-	/**회원 정보 수정*/
+	/** 회원 정보 수정 */
 	@Override
 	public void update(Member member) throws Exception {
 		dao.update(member);
@@ -56,5 +56,10 @@ public class MemberServiceImpl implements MemberServcie {
 		return dao.checkUserWithSessionKey(Value);
 	}
 
+	/** 멤버 읽기 */
+	@Override
+	public Member read(String id) throws Exception {
+		return dao.read(id);
+	}
 
 }

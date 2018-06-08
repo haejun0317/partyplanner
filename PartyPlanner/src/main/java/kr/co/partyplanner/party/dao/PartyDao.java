@@ -21,4 +21,9 @@ public interface PartyDao {
 	/** 참가 인원 카운트 기능 */
 	public int joinCount(int num) throws Exception;
 	
+	/** 파티 생성*/
+	public void create(Party party);
+
+
+	
 }

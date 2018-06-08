@@ -156,11 +156,11 @@
                     <i class="icon-briefcase icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Corporate business</h6>
+                    <h6>파티플래너 소개</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+                      저희는! <br>세계 최초 파티 계획 웹사이트입니다.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/about">Learn more</a>
                   </div>
                 </div>
               </div>
@@ -170,9 +170,10 @@
                     <i class="icon-desktop icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Responsive theme</h6>
+                    <h6>파티플래너 알림</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+                      여러분들에게 중요한 알림사항이 있습니다.<br>
+                      공지사항을 참고해주세요.
                     </p>
                     <a href="#">Learn more</a>
                   </div>
@@ -184,9 +185,9 @@
                     <i class="icon-beaker icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Coded carefully</h6>
+                    <h6>이용 후기</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+                      회원님들의 파티플래너를<br>이용하여 진행한 파티 후기 입니다.
                     </p>
                     <a href="#">Learn more</a>
                   </div>
@@ -198,11 +199,11 @@
                     <i class="icon-coffee icon-circled icon-64 active"></i>
                   </div>
                   <div class="text">
-                    <h6>Sit and enjoy</h6>
+                    <h6>협력업체 모집</h6>
                     <p>
-                      Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+                      파티플래너는 항상 전문가 분들과<br>함께 할 준비가 되어 있습니다.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/contact/contact">Learn more</a>
                   </div>
                 </div>
               </div>
@@ -227,12 +228,12 @@
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The City" href="/resources/bootstrap/img/works/full/image-01-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="돌잔치" href="/resources/bootstrap/img/works/full/first.jpg">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-01.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/image-01.jpg" alt="파티플래너에서 함께한 돌잔치 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->

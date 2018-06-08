@@ -37,4 +37,10 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public void registGET(Model model) throws Exception {
+		logger.info("about get............");
+		
+	}
+	
 }

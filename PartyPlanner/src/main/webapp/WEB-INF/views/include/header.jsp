@@ -76,7 +76,7 @@
                   <li class="dropdown"><a href="#">Company<i
                       class="icon-angle-down"></i></a>
                     <ul class="dropdown-menu">
-                      <li><a href="about.html">회사소개</a></li>
+                      <li><a href="../about">회사소개</a></li>
                       <li><a href="portfolio-4cols.html">포트폴리오</a></li>
                     </ul></li>
                   <li class="dropdown"><a href="../event/select">Plan</a>
@@ -97,7 +97,7 @@
                       <li><a href="../">이벤트</a></li>
 
                     </ul></li>
-                  <li><a href="contact.html">Contact </a></li>
+                  <li><a href="../contact/contact">Contact </a></li>
                 </ul>
               </nav>
             </div>
