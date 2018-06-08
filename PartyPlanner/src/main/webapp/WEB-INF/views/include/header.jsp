@@ -73,12 +73,8 @@
                 <ul class="nav topnav">
                   <li class="dropdown active"><a href="../">Home
                   </a></li>
-                  <li class="dropdown"><a href="#">Company<i
-                      class="icon-angle-down"></i></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="../about">회사소개</a></li>
-                      <li><a href="portfolio-4cols.html">포트폴리오</a></li>
-                    </ul></li>
+                  <li class="dropdown"><a href="/about">Company</a>
+                  </li>
                   <li class="dropdown"><a href="/event/select">Plan</a>
                   </li>
                   <li class="dropdown"><a href="/party/list">Share<i class="icon-angle-down"></i></a>

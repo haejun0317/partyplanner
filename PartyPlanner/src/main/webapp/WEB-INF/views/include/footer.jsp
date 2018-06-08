@@ -4,7 +4,7 @@
     <div class="row">
       <div class="span3">
         <div class="widget">
-          <h5 class="widgetheading">Browse pages</h5>
+          <h5 class="widgetheading">COMPANY</h5>
           <ul class="link-list">
             <li><a href="#">About our company</a></li>
             <li><a href="#">Our services</a></li>
