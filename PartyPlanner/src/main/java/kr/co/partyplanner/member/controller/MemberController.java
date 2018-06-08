@@ -158,7 +158,7 @@ public class MemberController {
 	
 	
 	/** 마이 페이지 (정보수정하는 곳) */
-	@RequestMapping(value ="/mypage", method =RequestMethod.GET)
+	@RequestMapping(value ="/myPage", method =RequestMethod.GET)
 	public void plan(Model model,String id)throws Exception{
 		logger.info("show all list");
 		model.addAttribute("PartyJoin", partyjoinservice.listparty(id));
