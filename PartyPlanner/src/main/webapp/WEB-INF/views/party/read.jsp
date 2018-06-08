@@ -57,19 +57,19 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 게시물 읽기 -->
 <script type="text/javascript">
-  	function comment() {
-		$("#orderNum").val(2);
-		console.log($("#orderNum").val());
-	}
-  	
-  	function reply(){
-  		$("#orderNum").val(1);
-  		console.log($("#orderNum").val());
-  	}
-  	
-  	function setGroup() {
-		$("#groupNo").val(arguments[0]);
-	}
+     function comment() {
+      $("#orderNum").val(2);
+      console.log($("#orderNum").val());
+   }
+     
+     function reply(){
+        $("#orderNum").val(1);
+        console.log($("#orderNum").val());
+     }
+     
+     function setGroup() {
+      $("#groupNo").val(arguments[0]);
+   }
   </script>
 
 
@@ -82,27 +82,25 @@
 
 <script>
     $( document ).ready( function() {
-    	var eq = $("#id") 
-      	
-      	setButton();
+       var eq = $("#id") 
+         
+         setButton();
       
     });
       
     function setButton() {
-    	console.log("췤췤");
-    	console.log($("#pmember").val());
-    	console.log($("#id").val());
-		if($("#pmember").val() == $("#id").val()){
-			$('[name=reply]').each(function(index,item) {
-				console.log("췤2췤2")
-				$(item).show();
-			})
-		}else{
-			$('[name=reply]').each(function(index,item) {
-				$(item).hide();
-			})
-		}
-	}
+       console.log($("#pmember").val());
+       console.log($("#id").val());
+      if($("#pmember").val() == $("#id").val()){
+         $('[name=reply]').each(function(index,item) {
+            $(item).show();
+         })
+      }else{
+         $('[name=reply]').each(function(index,item) {
+            $(item).hide();
+         })
+      }
+   }
       
 </script>
 
@@ -227,6 +225,10 @@
                 class="btn btn-theme">신청하기</a></b>
             </c:when> --%>
            
+
+
+
+           
             <c:when test="${now ge to}">
               <b style="color: red;">신청기간 &emsp;<strong>${party.recstart}
                   ~ ${party.recend}</strong>&emsp;&emsp;
@@ -246,6 +248,9 @@
                 </c:otherwise>
               </c:choose>
             </c:otherwise>
+
+
+
 
             <%-- <c:when test="${from le now && now le to}">
              신청기간<b>&emsp;<strong>${party.recstart} ~

@@ -239,78 +239,78 @@
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-1" data-type="icon">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Office" href="/resources/bootstrap/img/works/full/image-02-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="송년회" href="/resources/bootstrap/img/works/full/포트폴리오1.jpg">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-02.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오1.jpg" alt="파티플래너에서 함께한 송년회 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="/resources/bootstrap/img/works/full/image-03-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="결혼식" href="/resources/bootstrap/img/works/full/포트폴리오2.png">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-03.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오2.png" alt="파티플래너에서 함께한 결혼식 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="/resources/bootstrap/img/works/full/image-04-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="생일파티" href="/resources/bootstrap/img/works/full/포트폴리오11.jpg">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-04.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오11.jpg" alt="파티플래너에서 함께한 생일파티 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-4" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Sea" href="/resources/bootstrap/img/works/full/image-05-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="신년회" href="/resources/bootstrap/img/works/full/포트폴리오9.png">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-05.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오9.png" alt="파티플래너에서 함께한 신년회 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-5" data-type="icon">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Clouds" href="/resources/bootstrap/img/works/full/image-06-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="창립행사" href="/resources/bootstrap/img/works/full/포트폴리오6.jpg">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-06.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오6.jpg" alt="파티플래너에서 함께한 창립행사 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="/resources/bootstrap/img/works/full/image-07-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="피로연" href="/resources/bootstrap/img/works/full/포트폴리오7.png">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-07.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오7.png" alt="파티플래너에서 함께한 피로연 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Dark" href="/resources/bootstrap/img/works/full/image-08-full.jpg">
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="워크숍" href="/resources/bootstrap/img/works/full/포트폴리오10.jpg">
                   <span class="overlay-img"></span>
                   <span class="overlay-img-thumb font-icon-plus"></span>
                   </a>
                     <!-- Thumb Image and Description -->
-                    <img src="/resources/bootstrap/img/works/thumbs/image-08.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                    <img src="/resources/bootstrap/img/works/thumbs/포트폴리오10.jpg" alt="파티플래너에서 함께한 워크숍 모습입니다.">
                   </li>
                   <!-- End Item Project -->
                 </ul>

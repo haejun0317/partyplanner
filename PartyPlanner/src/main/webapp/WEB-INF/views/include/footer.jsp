@@ -4,13 +4,11 @@
     <div class="row">
       <div class="span3">
         <div class="widget">
-          <h5 class="widgetheading">COMPANY</h5>
+          <h5 class="widgetheading">Browse pages</h5>
           <ul class="link-list">
             <li><a href="#">About our company</a></li>
-            <li><a href="#">Our services</a></li>
-            <li><a href="#">Meet our team</a></li>
-            <li><a href="#">Explore our portfolio</a></li>
-            <li><a href="#">Get in touch with us</a></li>
+            <li><a href="#">My Page</a></li>
+            <li><a href="#">Contact Me</a></li>
           </ul>
         </div>
       </div>
@@ -18,11 +16,8 @@
         <div class="widget">
           <h5 class="widgetheading">Important stuff</h5>
           <ul class="link-list">
-            <li><a href="#">Press release</a></li>
-            <li><a href="#">Terms and conditions</a></li>
-            <li><a href="#">Privacy policy</a></li>
-            <li><a href="#">Career center</a></li>
-            <li><a href="#">Flattern forum</a></li>
+            <li><a href="#">Party Plan</a></li>
+            <li><a href="#">Party Share</a></li>
           </ul>
         </div>
       </div>
