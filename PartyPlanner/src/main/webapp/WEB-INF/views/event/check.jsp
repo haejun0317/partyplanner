@@ -347,8 +347,8 @@ function onSaveCall(text) {
               <div style="text-align: right;">          
                 <button type="button" class="btn btn-square btn-theme"
                   style="border-radius: 10px" onclick="savePlan()" id='save'>저장</button>
-                  <button type="submit" class="btn btn-square btn-theme"
-                  style="border-radius: 10px">확인</button>
+                  <button type="button" class="btn btn-square btn-theme"
+                  style="border-radius: 10px" onclick="location.href='/member/myPage?id=${ePlan.id}'">확인</button>
               </div>
             </div>
 
