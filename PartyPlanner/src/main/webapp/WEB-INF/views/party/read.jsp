@@ -52,6 +52,9 @@
 <link rel="apple-touch-icon-precomposed"
   href="/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png" />
 <link rel="shortcut icon" href="/resources/bootstrap/ico/favicon.png" />
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 게시물 읽기 -->
 <script type="text/javascript">
   	function comment() {
@@ -78,12 +81,40 @@
 </script>
 
 <script>
-      $( document ).ready( function() {
-      var eq = $("#id") 
+    $( document ).ready( function() {
+    	var eq = $("#id") 
+      	
+      	setButton();
       
-      } );
-    </script>
-    
+    });
+      
+    function setButton() {
+    	console.log("췤췤");
+    	console.log($("#pmember").val());
+    	console.log($("#id").val());
+		if($("#pmember").val() == $("#id").val()){
+			$('[name=reply]').each(function(index,item) {
+				console.log("췤2췤2")
+				$(item).show();
+			})
+		}else{
+			$('[name=reply]').each(function(index,item) {
+				$(item).hide();
+			})
+		}
+	}
+      
+</script>
+
+<script>
+/* function() {
+    if(pmember.id == member.id){
+          $('#reply').show();
+    } else {
+          $('#reply').hide();
+    }
+} */
+</script>    
 
 
 </head>
@@ -111,8 +142,8 @@
             value="${party.num}"> <input type="hidden"
             id="groupNo" name="groupNo"> <input type="hidden"
             id="orderNum" name="orderNum" value="2"> 작성자&nbsp;<input
-            type="text" style="border-radius: 8px; width: 70%"
-            placeholder="${pmember.id}" readonly="readonly"><br>
+            type="text" id="pmember" style="border-radius: 8px; width: 70%"
+            value="${pmember.id}" readonly="readonly"><br>
           <p></p>
           내&emsp;&nbsp;용&nbsp;
           <textarea rows="5"
@@ -190,23 +221,37 @@
           <fmt:formatDate var="to" type="date" value="${end}"
             pattern="yyyy-MM-dd" />
           <c:choose>
-            <c:when test="${from gt now}">
+            <%-- <c:when test="${from gt now}">
               신청기간<b> &emsp;<strong>${party.recstart} ~
                   ${party.recend}</strong>&emsp;&emsp; <a href="partyjoin?num=${party.num}"
                 class="btn btn-theme">신청하기</a></b>
-            </c:when>
+            </c:when> --%>
            
             <c:when test="${now ge to}">
               <b style="color: red;">신청기간 &emsp;<strong>${party.recstart}
                   ~ ${party.recend}</strong>&emsp;&emsp;
                 <button disabled="disabled">신청마감</button></b>
             </c:when>
+            <c:otherwise>
+              <c:choose>
+                <c:when test="${join eq 'join'}">
+                  신청기간<b> &emsp;<strong>${party.recstart} ~
+                  ${party.recend}</strong>&emsp;&emsp; <button onclick="location.href='partyjoin?num=${party.num}'"
+                class="btn btn-theme" disabled="disabled">신청완료</button></b>
+                </c:when>
+                <c:otherwise>
+                  신청기간<b> &emsp;<strong>${party.recstart} ~
+                  ${party.recend}</strong>&emsp;&emsp; <button onclick="location.href='partyjoin?num=${party.num}'"
+                class="btn btn-theme">신청하기</button></b>
+                </c:otherwise>
+              </c:choose>
+            </c:otherwise>
 
-            <c:when test="${from le now && now le to}">
+            <%-- <c:when test="${from le now && now le to}">
              신청기간<b>&emsp;<strong>${party.recstart} ~
                   ${party.recend}</strong>&emsp;&emsp; <a id="dd" href="#"
                 class="btn btn-theme">신청하기</a></b>
-            </c:when>
+            </c:when> --%>
           </c:choose>
 
 
@@ -298,7 +343,7 @@
                         <c:when test="${reply.orderNum eq 1 }">
 
                           <td style="text-align: center"><button
-                              href="#modal" data-toggle="modal" id="md"
+                              href="#modal" data-toggle="modal" id="reply" name ="reply"
                               class="btn btn-theme"
                               onclick="setGroup(${reply.replyNum})">답글</button></td>
                         </c:when>

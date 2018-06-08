@@ -1,24 +1,18 @@
 package kr.co.partyplanner.party.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.partyplanner.eventplan.service.EventPlanService;
 import kr.co.partyplanner.member.domain.Member;
 import kr.co.partyplanner.member.service.MemberServcie;
 import kr.co.partyplanner.party.domain.Party;
@@ -64,11 +58,19 @@ public class PartyController {
 
 		Party party = partyservice.read(num);
 		Member member = (Member)session.getAttribute("Member");
+		PartyJoin pj = partyjoinservice.read(member.getId(), num);
+		String join;
+		if(pj!=null) {
+			join = "join";
+		}else {
+			join = "unjoin";
+		}
 		model.addAttribute("party",party);
 		model.addAttribute("count",partyservice.joinCount(num));
 		model.addAttribute("member",member);
 		model.addAttribute("pmember",memberservice.mread(party.getMember()));
 		model.addAttribute("replyList",replyservice.listAll(num));
+		model.addAttribute("join", join);
 		
 	}
 	
