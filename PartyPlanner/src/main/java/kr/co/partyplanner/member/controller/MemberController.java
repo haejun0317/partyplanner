@@ -158,7 +158,7 @@ public class MemberController {
 	
 	
 	/** 마이 페이지 (정보수정하는 곳) */
-	@RequestMapping(value ="/mypage", method =RequestMethod.GET)
+	@RequestMapping(value ="/myPage", method =RequestMethod.GET)
 	public void plan(Model model,String id)throws Exception{
 		logger.info("show all list");
 		model.addAttribute("PartyJoin", partyjoinservice.listparty(id));
@@ -169,7 +169,7 @@ public class MemberController {
 	}
 	
 	/** member 수정하기 버튼 눌렀을 때 */
-	@RequestMapping(value="/mypage", method=RequestMethod.POST)
+	@RequestMapping(value="/myPage", method=RequestMethod.POST)
 	public String updatePost(Member member ,RedirectAttributes rttr, PartyJoin partyJoin) throws Exception {
 		logger.info("업데이트");
 		logger.info(member);
