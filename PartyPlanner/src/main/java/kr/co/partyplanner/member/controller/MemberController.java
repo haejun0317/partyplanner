@@ -25,13 +25,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
+import kr.co.partyplanner.event.domain.Goods;
+import kr.co.partyplanner.event.service.GoodsService;
+import kr.co.partyplanner.eventplan.domain.EventPlan;
 import kr.co.partyplanner.eventplan.service.EventPlanService;
 import kr.co.partyplanner.member.domain.Member;
 import kr.co.partyplanner.member.dto.LoginDTO;
 import kr.co.partyplanner.member.service.MemberServcie;
+import kr.co.partyplanner.option.domain.Light;
+import kr.co.partyplanner.option.domain.Mc;
+import kr.co.partyplanner.option.domain.Sound;
+import kr.co.partyplanner.option.domain.Staff;
+import kr.co.partyplanner.option.domain.Stage;
+import kr.co.partyplanner.option.service.LightService;
+import kr.co.partyplanner.option.service.McService;
+import kr.co.partyplanner.option.service.SoundService;
+import kr.co.partyplanner.option.service.StaffService;
+import kr.co.partyplanner.option.service.StageService;
 import kr.co.partyplanner.party.service.PartyService;
 import kr.co.partyplanner.partyjoin.domain.PartyJoin;
 import kr.co.partyplanner.partyjoin.service.PartyJoinService;
+import kr.co.partyplanner.plangoods.domain.PlanGoods;
+import kr.co.partyplanner.plangoods.service.PlanGoodsService;
 
 
 @Controller
@@ -42,15 +57,26 @@ public class MemberController {
 	
 	@Inject
 	private MemberServcie service;
-	
 	@Inject
 	private PartyJoinService partyjoinservice;
-	
 	@Inject
 	private EventPlanService eventplanservice;
-	
 	@Inject
 	private PartyService partyservice;
+	@Inject
+	private McService mcService;
+	@Inject
+	private StaffService staffService;
+	@Inject
+	private SoundService soundService;
+	@Inject
+	private StageService stageService;
+	@Inject
+	private LightService lightService;
+	@Inject
+	private PlanGoodsService planGoodsService;
+	@Inject
+	private GoodsService goodsService;
 	
 	
 	/** 회원 가입 부분 */
@@ -132,7 +158,7 @@ public class MemberController {
 	
 	
 	/** 마이 페이지 (정보수정하는 곳) */
-	@RequestMapping(value ="/myPage", method =RequestMethod.GET)
+	@RequestMapping(value ="/mypage", method =RequestMethod.GET)
 	public void plan(Model model,String id)throws Exception{
 		logger.info("show all list");
 		model.addAttribute("PartyJoin", partyjoinservice.listparty(id));
@@ -143,7 +169,7 @@ public class MemberController {
 	}
 	
 	/** member 수정하기 버튼 눌렀을 때 */
-	@RequestMapping(value="/myPage", method=RequestMethod.POST)
+	@RequestMapping(value="/mypage", method=RequestMethod.POST)
 	public String updatePost(Member member ,RedirectAttributes rttr, PartyJoin partyJoin) throws Exception {
 		logger.info("업데이트");
 		logger.info(member);
@@ -176,6 +202,49 @@ public class MemberController {
 		logger.info(list);
 		
 		return list;
+	}
+	
+	@RequestMapping(value="/plan")
+	public void checkPlan(Model model,int num) throws Exception{
+		EventPlan eventPlan = eventplanservice.read(num);
+		
+		Mc mc = null;
+		Light light = null;
+		Staff staff = null;
+		Sound sound = null;
+		Stage stage = null;
+		if(eventPlan.getMc() != null) {
+			mc = mcService.read(eventPlan.getMc());
+		}
+		if(eventPlan.getLight() != null) {
+			light = lightService.read(eventPlan.getLight());
+		}
+		if(eventPlan.getStaff() != null) {
+			staff = staffService.read(eventPlan.getStaff());		
+		}
+		if(eventPlan.getSound() != null) {
+			sound = soundService.read(eventPlan.getSound());
+		}
+		if(eventPlan.getStage() != null) {
+			stage = stageService.read(eventPlan.getStage());
+		}
+		
+		List<PlanGoods> list = planGoodsService.listGodods(num);
+		List<Goods> goodsList = new ArrayList<Goods>();
+		for (PlanGoods planGoods : list) {
+			Goods goods = goodsService.readGoods(planGoods.getGoodsName());
+			goodsList.add(goods);
+		}
+		
+		
+		model.addAttribute("ePlan", eventPlan);
+		model.addAttribute("mc", mc);
+		model.addAttribute("light", light);
+		model.addAttribute("staff", staff);
+		model.addAttribute("sound", sound);
+		model.addAttribute("stage", stage);
+		model.addAttribute("pgList", list);
+		model.addAttribute("goodsList", goodsList);
 	}
 
 }

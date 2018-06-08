@@ -11,4 +11,13 @@
 		FROM   staff
 		ORDER  BY price
 	</select>
+	
+	<select id="read" resultType="Staff">
+		SELECT NAME, 
+		       price,
+		       profile 
+		FROM   staff
+		WHERE  NAME = #{value}
+		ORDER  BY price
+	</select>
 </mapper>

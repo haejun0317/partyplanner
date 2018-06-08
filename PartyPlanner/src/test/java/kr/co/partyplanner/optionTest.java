@@ -47,12 +47,18 @@ public class optionTest {
 		}
 	}
 	/** staff 리스트 테스트 */
-	@Test
+//	@Test
 	public void testListStaff() throws Exception {
 		List<Staff> staffList = staffDao.listAll();
 		for (Staff staff : staffList) {
 			logger.info(staff);
 		}
+	}
+	
+//	@Test
+	public void testReadMc() throws Exception {
+		Mc mc = mcDao.read("이벤트");
+		logger.info(mc);
 	}
 
 

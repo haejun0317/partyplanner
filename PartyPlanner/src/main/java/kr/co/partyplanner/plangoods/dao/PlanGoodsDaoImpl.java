@@ -1,6 +1,8 @@
 package kr.co.partyplanner.plangoods.dao;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,5 +28,10 @@ public class PlanGoodsDaoImpl implements PlanGoodsDao {
 	@Override
 	public void create(PlanGoods planGoods) throws Exception {
 		sqlSession.insert(namespace+".create",planGoods);
+	}
+
+	@Override
+	public List<PlanGoods> listGodods(int num) throws Exception {
+		return sqlSession.selectList(namespace+".listGoods", num);
 	}
 }

@@ -20,4 +20,9 @@ public class LightServiceImpl implements LightService {
 		return dao.listAll();
 	}
 
+	@Override
+	public Light read(String name) throws Exception {
+		return dao.read(name);
+	}
+
 }

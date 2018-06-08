@@ -36,7 +36,7 @@ public class PlanGoodsDAOTest {
 	}
 	
 	/** 기획서별 물품 생성 테스트 */
-	@Test
+//	@Test
 	public void testCreate() throws Exception{
 		PlanGoods planGoods = new PlanGoods();
 		planGoods.setPlanNum(42);
@@ -46,6 +46,14 @@ public class PlanGoodsDAOTest {
 		dao.create(planGoods);
 		
 		logger.info("물품 생성");
+	}
+	
+	@Test
+	public void testListGoods() throws Exception{
+		List<PlanGoods> list = dao.listGodods(107);
+		for (PlanGoods planGoods : list) {
+			logger.info(planGoods);
+		}
 	}
 
 }

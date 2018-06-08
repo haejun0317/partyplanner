@@ -21,4 +21,9 @@ public class StaffServiceImpl implements StaffService {
 		return dao.listAll();
 	}
 
+	@Override
+	public Staff read(String name) throws Exception {
+		return dao.read(name);
+	}
+
 }

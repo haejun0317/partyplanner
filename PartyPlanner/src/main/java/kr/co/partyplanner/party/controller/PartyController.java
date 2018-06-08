@@ -58,8 +58,10 @@ public class PartyController {
 		logger.info("show all list...........");
 		model.addAttribute("list",partyservice.listAll());
 	}
+
 	@RequestMapping(value="/read", method = RequestMethod.GET)
 	public void read(Model model,int num, HttpSession session ) throws Exception{
+
 		Party party = partyservice.read(num);
 		Member member = (Member)session.getAttribute("Member");
 		model.addAttribute("party",party);
@@ -77,7 +79,7 @@ public class PartyController {
 		replyservice.create(reply);
 		rttr.addAttribute("num", reply.getPartyNum());
 		rttr.addAttribute("id", reply.getId());
-		return "redirect:/party/viewDetails";
+		return "redirect:/party/read";
 	}
 	
 	@RequestMapping(value="/comment", produces="text/plain;charset=UTF-8", method=RequestMethod.POST)
@@ -87,7 +89,7 @@ public class PartyController {
 		replyservice.createComment(reply);
 		rttr.addAttribute("num", reply.getPartyNum());
 		rttr.addAttribute("id", reply.getId());
-		return "redirect:/party/viewDetails";
+		return "redirect:/party/read";
 	}
 	
 	
@@ -106,7 +108,7 @@ public class PartyController {
 	
 	//여기까지 정훈이꺼
 	/** 참가 신청 페이지 */
-	@RequestMapping(value ="/partyJoin", method =RequestMethod.GET)
+	@RequestMapping(value ="/partyjoin", method =RequestMethod.GET)
 	public void listAll(Model model,int num,String id)throws Exception{
 		//String id추가 id
 		logger.info("show all list");
@@ -115,7 +117,7 @@ public class PartyController {
 	}
 	
 	/** 참가 완료 페이지 */
-	@RequestMapping(value ="/joinCompleted", method =RequestMethod.GET)
+	@RequestMapping(value ="/joincompleted", method =RequestMethod.GET)
 	public void clistAll(Model model,int num,String id)throws Exception{
 		logger.info("show all clist");
 		

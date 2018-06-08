@@ -11,4 +11,13 @@
 		FROM   stage
 		ORDER  BY price
 	</select>
+	
+	<select id="read" resultType="Stage">
+		SELECT NAME, 
+		       price,
+		       profile 
+		FROM   stage
+		WHERE  NAME = #{value}
+		ORDER  BY price
+	</select>
 </mapper>

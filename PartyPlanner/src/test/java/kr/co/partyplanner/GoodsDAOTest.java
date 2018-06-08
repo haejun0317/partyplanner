@@ -37,13 +37,20 @@ public class GoodsDAOTest {
 	}
 	
 	/** 물품 전체리스트 불러오기 */
-	@Test
+//	@Test
 	public void testListAll() throws Exception{
 		
 		List<Goods> list = dao.listAll();
 		for (Goods good : list) {
 			logger.info(good);
 		}
+	}
+	
+	/** 물품 이름에 대한 정보 가져오기 */
+	@Test
+	public void testReadGoods() throws Exception{
+		Goods goods = dao.readGoods("CD");
+		logger.info(goods);
 	}
 	
 

@@ -28,4 +28,9 @@ public class GoodsServiceImpl implements GoodsService {
 		return dao.listAll();
 	}
 
+	@Override
+	public Goods readGoods(String name) throws Exception {
+		return dao.readGoods(name);
+	}
+
 }

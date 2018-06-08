@@ -22,4 +22,9 @@ public class LightDAOImpl implements LightDAO {
 		return session.selectList(namespace+".listAll");
 	}
 
+	@Override
+	public Light read(String name) throws Exception {
+		return session.selectOne(namespace+".read", name);
+	}
+
 }

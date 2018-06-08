@@ -11,4 +11,13 @@
 		FROM   mc
 		ORDER  BY price
 	</select>
+	
+	<select id="read" resultType="Mc">
+		SELECT NAME, 
+		       price,
+		       profile 
+		FROM   mc
+		WHERE  NAME = #{value}
+		ORDER  BY price
+	</select>
 </mapper>

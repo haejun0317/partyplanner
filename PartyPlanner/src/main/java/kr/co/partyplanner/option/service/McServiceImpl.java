@@ -19,4 +19,9 @@ public class McServiceImpl implements McService {
 		return dao.listAll();
 	}
 
+	@Override
+	public Mc read(String name) throws Exception {
+		return dao.read(name);
+	}
+
 }

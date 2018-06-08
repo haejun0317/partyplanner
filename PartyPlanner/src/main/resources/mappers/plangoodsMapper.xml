@@ -9,7 +9,7 @@
 		SELECT plan_num "planNum", 
 		       goods_name "goodsName", 
 			   amount
-			FROM   plan_goods 
+		FROM   plan_goods 
 		WHERE  goods_name = #{goodsName}
 	</select>
 	
@@ -22,5 +22,13 @@
 		             #{goodsName},
 		             #{amount})
 	</insert>
+	
+	<select id="listGoods" resultType="PlanGoods">
+		SELECT plan_num "planNum", 
+		       goods_name "goodsName", 
+			   amount
+		FROM   plan_goods 
+		WHERE  plan_num = #{value}
+	</select>
 	
 </mapper>

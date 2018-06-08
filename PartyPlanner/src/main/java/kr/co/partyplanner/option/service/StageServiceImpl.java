@@ -20,4 +20,9 @@ public class StageServiceImpl implements StageService {
 		return dao.listAll();
 	}
 
+	@Override
+	public Stage read(String name) throws Exception {
+		return dao.read(name);
+	}
+
 }

@@ -22,4 +22,13 @@
 		FROM   goods
 	</select>
 	
+	<select id="readGoods" resultType="Goods">
+		SELECT name, 
+		       price, 
+		       rent, 
+		       option_name "optionName" 
+		FROM   goods 
+		WHERE  name = #{value}
+	</select>
+	
 </mapper>

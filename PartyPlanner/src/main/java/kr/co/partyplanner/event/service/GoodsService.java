@@ -13,4 +13,7 @@ public interface GoodsService {
 	/** 물품 전체 리스트 불러오기 */
 	public List<Goods> listAll() throws Exception;
 	
+	/** 물품이름에 해당하는 정보 불러오기 */
+	public Goods readGoods(String name) throws Exception;
+	
 }
