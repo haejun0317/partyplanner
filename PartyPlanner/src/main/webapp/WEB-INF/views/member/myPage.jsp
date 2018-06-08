@@ -216,14 +216,14 @@ $(document).ready(function(){
     <div class="row">
       <div class="span4">
         <div class="inner-heading">
-          <h2>My_Page</h2>
+          <h2>My Page</h2>
         </div>
       </div>
       <div class="span8">
         <ul class="breadcrumb">
           <li><a href="#"><i class="icon-home"></i></a><i
             class="icon-angle-right"></i></li>
-          <li><a href="#">PartyPlanner</a>
+          <li><a href="#">My Page</a>
         </ul>
       </div>
     </div>
@@ -264,7 +264,7 @@ $(document).ready(function(){
       <div class="span10">
 
         <!-- 기획서 부분 -->
-        <article id="planning" style="display:none">
+        <article id="planning" style="display:block">
         <h6>나의 기획서</h6>
         <div class="wrapper">
           <div class="testimonial2" style="border-radius: 10px">

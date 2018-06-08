@@ -337,9 +337,9 @@ function setSum() {
             </div>
 
             <div class="row">
-              <div style="text-align: right;">          
-                  <button class="btn btn-square btn-theme"
-                  style="border-radius: 10px" onclick="location.href='myPage?id=<%=member.getId() %>">목록</button>
+              <div style="text-align: right;">
+                  <input type="button" class="btn btn-square btn-theme"
+                  style="border-radius: 10px" value='목록' onclick="location.href='/member/myPage?id=<%=member.getId() %>'">
               </div>
             </div>
 
