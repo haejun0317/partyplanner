@@ -285,7 +285,7 @@
               <div class="testimonial2"
                 style="text-align: left; border-radius: 3px">
                 <p></p>
-                ${party.content}
+                 <pre style="background-color: white; border-color: white; "><b>${party.content}</b></pre>
                 <p></p>
               </div>
             </div>
@@ -311,6 +311,8 @@
                   <b style="align: center; font-size: 15px"
                     onclick="reply()">등록</b>
                 </button>
+               
+                
               </form>
 
 
