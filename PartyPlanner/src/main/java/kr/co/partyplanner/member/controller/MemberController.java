@@ -204,6 +204,7 @@ public class MemberController {
 		return list;
 	}
 	
+	/** 마이페이지 기획서 확인 */
 	@RequestMapping(value="/plan")
 	public void checkPlan(Model model,int num) throws Exception{
 		EventPlan eventPlan = eventplanservice.read(num);
@@ -245,6 +246,19 @@ public class MemberController {
 		model.addAttribute("stage", stage);
 		model.addAttribute("pgList", list);
 		model.addAttribute("goodsList", goodsList);
+	}
+	
+	/** 회원가입 중복체크 비동기 통신 */
+	@RequestMapping(value="/checkid.do")
+	@ResponseBody
+	public String checkId(String id) throws Exception{
+		Member member = service.read(id);
+		
+		if(member == null) {
+			return "success";
+		}else {
+			return "fail";
+		}
 	}
 
 }

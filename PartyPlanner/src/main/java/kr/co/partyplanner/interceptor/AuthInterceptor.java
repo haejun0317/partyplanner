@@ -25,7 +25,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	         throws Exception {
 	      HttpSession session = request.getSession();
 	      
-	      if(session.getAttribute("login") == null) {
+	      if(session.getAttribute("Member") == null) {
 	         logger.info("current user is not logined");
 	         
 	         saveDest(request);
@@ -45,7 +45,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	         
 	         //회원이 아니면 회원이 원하는 곳이 아닌
 	         //밑에 정해진 주소로 이동하게 함.
-	         response.sendRedirect("/");
+	         response.sendRedirect("/member/loginPage");
 	         return false;
 	      }
 	      return true;

@@ -37,9 +37,9 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<bean id="uploadPath" class="java.lang.String">
+	<!-- <bean id="uploadPath" class="java.lang.String">
       <constructor-arg value="C:\\KOSTA178\\workspace_web\\SpringMVCStudy\\FileRepository"/>
-   </bean>
+   </bean> -->
 	
 	<context:component-scan base-package="kr.co.partyplanner" />
 	
