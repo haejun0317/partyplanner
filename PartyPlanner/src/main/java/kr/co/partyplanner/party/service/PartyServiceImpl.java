@@ -55,4 +55,9 @@ public class PartyServiceImpl implements PartyService {
 		dao.create(party);
 	}
 
+	@Override
+	public List<Party> list() throws Exception {
+		return dao.list();
+	}
+
 }

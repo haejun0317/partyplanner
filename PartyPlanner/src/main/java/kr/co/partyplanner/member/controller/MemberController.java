@@ -169,8 +169,9 @@ public class MemberController {
 	public void plan(Model model,HttpSession session)throws Exception{
 		Member member = (Member)session.getAttribute("Member");
 		logger.info("show all list");
+		logger.info(member.getId());
 		model.addAttribute("PartyJoin", partyjoinservice.listparty(member.getId()));
-		model.addAttribute("allParty", partyservice.listAll());
+		model.addAttribute("allParty", partyservice.list());
 		model.addAttribute("Party", partyservice.myPartyListAll(member.getId()));
 		model.addAttribute("Member", service.mread(member.getId()));
 		model.addAttribute("EventPlan", eventplanservice.listPlan(member.getId()));

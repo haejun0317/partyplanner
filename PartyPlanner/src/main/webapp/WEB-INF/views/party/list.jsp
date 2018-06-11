@@ -1,10 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+<title>파티 전체보기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
@@ -333,7 +333,7 @@ $('#deadline').click(function() {
             ~ <input type="text" id="datepicker1" style="width: 100px; border-radius: 10px;">
           </form>
           <div class="row"><div class="span6"><div class="solidline">
-          </div></div></div><h4>모임</h4>
+          </div></div></div><h4>파티 목록</h4>
           <nav style="margin-top: -60px;  padding-top: 10px;">
             <ul class="slides" id="soon" style="float: right;">
               <li style="border-left: none; display: inline; font: bold 12px Dotum; padding: 0 10px;"><input type="button" class="btn btn-orange" id="lately" value="최근순"></li>

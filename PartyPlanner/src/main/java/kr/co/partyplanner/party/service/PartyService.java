@@ -7,8 +7,11 @@ import kr.co.partyplanner.party.domain.SearchCriteria;
 
 public interface PartyService {
 	
-	/**파티 전체 보기*/
+	/**파티 전체 보기(9개)*/
 	public List<Party> listAll() throws Exception;
+	
+	/** 모든 파티 보기 */
+	public List<Party> list() throws Exception;
 	
 	/**파티 선택 보기*/
 	public Party read(int num) throws Exception;

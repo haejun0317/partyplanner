@@ -6,6 +6,33 @@
 <mapper namespace="kr.co.partyplanner.mapper.partyMapper">
 
 	<!-- 파티 전체 정보를 출력하기 -->
+	<select id="list" resultType="Party">
+		<![CDATA[
+	         SELECT num, 
+	                category, 
+	                name,
+	                place,
+	                content,
+	                image,
+	                price,
+	                primeum,
+	                partner,
+	                recruit,
+	                To_char(recstart, 'YYYY-MM-DD') recstart, 
+	                To_char(recend, 'YYYY-MM-DD') recend, 
+	                To_char(regdate, 'YYYY-MM-DD') regdate, 
+	                To_char(startdate, 'YYYY-MM-DD') startdate, 
+	                To_char(enddate, 'YYYY-MM-DD') enddate, 
+	                checknum,
+	                member_id "member"
+	         FROM   party 
+	         WHERE  num > 0 
+	         ORDER  BY primeum DESC, 
+	                   regdate DESC,
+	                   num desc
+	      ]]>
+	</select>
+	
    <select id="listAll" resultType="Party">
       <![CDATA[
          select * from (select rownum numrow ,num, 

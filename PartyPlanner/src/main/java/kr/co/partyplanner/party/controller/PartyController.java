@@ -1,16 +1,21 @@
 package kr.co.partyplanner.party.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.partyplanner.member.domain.Member;
@@ -45,6 +50,8 @@ public class PartyController {
 	@Inject
 	private ReplyService replyservice;
 	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
@@ -146,18 +153,32 @@ public class PartyController {
 	}
 
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-	public String registPost(Party party, Model model, RedirectAttributes rttr) throws Exception {
+	public String registPost(Party party,MultipartFile upfile, Model model, RedirectAttributes rttr) throws Exception {
 		
 		logger.info("파티등록 post.............!");
 		logger.info("전달받은 객체:" + party);
 		logger.info(party.toString());
+		logger.info("------------------");
+		logger.info("originalName" + upfile.getOriginalFilename());
+		logger.info("size : " + upfile.getSize());
+		logger.info("contentType : " + upfile.getContentType());
 		
-		partyservice.create(party);
+		partyservice.create(party); 
+		
+		uploadFile(upfile.getOriginalFilename(), upfile.getBytes());
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		
 		return "redirect:/party/list";
+	}
+	
+	private void uploadFile(String originalName, byte[] fileData) throws Exception {
+
+		String savedName = originalName;
+
+		File target = new File(uploadPath, savedName);
+
+		FileCopyUtils.copy(fileData, target);
 	}
 	
 }

@@ -58,4 +58,9 @@ public class PartyDaoImpl implements PartyDao {
 		sqlSession.insert(namespace + ".create", party);
 
 	}
+
+	@Override
+	public List<Party> list() throws Exception {
+		return sqlSession.selectList(namespace + ".list");
+	}
 }

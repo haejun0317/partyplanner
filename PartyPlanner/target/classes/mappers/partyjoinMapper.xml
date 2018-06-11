@@ -22,7 +22,7 @@
 		<!-- Nvl(approve, '대기') -->
 		approve
 		FROM partyjoin
-		WHERE member_id = #{id}
+		WHERE member_id = #{value}
 		ORDER BY party_num desc
 	</select>
 	
