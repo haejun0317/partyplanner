@@ -106,32 +106,39 @@ public class MemberController {
 		
 	}
 	
-	/** 로그인 부분 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
-		
-	}
-	
-	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public String loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
-		Member mem = service.login(dto);
-		
-		if(mem != null) {
-			session.setAttribute("Member",mem);
-		}
-		
-		
-		if (dto.isUseCookie()) {
-			int amount = 60 * 60 * 24 * 7;
+	/** 로그인 실패 했을 때 */
+	   @RequestMapping(value = "/loginPagef", method = RequestMethod.GET)
+	   public void loginfGET(Model model) throws Exception {
+	      logger.info("result get............");
+	   }
+	   
+	   
+	   /** 로그인 부분 */
+	   @RequestMapping(value = "/login", method = RequestMethod.GET)
+	   public void loginGET(@ModelAttribute("dto") LoginDTO dto) {
+	      
+	   }
+	   
+	   @RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	   public String loginPOST(LoginDTO dto, HttpSession session, Model model) throws Exception {
+	      Member mem = service.login(dto);
+	      
+	      if(mem != null) {
+	         session.setAttribute("Member",mem);
+	         if (dto.isUseCookie()) {
+	            int amount = 60 * 60 * 24 * 7;
 
-			Date temp = new Date(System.currentTimeMillis() + (1000 * amount));
-			String sessionLimit = temp.toString();
+	            Date temp = new Date(System.currentTimeMillis() + (1000 * amount));
+	            String sessionLimit = temp.toString();
 
-			service.keepLogin(mem.getId(), session.getId(), sessionLimit);
-		}
-		return "redirect:/";
-		
-	}
+	            service.keepLogin(mem.getId(), session.getId(), sessionLimit);
+	         }
+	         return "redirect:/";
+	      }
+	      
+	      
+	      return "redirect:/member/loginPagef";
+	   }
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{

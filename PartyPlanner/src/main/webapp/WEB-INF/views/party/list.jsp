@@ -43,7 +43,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <script>
    $(function() {
-      jQuery.noConflict();
+     jQuery.noConflict();
       $("#datepicker").datepicker({
           numberOfMonths: 1,
           dateFormat : 'yy-mm-dd',
@@ -51,16 +51,16 @@
           onSelect: function(selected) {
           $("#datepicker1").datepicker("option","minDate", selected)
           } */
-           onChange: function(change) {
-             $("#datepicker").datepicker("option","minDate", selected)
-           }
+          onChange: function(change) {
+           $("#datepicker").datepicker("option","minDate", selected)
+          }
       });
       $("#datepicker1").datepicker({
           numberOfMonths: 1,
           dateFormat : 'yy-mm-dd',
           onChange: function(change) {
-              $("#datepicker1").datepicker("option","minDate", selected)
-            }
+           $("#datepicker1").datepicker("option","minDate", selected)
+          }
       });
    });
 </script>
@@ -70,7 +70,7 @@ $( function() {
 var dateFormat = "yy-mm-dd",
 /*달력 첫번째 바꾸기*/
 from = $( "#datepicker" ).datepicker({
-   dateFormat : dateFormat,
+  dateFormat : dateFormat,
     defaultDate: "+1w",
     changeMonth: true,
     numberOfMonths: 1
@@ -80,10 +80,10 @@ from = $( "#datepicker" ).datepicker({
   }),
 /*달력 두번째 바꾸기*/
 to = $( "#datepicker1" ).datepicker({
-   dateFormat : dateFormat,
-     defaultDate: "+1w",
-     changeMonth: true,
-        numberOfMonths: 1
+  dateFormat : dateFormat,
+    defaultDate: "+1w",
+   changeMonth: true,
+      numberOfMonths: 1
 })
 .on("datepicker1", function(){
   from.datepicker( "option", "maxDate", getDate( this ) );
@@ -101,118 +101,142 @@ return date;
 </script>
 <script>
 $(document).ready(function() {
-   /**검색종류
-   #categorySearch = 카테고리별 검색
-   #place = 장소
-   #price = 비용
-   #week = 요일 파티 시작날짜를 기준으로 검색
-   #datepicker 모집시작날짜를 기준으로 검색
-   #datepicker1 모집 종료날짜를 기준으로 검색
-   */
-   $('#categorySearch, #place, #price, #week, #time, #datepicker, #datepicker1').change(function() {
-      deleteMarkers();
-      var categoryValue = $('#categorySearch').val();
-      var placeValue = $('#place').val();
-      var priceValue = $('#price').val();
-      var dayValue = $('#week').val();
-      var timeValue = $('#time').val();
-      var calenderStart = $('#datepicker').val();
-      var calenderEnd = $('#datepicker1').val();
-      $.ajax({
-         type:'get',
-         url:'search.do',
-         dataType:"json",
-         data:{
-            category:categoryValue,
-            place:placeValue,
-            price:priceValue,
-            week:dayValue,
-            time:timeValue,
-            startCal:calenderStart,
-            endCal:calenderEnd
-         },
-         success:function (searchList){
-            var text ="";
-            for ( var i in searchList) {
-               text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-               text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px;' class='img-polaroid' />";
-               text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
-               text += "<li>"+searchList[i].recruit+"명<a href='/party/read?num="+searchList[i].num+"' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>";
-               navi(searchList[i].place, searchList[i].name);
-            }
-            $("#visible").html(text);
-         },
-         error:function(){
-            console.log("오류");
-         }
-      });
-   });
+  /**검색종류
+  #categorySearch = 카테고리별 검색
+  #place = 장소
+  #price = 비용
+  #week = 요일 파티 시작날짜를 기준으로 검색
+  #datepicker 모집시작날짜를 기준으로 검색
+  #datepicker1 모집 종료날짜를 기준으로 검색
+  */
+  $('#categorySearch, #place, #price, #week, #time, #datepicker, #datepicker1').change(function() {
+    deleteMarkers();
+    var categoryValue = $('#categorySearch').val();
+    var placeValue = $('#place').val();
+    var priceValue = $('#price').val();
+    var dayValue = $('#week').val();
+    var timeValue = $('#time').val();
+    var calenderStart = $('#datepicker').val();
+    var calenderEnd = $('#datepicker1').val();
+    $.ajax({
+      type:'get',
+      url:'search.do',
+      dataType:"json",
+      data:{
+        category:categoryValue,
+        place:placeValue,
+        price:priceValue,
+        week:dayValue,
+        time:timeValue,
+        startCal:calenderStart,
+        endCal:calenderEnd
+      },
+      success:function (searchList){
+        var text ="";
+        for ( var i in searchList) {
+          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
+          text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
+          navi((searchList[i].place).substr(0,10)+'...', searchList[i].name, "/resources/bootstrap/img/partyImg/"+searchList[i].image);
+          
+        }
+        $("#visible").html(text);
+        for ( var i in searchList) {
+           if(searchList[i].primeum=="Y"){
+              $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+             }
+           var finish = searchList[i].recend.split(" ");
+            finishdate(searchList[i].num, finish[0]);
+      }
+      },
+      error:function(){
+        console.log("오류");
+      }
+    });
+  });
 });
+
 </script>
 <script>
 $(document).ready(function() {
-/**최근순 lately */
+/*최근순 lately */
 $('#lately').click(function() {
-   var targetElement = $(event.target);
-   var latelyValue = $('#lately').val();
-   if( targetElement.is("#lately")){
-      $.ajax({
-         type:'get',
-         url:'search.do',
-         dataType:"json",
-         data:{
-            lately:latelyValue
-         },
-         success:function(searchList){
-            var text ="";
-            for ( var i in searchList) {
-               text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-               text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px;' class='img-polaroid' />";
-               text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
-               text += "<li>"+searchList[i].recruit+"명<a href='/party/read?num="+searchList[i].num+"' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>";
-            }
-            $("#visible").html(text);
-         },
-         error:function(){
-            console.log("오류");
-         }
-      });
-      
-   }
-   });   
-   /*마감순 deadline*/
+  var targetElement = $(event.target);
+  var latelyValue = $('#lately').val();
+  if( targetElement.is("#lately")){
+    $.ajax({
+      type:'get',
+      url:'search.do',
+      dataType:"json",
+      data:{
+        lately:latelyValue
+      },
+      success:function(searchList){
+        var text ="";
+        for ( var i in searchList) {
+          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
+          text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
+          function deadlineName() {
+          return searchList[i].name;
+        }
+        }
+        $("#visible").html(text);
+        for ( var i in searchList) {
+           if(searchList[i].primeum=="Y"){
+              $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+             }
+           var finish = searchList[i].recend.split(" ");
+            finishdate(searchList[i].num, finish[0]);
+      }
+      },
+      error:function(){
+        console.log("오류");
+      }
+    });
+    
+  }
+  }); 
+/*마감순 deadline*/
 $('#deadline').click(function() {
-   var targetElement = $(event.target);
-   var deadlineValue = $('#deadline').val();
-   if( targetElement.is("#deadline")){
-      $.ajax({
-         type:'get',
-         url:'search.do',
-         dataType:"json",
-         data:{
-            deadline:deadlineValue
-         },
-         success:function(searchList){
-            var text ="";
-            for ( var i in searchList) {
-               text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-               text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px;' class='img-polaroid' />";
-               text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
-               text += "<li>"+searchList[i].recruit+"명<a href='/party/read?num="+searchList[i].num+"' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>";
-            function deadlineName() {
-               return searchList[i].name;
-            }
-            }
-            $("#visible").html(text);
-         },
-         error:function(){
-            console.log("오류");
+  var targetElement = $(event.target);
+  var deadlineValue = $('#deadline').val();
+  if( targetElement.is("#deadline")){
+    $.ajax({
+      type:'get',
+      url:'search.do',
+      dataType:"json",
+      data:{
+        deadline:deadlineValue
+      },
+      success:function(searchList){
+        var text ="";
+        for ( var i in searchList) {
+          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
+          text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
+          function deadlineName() {
+          return searchList[i].name;
          }
-      });
-      
+        }
+        $("#visible").html(text);
+        for ( var i in searchList) {
+            if(searchList[i].primeum=="Y"){
+                  $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+                 }
+           var finish = searchList[i].recend.split(" ");
+            finishdate(searchList[i].num, finish[0]);
+      }
+      },
+      error:function(){
+        console.log("오류");
+      }
+    });
    }
-   });   
-
+  }); 
 });
 </script>
 <!-- 지도에 보여주는 파티정보스타일 -->
@@ -235,7 +259,7 @@ $('#deadline').click(function() {
 </head>
 
 <body>
-  <jsp:include page="/WEB-INF/views/include/header.jsp" />
+<jsp:include page="/WEB-INF/views/include/header.jsp" />
   <!-- 바디부분 -->
   <section id="content">
     <div class="container">
@@ -334,17 +358,60 @@ $('#deadline').click(function() {
 <script>
 /*지도에 전체 리스트 출력*/
  $(document).ready(function() {
-   deleteMarkers();
-   $(".span2").each(function(index){
-      var place = $(this).attr("party_place");
-      var name = $(this).attr("party_name");
-      var img = $(this).attr("party_image");
-      console.log(img);
-      navi(place, name, img);
-   });
+  deleteMarkers();
+  $(".span2").each(function(index){
+    var place = $(this).attr("party_place");
+    var name = $(this).attr("party_name");
+    var img = $(this).attr("party_image");
+    navi((place).substr(0,10)+'...', (name).substr(0,6)+'...', img);
+  });
 }); 
 </script>
- 
+
+<script>
+//오늘 날짜를 구하는 함수yyyy-mm-dd
+function today() {
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth()+1; //January is 0!
+   var yyyy = today.getFullYear();
+
+   if(dd<10) {
+       dd='0'+dd
+   } 
+
+   if(mm<10) {
+       mm='0'+mm
+   } 
+   return today = yyyy+'-'+mm+'-'+dd;
+}
+
+function today2() {
+   var today = new Date();
+   var dd = today.getDate();
+   var mm = today.getMonth()+1; //January is 0!
+   var yyyy = today.getFullYear();
+
+   if(dd<10) {
+       dd='0'+dd
+   } 
+
+   if(mm<10) {
+       mm='0'+mm
+   } 
+   return today = yyyy+'-'+mm+'-'+dd;
+}
+
+//신청마감버튼 출력
+function finishdate(partynum, finish) {
+    if(today() > finish ){
+   $("button[date="+partynum+"]").attr("disabled", true);
+   $("button[date="+partynum+"]").css("background-color","black");
+   $("button[date="+partynum+"]").html("신청마감");
+    }
+}
+
+</script>
  
 <c:forEach items="${list}" var="party">
  <script>
@@ -371,11 +438,32 @@ $('#deadline').click(function() {
   });
   
   */
-  
+  //프리미엄체크를 위한 변수선언
+  var premium = '${party.primeum}';
+  //제목 6글자만 뒤에는 ...
+  var subname = ('${party.name}').substr(0,6)+'...'
+  //프리미엄을 넣기 위한 파티번호받기
+  var partynum = '${party.num}';
+  //지난날짜 파티를 구분하기 위한 변수선언
+  var finish = '${party.recend}';
   /*무한 스크롤 처음 9개만 보기*/
-  $("#visible").append("<div class='span2' party_place='${party.place}' party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'><ul class='slides'><li><a href='/party/read?num=${party.num}'><img src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 100%; height: 200px;' class='img-polaroid' /></a></li><li><a href='/party/read?num=${party.num}'>${party.name}</a></li><li>${party.recruit}명<a href='/party/read?num=${party.num}' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>");
+ 
+  $("#visible").append("<div class='span2' id='${party.num}' party_place='${party.place}' "+
+               "party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'>"+
+               "<ul class='slides'><li><a href='/party/read?num=${party.num}'>"+
+               "<img partimg='${party.num}' src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 180px; height: 200px;border:solid 2px white;' class='img-polaroid' />"+
+               "</a></li><li><a num='${party.num}' href='/party/read?num=${party.num}'>"+subname+
+               "</a></li><li>${party.recruit}명<button date='${party.num}' onclick='location.href='/party/read?num=${party.num}'' class='btn btn-warning btn-small e_wobble' style='float: right;'>"+
+               "신청하기</button></li></ul></div>");
+   if(premium=="Y"){
+    $("img[partimg="+partynum+"]").css("border","solid 2px gold");
+   }
+   finishdate(partynum, finish);
   </script>
 </c:forEach>
+<script>
+</script>
+<img>
 <script>
 var markers = [];
 var marker;
@@ -398,86 +486,78 @@ map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
 /*지도 호출을 위한 함수 선언*/
 function navi(place, name, img) {
-   //주소-좌표 변환 객체를 생성합니다
-   var geocoder = new daum.maps.services.Geocoder();
+  //주소-좌표 변환 객체를 생성합니다
+  var geocoder = new daum.maps.services.Geocoder();
 
-   //주소로 좌표를 검색합니다
-   geocoder.addressSearch(place, function(result, status) {
+  //주소로 좌표를 검색합니다
+  geocoder.addressSearch(place, function(result, status) {
 
-   // 정상적으로 검색이 완료됐으면 
-    if (status === daum.maps.services.Status.OK) {
+  // 정상적으로 검색이 완료됐으면 
+   if (status === daum.maps.services.Status.OK) {
 
-       var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-      // 마커 이미지의 이미지 주소입니다
-       var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-           
-           // 마커 이미지의 이미지 크기 입니다
-           var imageSize = new daum.maps.Size(24, 35); 
-           
-           // 마커 이미지를 생성합니다    
-           var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-           
-           // 마커를 생성합니다
-               marker = new daum.maps.Marker({
-               map: map, // 마커를 표시할 지도
-               position: coords,// 마커의 위치
-               image:markerImage
-           }); 
-           markers.push(marker);
-           // 마커에 표시할 인포윈도우를 생성합니다 
-           var infowindow = new daum.maps.InfoWindow({
-               content: '<div class="info"><div class="title">'+name+ 
-               '        </div>' + 
-               '        <div class="body">' + 
-               '            <div class="img">' +
-               '                <img src='+img+' width="73" height="70">' +
-               '           </div>' + 
-               '            <div class="desc">' + 
-               '                <div class="ellipsis">'+place+'</div>' + 
-               //'                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-               '        </div>' + 
-               '</div>'
-           });
-           
-           
-           //마우스 over, out이벤트
-           daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-           daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-           /*마우스 클릭(줌인)이벤트*/
-           daum.maps.event.addListener(marker, 'click', zoomIn());
-           
-           /*지도 줌인을 위한 함수 선언*/
-           function zoomIn() {
-              
+      var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+     // 마커 이미지의 이미지 주소입니다
+      var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+          
+          // 마커 이미지의 이미지 크기 입니다
+          var imageSize = new daum.maps.Size(24, 35); 
+          
+          // 마커 이미지를 생성합니다    
+          var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+          
+          // 마커를 생성합니다
+            marker = new daum.maps.Marker({
+              map: map, // 마커를 표시할 지도
+              position: coords,// 마커의 위치
+              image:markerImage
+          }); 
+          markers.push(marker);
+          // 마커에 표시할 인포윈도우를 생성합니다 
+          var infowindow = new daum.maps.InfoWindow({
+              content: '<div class="info"><div class="title">'+name+ 
+              '        </div>' + 
+              '        <div class="body">' + 
+              '            <div class="img">' +
+              '                <img src='+img+' width="73" height="70">' +
+              '           </div>' + 
+              '            <div class="desc">' + 
+              '                <div class="ellipsis">'+place+'</div>' + 
+              //'                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+              '        </div>' + 
+              '</div>'
+          });
+          //마우스 over, out이벤트
+          daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+          daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+          /*마우스 클릭(줌인)이벤트*/
+          daum.maps.event.addListener(marker, 'click', zoomIn());
+          /*지도 줌인을 위한 함수 선언*/
+          function zoomIn() {
+            return function() {
+              // 현재 지도의 레벨을 얻어옵니다
+                var level = map.getLevel(); 
+                // 지도를 1레벨 올립니다 (지도가 축소됩니다)
+                map.setLevel(level - 3);
+                map.setCenter(coords);
+        };
+          } 
+          // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+          function makeOverListener(map, marker, infowindow) {
               return function() {
-                 // 현재 지도의 레벨을 얻어옵니다
-                  var level = map.getLevel(); 
-                  
-                  // 지도를 1레벨 올립니다 (지도가 축소됩니다)
-                  map.setLevel(level - 3);
-                  map.setCenter(coords);
-            };
-           } 
-           // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-           function makeOverListener(map, marker, infowindow) {
-               return function() {
-                   infowindow.open(map, marker);
-               };
-           }
-
-            // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-           function makeOutListener(infowindow) {
-               return function() {
-                   infowindow.close();
-               };
-           }
-
-            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-       map.setCenter(coords);
-   } 
-   });
+                  infowindow.open(map, marker);
+              };
+          }
+           // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+          function makeOutListener(infowindow) {
+              return function() {
+                  infowindow.close();
+              };
+          }
+           // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      map.setCenter(coords);
+  } 
+  });
 }
-
 //배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
 function setMarkers(map) {
     for (var i = 0; i < markers.length; i++) {

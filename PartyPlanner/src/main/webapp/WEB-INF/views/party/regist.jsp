@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>파티 개설</title>
+<title>파티 개설하기 페이지</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -56,9 +56,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- 스마트 에디터 api
-<script type="text/javascript" src="/resources/js/jquery-1.11.3.min.js"/></script>
-<script type="text/javascript" src="/resources/bootstrap/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>-->
 
 <!-- 타임피커 -->
 <link type="text/css" href="css/bootstrap-timepicker.min.css" />
@@ -77,7 +74,12 @@
 
 <style type='text/css'>
 
-
+pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+}
 textarea {
     resize: none;
 }
@@ -163,57 +165,52 @@ td {
 
 <script type="text/javascript">
 
-var locked = false;
-$(function(){
-	$("#isgroups").change(function(){
-		if($("#isgroups").prop("checked")){
-			$("#groupNum").attr("disabled", false);
-			
-		}else{
-			$("groupNum").attr("disabled", true);
-		}
-	});
-});
+/* function(){
+  $("#pay").change(function(){
+    if($("#pay").is(":checked")){
+      $("#payNum").prop("disabled", false);
+    }else{
+      $("#payNum").prop("disabled", true);
+    }
+  });
+}); */
 
 
-$(function(){
-$("#pay").change(function(){
-	if($("#pay").prop("checked")){
-		$("#payNum").attr("disable", false);
-	}else{
-		$("payNum").attr("disable", true);
-	}
-	
-});
-	
-	
-});
+   /** 이벤트 처리---------*/
 
-   /** 이벤트 처리*/
-   /** 이미지 업로드*/
    $(document).ready(function() {
-       var fileTarget = $('.filebox .upload-hidden'); 
-      fileTarget.on('change', function(){ // 값이 변경되면 
-         if(window.FileReader){ // modern browser 
-            var filename = $(this)[0].files[0].name; 
-         } else { // old IE 
-            var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-            } 
-      // 추출한 파일명 삽입 
-      $(this).siblings('.upload-name').val(filename); 
-      });  
-
-      $('#ex_filename').change(function name() {
-         console.log(event.srcElement.files[0].name);
-         $("#newupload").val(event.srcElement.files[0].name);
-      });
-
+      uploadImage();
+      selectName();
+      selectPremium();
+      selCategory();
+      companyCheck();
+      selInfoCheck();
    });
 
-   /** 라디오버튼 : 신청방법 설정 */
-   function selectApply() {
-      console.log($('input[name=price]:checked').val());
-   }
+   /** 이미지 업로드*/
+   function uploadImage(){
+     var fileTarget = $('.filebox .upload-hidden'); 
+        fileTarget.on('change', function(){ // 값이 변경되면 
+           if(window.FileReader){ // modern browser 
+              var filename = $(this)[0].files[0].name; 
+           } else { // old IE 
+              var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+           } 
+        
+        
+     // 추출한 파일명 삽입 
+     $(this).siblings('#upload-name').val(filename); 
+        });  
+  
+        $('#ex_filename').change(function name() {
+           console.log(event.srcElement.files[0].name);
+           $("#newupload").val(event.srcElement.files[0].name);
+        });
+  
+     };
+   
+   
+    
 
    /** 라디오버튼 : 익명 및 실명 신청 */
     function selectName() {
@@ -227,7 +224,7 @@ $("#pay").change(function(){
    }
 
    /** 셀렉옵션 : 카테고리 */
-   function selCategory(val) {
+   function selCategory() {
       $('input[name=category]').attr('value', event.target.value);
       console.log($('input[name=category]').val());
 
@@ -259,73 +256,80 @@ $("#pay").change(function(){
    }*/
 
   
-   /** 유료 신청 테스트*/
+   /** 유료 신청 테스트
    function selcharged() {
       var value = $('input[name=price]:checked').val();
       console.log(value);
-   }
+   }*/
 
    /** 서영이 
    /** 파티등록 클릭이벤트 --------------파티등록 하는 부분 --------------- */
-   function postForm() {	   
-	   	//console.log($("#categories").val());
-		//console.log($("#partyNames").val());
-		
-		//console.log($("#partyNames").val());
-		  //console.log($("#recstarts").val());
-		  //console.log($("#recends").val());
-		  //console.log($("#startdates").val());
-		  //console.log($("#enddates").val());
-		  //console.log($("#partytime").val());
-		  //console.log($("#recruits").val());
-		//  console.log($("#price").val());
-		  console.log($("#pay").val());
-		//  console.log($("#nopay").val());
-		//  console.log($("#nonames").val());
-		 // console.log($("#premiums").val());
-		  //console.log($("#isgroups").val());
-		  //console.log($("#usemileage").val());
-		  //console.log($("#contents").val());
-	   
-	  
-	  $("#newName").val($("#partyNames").val()); //파티명
-	  $("#categories").val($("#newCategory").val()); //카테고리
-	  $("#newupload").val($("#upload-name").val());  //모임사진
-	  $("#newrecstart").val($("#recstarts").val());  //모임모집날짜 시작
-	  $("#newrecend").val($("#recends").val());    //모임모집날짜 종료
-	  $("#newstartdate").val($("#startdates").val()); //파티기간 시작
-	  $("#newenddate").val($("#enddates").val()); //파티기간 종료
-	  $().val($("#partytime").val()); //파티 시간 (컬럼없음)
-	  $("#sample6_postcodeForm").val($("#sample6_postcode").val() + $("#sample6_address").val() + $("#sample6_address2").val()); 
-	  $("#newrecruit").val($("#recruits").val()); //모집 인원
-	  $("#newprice").val($('input[name="price"]:checked').val()); //신청방법 1-유료 신청
-	  $("#newname").val($('input[name=isname]:checked').val()); //익명 등록
-	  $("#newpremium").val($('input[name=premium]:checked').val()); //프리미엄 등록
-	  $("#newmileage").val($("#usemileage"));//마일리지 넣는 곳이 없음
-	  $("#newpartner").val($("#isgroups").val()); //동반인원
-	  $("#newpartnernum").val($("#groupNum").val()); //동반인원
-	  $("#newcontent").val($("#contents").val()); //모임소개
-	  $("#newcheck").val($("#checks").val()); //출석번호
-	  
-	  //console.log($("#newCategory").val());
-	  //console.log($("#newName").val());
-	  console.log($("#upload-name").val());
-	  //console.log($("#recstarts").val());
-	  //console.log($("#recends").val());
-	  //console.log($("#enddates").val());
-	  //console.log($("#sample6_postcode").val() +  $("#sample6_address").val() + $("#sample6_address2").val());
-	  //console.log($("#recruits").val());
-	  //console.log($("#recruits").val());
-	  console.log($("#newprice").val());
-	 // console.log($("#newcheck").val());
-	 // console.log($("#newname").val());
-	  //onsole.log($("#newprice").val());
-	  
-	  
-	   $("#myForm").submit(); 
+   function postForm() {     
+      //console.log($("#categories").val());
+    //console.log($("#partyNames").val());
+    
+    //console.log($("#partyNames").val());
+      //console.log($("#recstarts").val());
+      //console.log($("#recends").val());
+      //console.log($("#startdates").val());
+      //console.log($("#enddates").val());
+      //console.log($("#partytime").val());
+      //console.log($("#recruits").val());
+    //  console.log($("#price").val());
+      //console.log($("#pricenum").val());
+    //  console.log($("#nopay").val());
+    //  console.log($("#nonames").val());
+     // console.log($("#premiums").val());
+      //console.log($("#isgroups").val());
+      //console.log($("#usemileage").val());
+      //console.log($("#contents").val());
+     
+    
+    $("#newName").val($("#partyNames").val()); //파티명
+    $("#categories").val($("#newCategory").val()); //카테고리
+    $("#newupload").val($("#upload-name").val());  //모임사진
+    $("#newrecstart").val($("#recstarts").val());  //모임모집날짜 시작
+    $("#newrecend").val($("#recends").val());    //모임모집날짜 종료
+    $("#newstartdate").val($("#startdates").val()); //파티기간 시작
+    $("#newenddate").val($("#enddates").val()); //파티기간 종료
+    $().val($("#partytime").val()); //파티 시간 (컬럼없음)
+    $("#sample6_postcodeForm").val($("#sample6_postcode").val() + $("#sample6_address").val() + $("#sample6_address2").val()); 
+    $("#newrecruit").val($("#recruits").val()); //모집 인원
+     //$("#newprice").val($('input[name="price"]:checked').val()); //신청방법 1-유료 신청
+    if($("input[name=pay]:checked").attr("id") !='pay'){
+       $("#newprice").val(0);
+    }else{
+       $("#newprice").val(Number($("#pricenum").val()));
+    }
+     //$("#newprice").val($("#nopay").val()); //신청방법 1-무료 신청
+    $("#newpricenum").val($("#pricenum").val()); //신청방법 1-유료 신청
+    $("#newname").val($('input[name=isname]:checked').val()); //익명 등록
+    $("#newpremium").val($('input[name=premium]:checked').val()); //프리미엄 등록
+    $("#newmileage").val($("#usemileage"));//마일리지 넣는 곳이 없음
+    $("#newpartner").val($("#isgroups").val()); //동반인원
+   // $("#newpartnernum").val($("#groupNum").val()); //동반인원
+    $("#newcontent").val($("#contents").val()); //모임소개
+    $("#newcheck").val($("#checks").val()); //출석번호
+    
+    //console.log($("#newCategory").val());
+    //console.log($("#newName").val());
+    console.log($("#upload-name").val());
+    //console.log($("#recstarts").val());
+    //console.log($("#recends").val());
+    //console.log($("#enddates").val());
+    //console.log($("#sample6_postcode").val() +  $("#sample6_address").val() + $("#sample6_address2").val());
+    //console.log($("#recruits").val());
+    //console.log($("#recruits").val());
+    //console.log($("#newprice").val());
+   // console.log($("#newcheck").val());
+   // console.log($("#newname").val());
+    //onsole.log($("#newprice").val());
+    
+    
+     $("#myForm").submit(); 
    }
-	  
-	   /*
+    
+     /*
       $('input[name=category]').attr('value', event.target.value); //카테고리
       $('input[name=name]').attr('value', event.target.value); //파티명
 
@@ -427,7 +431,7 @@ $("#pay").change(function(){
          numberOfMonths : 1,
          dateFormat : 'yy-mm-dd',
          onSelect : function(selected) {
-        	 
+           
             $("#recstart").datepicker("option", "maxDate", selected)
          }
       });
@@ -499,10 +503,10 @@ $("#pay").change(function(){
 
         <div class="span8">
           <ul class="breadcrumb">
-            <li><a href="/"><i class="icon-home"></i></a><i
+            <li><a href="#"><i class="icon-home"></i></a><i
               class="icon-angle-right"></i></li>
-            <li><a href="/party/list">Share</a><i class="icon-angle-right"></i></li>
-            <li class="active">파티개설</li>
+            <li><a href="#">Features</a><i class="icon-angle-right"></i></li>
+            <li class="active">Typography</li>
           </ul>
 
         </div>
@@ -516,11 +520,11 @@ $("#pay").change(function(){
     <div class="container">
      <!--  테이블 들어갈곳 -->
       <!-- <h4>Default styles</h4> -->
-      <table class="table" >
+      <table class="table">
         <tbody>
           <tr>
             <!-- 첫번째 열 -->
-            <td width="20%" style='text-align: center;'><font size=3>모임명</font></td>
+            <td width="20%" style='text-align: center;'><font size=3><b>모임명</b></font></td>
             <td width="80%"><input type="hidden" name="name"
               value=""> <input class="form-control"
               name="name" id='partyNames' type="text"
@@ -529,7 +533,7 @@ $("#pay").change(function(){
           </tr>
           <tr>
             <!-- 두번째 열 -->
-            <td style='text-align: center'><font size=3>모임 카테고리</font></td>
+            <td style='text-align: center'><font size=3><b>모임 카테고리</b></font></td>
             <td><select name="category" id="newCategory"
               class="form-control"
               style="border-radius: 10px;">
@@ -556,19 +560,19 @@ $("#pay").change(function(){
             </select></td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=3>대표 사진 등록</font></td>
+            <td style='text-align: center'><font size=3><b>대표 사진 등록</b></font></td>
             <td>
               <div class="filebox">
-                <input id="upload-name" value="null" disabled="disabled"
-                  style="border-radius: 8px; height: 25px;"> <label
-                  for="ex_filename" style="border-radius: 10px;" >업로드</label>
+                <input id="upload-name" value="default.png" disabled="disabled"
+                  style="border-radius: 10px; height: 30px;"> <label
+                  for="ex_filename" style="border-radius: 10px;">업로드</label>
                 <input type="file" name="image" id="ex_filename"
-                 class="btn btn-theme">
+                  class="upload-hidden">
               </div>
             </td>
           </tr>
         <tr>
-            <td style='text-align: center'><font size=3>인원 모집 기간</font></td>
+            <td style='text-align: center'><font size=3><b>인원 모집 기간</b></font></td>
             <td>
               <div class="input-group bootstrap-timepicker timepicker">
                 <input name="recstart" id="recstarts" type="date"
@@ -582,7 +586,7 @@ $("#pay").change(function(){
           </tr>
 
             <tr>
-            <td style='text-align: center'><font size=3>파티 기간</font></td>
+            <td style='text-align: center'><font size=3><b>파티 기간</b></font></td>
             <td>
               <div class="input-group bootstrap-timepicker timepicker">
                 <input name="startdate" id="startdates" type="date" style="border-radius: 10px;" format="dd/MM/yyyy"> <font size=3>~</font> 
@@ -592,41 +596,41 @@ $("#pay").change(function(){
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=3>모임 장소</font></td>
+            <td style='text-align: center'><font size=3><b>모임 장소</b></font></td>
             <td>
               <form name="place">
                 <!-- input type="text" name='place' id="sample6_postcode" placeholder="우편번호" style="border-radius: 10px;"--> 
                
                 <input type="text" name='place' id="sample6_address" placeholder="주소" onchange="selTextPost()" style="border-radius: 10px;"> 
                 <input type="text" name='place' id="sample6_address2" placeholder="상세주소"  style="border-radius: 10px;">
-                 <input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호" style="border-radius: 10px; height: 30px;"><br>
+                 <input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="border-radius: 10px; height: 30px;"><br>
               </form>
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=3>모집 인원</font></td>
+            <td style='text-align: center'><font size=3><b>모집 인원</b></font></td>
             <td><input type="number" id="recruits" name="recruit"
               style="border-radius: 10px;"
               style="width: 100px;" step="10" placeholder="인원 수(명)">
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=3>신청 방법1</font></td>
+            <td style='text-align: center'><font size=3><b>신청 방법1</b></font></td>
             <td>
               <div>
-                <input type="radio" name="price" id="nopay" value="0" onclick = "selectApply()"> 
+                <input type="radio" name="pay" id="nopay" value="0" > 
                 <font size=3>무료신청&emsp;</font> 
-                <input type="radio" name="price" id="pay" value="Y" onclick = "selectApply()">
+                <input type="radio" name="pay" id="pay" value="Y">
                 <font size=3><span style="line-spacing: 10%">유료신청 
-                <input type="text" name="charged" id="payNum" style="border-radius: 10px;" style="width: 100px;"> 
-                <input type="hidden" name="price" value=""><br>    
+                <input type="text" name="pricenum" id="pricenum" style="border-radius: 10px;" style="width: 100px;" > 
+                <br>    
                 </span>
                 </font>
               </div>
             </td>
           </tr>
           <tr>
-            <td style='text-align: center'><font size=3>신청 방법2</font></td>
+            <td style='text-align: center'><font size=3><b>신청 방법2</b></font></td>
             <td>
               <div>
                 <input type="radio" name="isname" id="name" value="N"  onclick="selectName()"> 
@@ -638,21 +642,17 @@ $("#pay").change(function(){
           </tr>
           
           <tr>
-          
-            <td style='text-align: center'><font size=3>프리미엄 등록</font></td>
-         
+            <td style='text-align: center'><font size=3><b>프리미엄 등록</b></font></td>
             <td>
-           
               <div>
               <form name="premium">
                 <span><input type="radio" name="premium" id='nopremiums' value='N' onclick="selectPremium()">
                   <font size=3>미등록&emsp;</font></span> <span style="">&emsp;
                   <input type="radio" name="premium" id='premiums' value='Y' onclick="selectPremium()"> 
-                  <font size=3>등록&emsp;</font></span><br> 
-                  
+                  <font size=3>등록&emsp;</font></span><br> <b>
                   <span><font size=3>보유 마일리지</font>&emsp; ${member.mileage}
-                </span> <font size=3>&emsp;&emsp;마일리지 사용&emsp;</font> 
-                <input type="number" id="usemileage" name="mileage" style="border-radius: 10px;" style="width: 100px;" min="500" max="1000" step="10">
+                </span></b> <b><font size=3>&emsp;&emsp;마일리지 사용&emsp;</font> 
+                <input type="number" id="usemileage" name="mileage" style="border-radius: 10px;" style="width: 100px;" min="500" max="1000" step="10"></b>
                 </form>
               </div>
          
@@ -661,15 +661,14 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-          
-            <td style='text-align: center'><font size=3><p>그룹 설정</p></font></td>
+            <td style='text-align: center'><font size=3><b>그룹 설정</b></font></td>
             <td>
               <form name="partner">
                 <input type="checkbox" name="partner" id="isgroups" value='Y' onclick="companyCheck()"> 
                 <font size=3>동반인원 여부</font>
                 <!--input class="form-control" style="border-radius: 10px;" name="pNum" id="groupnum" type="number" style="width: 100px;" 
           min="1" max="100" onChange = "selPartner()"-->
-          <input type="text" id="groupNum" disabled  style="border-radius: 8px;"/>
+                
                 <input type="hidden" name="partner" value="">
                 <!-- 동반인원 체크박스에 해당 -->
               </form>
@@ -677,21 +676,23 @@ $("#pay").change(function(){
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=3>모임 소개</font></td>
+            <td style='text-align: center'><font size=3><b>모임 소개</b></font></td>
             <td>
               <div>
-                <!-- 스마트 에디터 시작 부분 -->
+              
 
-                <pre style="background-color: white; border-color: white;"><textarea  name="content" id="contents" cols="30" rows="10"
+
+            <pre style="background-color: white; border-color: white;"><textarea  name="content" id="contents" cols="30" rows="10"
                   title="카페설명" name="content" id="content"
                   class="input_txt3 __byte(1~100) __notnull"
-                  maxlength="200" style="width: 100%;"  ></textarea></pre>
+                  maxlength="200" style="width: 100%;"> 
+                  </textarea></pre>
               </div>
             </td>
           </tr>
 
           <tr>
-            <td style='text-align: center'><font size=3>출석 확인 번호</font></td>
+            <td style='text-align: center'><font size=3><b>출석 확인 번호</b></font></td>
             <td><input class="form-control" style="border-radius: 10px;" id="checks" name="checknum" type="text" placeholder="12345" >
             </td>
           </tr>
@@ -731,8 +732,6 @@ $("#pay").change(function(){
                   아닙니다. 모임 내용과 관련한 사항은 모임 개설자에게 문의 바랍니다.</b><br>
                 <h6></h6>
               </div>
-          
-          
           <input type="checkbox" name="infoCheck" id="infocheck"
             value="Y" onclick="selInfoCheck()"> <font size=3>제3자
             정보제공 동의</font>
@@ -742,9 +741,8 @@ $("#pay").change(function(){
         <!-- 서영이2 -->
         <div style="text-align: center">
           <button onclick="postForm()" id="addParty" type="submit" 
-            value='add party' class="btn btn-theme">등록</button>
-          <input type="reset" class="btn btn-theme"
-            value="취소" id="replyDelPBtn" onclick="location.href='/'"/>
+            value='add party' class="btn btn-theme">파티등록</button>
+          <input type="reset" class="btn btn-theme" value="취소하기" id="replyDelPBtn" onclick="location.href='/'"/>
         </div>
  
       

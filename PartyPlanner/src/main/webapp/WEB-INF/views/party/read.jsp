@@ -57,19 +57,19 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- 게시물 읽기 -->
 <script type="text/javascript">
-  	function comment() {
-		$("#orderNum").val(2);
-		console.log($("#orderNum").val());
-	}
-  	
-  	function reply(){
-  		$("#orderNum").val(1);
-  		console.log($("#orderNum").val());
-  	}
-  	
-  	function setGroup() {
-		$("#groupNo").val(arguments[0]);
-	}
+     function comment() {
+      $("#orderNum").val(2);
+      console.log($("#orderNum").val());
+   }
+     
+     function reply(){
+        $("#orderNum").val(1);
+        console.log($("#orderNum").val());
+     }
+     
+     function setGroup() {
+      $("#groupNo").val(arguments[0]);
+   }
   </script>
 
 
@@ -82,13 +82,14 @@
 
 <script>
     $( document ).ready( function() {
-    	var eq = $("#id") 
-      	
-      	setButton();
+       var eq = $("#id") 
+         
+         setButton();
       
     });
       
     function setButton() {
+<<<<<<< HEAD
     	console.log($("#pmember").val());
     	console.log($("#id").val());
 		if($("#pmember").val() == $("#id").val()){
@@ -101,6 +102,20 @@
 			})
 		}
 	}
+=======
+       console.log($("#pmember").val());
+       console.log($("#id").val());
+      if($("#pmember").val() == $("#id").val()){
+         $('[name=reply]').each(function(index,item) {
+            $(item).show();
+         })
+      }else{
+         $('[name=reply]').each(function(index,item) {
+            $(item).hide();
+         })
+      }
+   }
+>>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner
       
 </script>
 
