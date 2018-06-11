@@ -124,6 +124,7 @@
 		member_id "member"
 		FROM party
 		where member_id = #{member}
+		ORDER BY num desc
 	</select>
 
 	<select id="joinCount" resultType="int">

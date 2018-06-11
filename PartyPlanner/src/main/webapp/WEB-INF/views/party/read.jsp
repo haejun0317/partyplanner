@@ -89,12 +89,10 @@
     });
       
     function setButton() {
-    	console.log("췤췤");
     	console.log($("#pmember").val());
     	console.log($("#id").val());
 		if($("#pmember").val() == $("#id").val()){
 			$('[name=reply]').each(function(index,item) {
-				console.log("췤2췤2")
 				$(item).show();
 			})
 		}else{
@@ -141,15 +139,20 @@
           <input type="hidden" id="partyNum" name="partyNum"
             value="${party.num}"> <input type="hidden"
             id="groupNo" name="groupNo"> <input type="hidden"
-            id="orderNum" name="orderNum" value="2"> 작성자&nbsp;<input
-            type="text" id="pmember" style="border-radius: 8px; width: 70%"
+            id="orderNum" name="orderNum" value="2">
+            <div align="left">
+            <input
+            type="hidden" id="pmember" style="border-radius: 8px; width: 70%; background-color: white; border-color: white;"
             value="${pmember.id}" readonly="readonly"><br>
+           작성자&emsp;&nbsp;<b>${pmember.id}</b>
+           <p></p>
           <p></p>
           내&emsp;&nbsp;용&nbsp;
           <textarea rows="5"
             style="border-radius: 8px; width: 70%; resize: none;"
             name="contents"></textarea>
           <br>
+          </div>
           <p></p>
           <button id="btnUp" class="btn btn-theme" type="submit"
             style="width: 50px; height: 30px" onclick="comment()">등록</button>
@@ -227,6 +230,10 @@
                 class="btn btn-theme">신청하기</a></b>
             </c:when> --%>
            
+
+
+
+           
             <c:when test="${now ge to}">
               <b style="color: red;">신청기간 &emsp;<strong>${party.recstart}
                   ~ ${party.recend}</strong>&emsp;&emsp;
@@ -246,6 +253,9 @@
                 </c:otherwise>
               </c:choose>
             </c:otherwise>
+
+
+
 
             <%-- <c:when test="${from le now && now le to}">
              신청기간<b>&emsp;<strong>${party.recstart} ~

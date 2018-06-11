@@ -23,7 +23,7 @@
 		approve
 		FROM partyjoin
 		WHERE member_id = #{id}
-		ORDER BY party_num asc
+		ORDER BY party_num desc
 	</select>
 	
 	<select id="read" resultType="PartyJoin">
