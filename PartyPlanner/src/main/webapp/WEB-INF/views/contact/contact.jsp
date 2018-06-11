@@ -59,7 +59,7 @@
           </div>
           <div class="span8">
             <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
               <li class="active">Contact</li>
             </ul>
           </div>

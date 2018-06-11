@@ -120,8 +120,8 @@ function selectAll(source) {
           </div>
           <div class="span8">
             <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-              <li><a href="#">파티 참가</a><i class="icon-angle-right"></i></li>
+              <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li>파티 참가<i class="icon-angle-right"></i></li>
               <li class="active">파티 참가 완료</li>
             </ul>
           </div>

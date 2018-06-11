@@ -220,9 +220,8 @@ $(document).ready(function(){
       </div>
       <div class="span8">
         <ul class="breadcrumb">
-          <li><a href="#"><i class="icon-home"></i></a><i
-            class="icon-angle-right"></i></li>
-          <li><a href="#">My Page</a>
+          <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+          <li><a href="/member/myPage">My Page</a></li>
         </ul>
       </div>
     </div>
@@ -440,9 +439,9 @@ $(document).ready(function(){
 
 
           <div class="testimonial" style="border-radius: 10px">
-            아&nbsp;&nbsp;이&nbsp;&nbsp;디&nbsp;&nbsp; <input type="text"
-              name="id" style="border-radius: 10px; padding-left: 15px"
-              placeholder="${Member.id}" readonly>
+            아&nbsp;&nbsp;이&nbsp;&nbsp;디&nbsp;&nbsp;&nbsp;
+            <span><b>${Member.id}</b></span>
+            <input type="hidden" name="id" value="${Member.id}">
             <hr>
             비밀번호&nbsp;&nbsp; <input type="password" name="passwd"
               style="border-radius: 10px; padding-left: 15px"

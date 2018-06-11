@@ -59,58 +59,27 @@
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-2">
               </div>
-              <h2><strong>Twitter</strong> bootstrap</h2>
+              <h2 style="color: black;"><strong>Party</strong> Planner</h2>
               <blockquote>
-                <p>
-                  Until he extends the circle of his compassion to all living things, man will not himself find peace.
+                <p style="color: black;">
+                  Kosta Final Project.
                 </p>
-                <cite>Ramond Schummiler</cite>
+                <cite style="color: black;">Party Planner.</cite>
               </blockquote>
             </div>
           </div>
           
           <!-- 메인페이지 세번째 슬라이드 사진 -->
-          <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-            <div class="sl-slide-inner">
-              <div class="bg-img bg-img-3">
-              </div>
-              <h2><strong>Responsive</strong> layout</h2>
-              <blockquote>
-                <p>
-                  Thousands of people who say they 'love' animals sit down once or twice a day to enjoy the flesh of creatures who have been utterly deprived of everything that could make their lives worth living and who endured the awful suffering and the terror of the
-                  abattoirs.
-                </p>
-                <cite>Andress Michel Aorta</cite>
-              </blockquote>
-            </div>
-          </div>
-          
-          <!-- 메인페이지 네번째 슬라이드 사진 -->
-          <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
-            <div class="sl-slide-inner">
-              <div class="bg-img bg-img-4">
-              </div>
-              <h2><strong>Awesome</strong> features</h2>
-              <blockquote>
-                <p>
-                  The human body has no more need for cows' milk than it does for dogs' milk, horses' milk, or giraffes' milk.
-                </p>
-                <cite>Smilee Bounvaller</cite>
-              </blockquote>
-            </div>
-          </div>
-          
-          <!-- 메인페이지 다섯번째 슬라이드 사진 -->
           <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
             <div class="sl-slide-inner">
               <div class="bg-img bg-img-5">
               </div>
-              <h2><strong>Premium</strong> support</h2>
+              <h2><strong>Party</strong> Planner</h2>
               <blockquote>
                 <p>
-                  I think if you want to eat more meat you should kill it yourself and eat it raw so that you are not blinded by the hypocrisy of having it processed for you.
+                  Kosta Final Project.
                 </p>
-                <cite>Clarke Edward Thompson</cite>
+                <cite>Party Planner.</cite>
               </blockquote>
             </div>
           </div>
@@ -120,8 +89,6 @@
         <!-- /sl-slider -->
         <nav id="nav-dots" class="nav-dots">
           <span class="nav-dot-current"></span>
-          <span></span>
-          <span></span>
           <span></span>
           <span></span>
         </nav>
@@ -138,7 +105,7 @@
                 <h3>파티를 기획하고 싶으신분 <span class="highlight"><strong>무료</strong></span> 로 기획하세요!</h3>
               </div>
               <div class="cta floatright">
-                <a class="btn btn-large btn-theme btn-rounded" href="../event/select">Party Plan</a>
+                <a class="btn btn-large btn-theme btn-rounded" href="/event/select">Party Plan</a>
               </div>
             </div>
           </div>
@@ -153,7 +120,7 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-briefcase icon-circled icon-64 active"></i>
+                    <a href="/about"><i class="icon-briefcase icon-circled icon-64 active"></i></a>
                   </div>
                   <div class="text">
                     <h6>파티플래너 소개</h6>
@@ -167,29 +134,29 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-desktop icon-circled icon-64 active"></i>
+                    <a href="/event/select"><i class="icon-desktop icon-circled icon-64 active"></i></a>
                   </div>
                   <div class="text">
-                    <h6>파티플래너 알림</h6>
+                    <h6>행사 기획</h6>
                     <p>
-                      여러분들에게 중요한 알림사항이 있습니다.<br>
-                      공지사항을 참고해주세요.
+                      고객맞춤 행사기획 서비스가 있습니다.<br>
+                      지금 기획서를 작성하세요.
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/event/select">Learn more</a>
                   </div>
                 </div>
               </div>
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-beaker icon-circled icon-64 active"></i>
+                    <a href="/party/list"><i class="icon-beaker icon-circled icon-64 active"></i></a>
                   </div>
                   <div class="text">
-                    <h6>이용 후기</h6>
+                    <h6>공유 파티</h6>
                     <p>
-                      회원님들의 파티플래너를<br>이용하여 진행한 파티 후기 입니다.
+                      회원님들의 파티를<br>등록하고 공유할 수 있습니다..
                     </p>
-                    <a href="#">Learn more</a>
+                    <a href="/party/list">Learn more</a>
                   </div>
                 </div>
               </div>

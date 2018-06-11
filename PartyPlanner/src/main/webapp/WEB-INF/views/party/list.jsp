@@ -143,12 +143,12 @@ $(document).ready(function() {
         }
         $("#visible").html(text);
         for ( var i in searchList) {
-           if(searchList[i].primeum=="Y"){
-              $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
-             }
-           var finish = searchList[i].recend.split(" ");
+          if(searchList[i].primeum=="Y"){
+            $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+           }
+          var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
-      }
+    }
       },
       error:function(){
         console.log("오류");
@@ -185,12 +185,12 @@ $('#lately').click(function() {
         }
         $("#visible").html(text);
         for ( var i in searchList) {
-           if(searchList[i].primeum=="Y"){
-              $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
-             }
-           var finish = searchList[i].recend.split(" ");
+          if(searchList[i].primeum=="Y"){
+            $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+           }
+          var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
-      }
+    }
       },
       error:function(){
         console.log("오류");
@@ -224,12 +224,12 @@ $('#deadline').click(function() {
         }
         $("#visible").html(text);
         for ( var i in searchList) {
-            if(searchList[i].primeum=="Y"){
-                  $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
-                 }
-           var finish = searchList[i].recend.split(" ");
+           if(searchList[i].primeum=="Y"){
+                $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+               }
+          var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
-      }
+    }
       },
       error:function(){
         console.log("오류");
@@ -353,7 +353,6 @@ $('#deadline').click(function() {
     <!-- 다음 지도 API -->
   <div class="span6">
     <div id="map" style="width: 650px; height: 900px;"></div>
-     <!-- 주소로 좌표값 가져오기 T맵 좌표값이 달라서 주소로 다음지도로 좌표값 불러오기 -->
 
 <script>
 /*지도에 전체 리스트 출력*/
@@ -365,105 +364,120 @@ $('#deadline').click(function() {
     var img = $(this).attr("party_image");
     navi((place).substr(0,10)+'...', (name).substr(0,6)+'...', img);
   });
-}); 
+});
 </script>
 
 <script>
 //오늘 날짜를 구하는 함수yyyy-mm-dd
 function today() {
-   var today = new Date();
-   var dd = today.getDate();
-   var mm = today.getMonth()+1; //January is 0!
-   var yyyy = today.getFullYear();
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
 
-   if(dd<10) {
-       dd='0'+dd
-   } 
+  if(dd<10) {
+      dd='0'+dd
+  } 
 
-   if(mm<10) {
-       mm='0'+mm
-   } 
-   return today = yyyy+'-'+mm+'-'+dd;
+  if(mm<10) {
+      mm='0'+mm
+  } 
+  return today = yyyy+'-'+mm+'-'+dd;
 }
 
 function today2() {
-   var today = new Date();
-   var dd = today.getDate();
-   var mm = today.getMonth()+1; //January is 0!
-   var yyyy = today.getFullYear();
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
 
-   if(dd<10) {
-       dd='0'+dd
-   } 
+  if(dd<10) {
+      dd='0'+dd
+  } 
 
-   if(mm<10) {
-       mm='0'+mm
-   } 
-   return today = yyyy+'-'+mm+'-'+dd;
+  if(mm<10) {
+      mm='0'+mm
+  } 
+  return today = yyyy+'-'+mm+'-'+dd;
 }
 
 //신청마감버튼 출력
 function finishdate(partynum, finish) {
-    if(today() > finish ){
-   $("button[date="+partynum+"]").attr("disabled", true);
-   $("button[date="+partynum+"]").css("background-color","black");
-   $("button[date="+partynum+"]").html("신청마감");
-    }
+   if(today() > finish ){
+  $("button[date="+partynum+"]").attr("disabled", true);
+  $("button[date="+partynum+"]").css("background-color","black");
+  $("button[date="+partynum+"]").html("신청마감");
+   }
 }
-
 </script>
- 
 <c:forEach items="${list}" var="party">
  <script>
-  /*무한 스크롤*/
-  /*
-  var count = 1;
-  var listCount = 1;
-  $(document).ready(function() {
-  // 윈도우 이벤트 처리(window, document, img 등에서 사용할 수 있는 이벤트)
-  // ready, load, unload, resize, scroll, error
-
-  // 무한스크롤 구현
-  $("#visible").scroll(function(){
-    var scrollTop = $("#visible").scrollTop();
-    var scroollHeight = count * $("#visible").height();
-    // 스크롤이 끝까지 내려가면 window 객체의 scrollTop 속성과 height 속성을 합한 값이
-    // document 높이와 같아진다.
-    console.log((scrollTop) + ":" + (scroollHeight-370 * count));
-      if(listCount < 16 && scrollTop  >= scroollHeight-200 * count){//브라우저 마다 미세한 차이 발생(스크롤바의 크기)으로 -100
-        $("#visible").append("<div class='span2'><ul class='slides'><li><a href='/party/read?num=${party.num}'><img src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 100%; height: 200px;' class='img-polaroid' /></a></li><li><a href='/party/read?num=${party.num}'>${party.name}</a></li><li>${party.recruit}<a href='/party/read?num=${party.num}' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</a></li></ul></div>");   
-      count++;
-         } 
-      });
-  });
-  
-  */
   //프리미엄체크를 위한 변수선언
   var premium = '${party.primeum}';
   //제목 6글자만 뒤에는 ...
-  var subname = ('${party.name}').substr(0,6)+'...'
+  var subname = ('${party.name}').substr(0,6)+'...';
   //프리미엄을 넣기 위한 파티번호받기
   var partynum = '${party.num}';
   //지난날짜 파티를 구분하기 위한 변수선언
   var finish = '${party.recend}';
   /*무한 스크롤 처음 9개만 보기*/
- 
-  $("#visible").append("<div class='span2' id='${party.num}' party_place='${party.place}' "+
-               "party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'>"+
-               "<ul class='slides'><li><a href='/party/read?num=${party.num}'>"+
-               "<img partimg='${party.num}' src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 180px; height: 200px;border:solid 2px white;' class='img-polaroid' />"+
-               "</a></li><li><a num='${party.num}' href='/party/read?num=${party.num}'>"+subname+
-               "</a></li><li>${party.recruit}명<button date='${party.num}' onclick='location.href='/party/read?num=${party.num}'' class='btn btn-warning btn-small e_wobble' style='float: right;'>"+
-               "신청하기</button></li></ul></div>");
-   if(premium=="Y"){
-    $("img[partimg="+partynum+"]").css("border","solid 2px gold");
-   }
-   finishdate(partynum, finish);
+       $("#visible").append("<div class='span2' id='${party.num}' party_place='${party.place}' party_num='${party.num}'"+
+              "party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'>"+
+              "<ul class='slides'><li><a href='/party/read?num=${party.num}'>"+
+              "<img partimg='${party.num}' src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 180px; height: 200px;border:solid 2px white;' class='img-polaroid' />"+
+              "</a></li><li><a num='${party.num}' href='/party/read?num=${party.num}'>"+subname+
+              "</a></li><li>${party.recruit}명<button date='${party.num}' onclick='location.href='/party/read?num=${party.num}'' class='btn btn-warning btn-small e_wobble' style='float: right;'>"+
+              "신청하기</button></li></ul></div>");
+       if(premium=="Y"){
+          $("img[partimg="+partynum+"]").css("border","solid 2px gold");
+                     }
+      finishdate(partynum, finish);
   </script>
 </c:forEach>
 <script>
+var count = 10;
+//무한스크롤
+$("#visible").scroll(function(){
+    var offsetHeight = $(this).prop('offsetHeight');
+    var scrollTop= $(this).scrollTop();
+    var scrollHeight= $(this).prop('scrollHeight');
+    if(offsetHeight    +  scrollTop >=  scrollHeight){
+       console.log("이벤트 발생");
+        $.ajax({
+            type:'get',
+            url:'search.do',
+            dataType:"json",
+            data:{
+              listnum:count
+            },
+            success:function (searchList){
+             
+              var text ="";
+              for ( var i in searchList) {
+                text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
+                text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+                text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
+                text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
+                navi((searchList[i].place).substr(0,10)+'...', searchList[i].name, "/resources/bootstrap/img/partyImg/"+searchList[i].image);
+                count++;
+              }
+              $("#visible").append(text);
+              for ( var i in searchList) {
+                if(searchList[i].primeum=="Y"){
+                  $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+                 }
+                  var finish = searchList[i].recend.split(" ");
+                  finishdate(searchList[i].num, finish[0]);
+            } 
+            },
+            error:function(){
+              console.log("오류");
+            }
+          });
+    }
+
+});
 </script>
-<img>
 <script>
 var markers = [];
 var marker;

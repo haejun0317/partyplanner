@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Flattern - Flat and trendy bootstrap site template</title>
+  <title>회사 소개</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -45,8 +45,8 @@
           </div>
           <div class="span8">
             <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-              <li><a href="#">Company</a><i class="icon-angle-right"></i></li>
+              <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="/about">Company</a><i class="icon-angle-right"></i></li>
               <li class="active">회사 소개</li>
             </ul>
           </div>

@@ -56,7 +56,7 @@
           <div class="span8">
             <ul class="breadcrumb">
               <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-              <li class="active">500 Error page</li>
+              <li class="active">500 Internal Server Error</li>
             </ul>
           </div>
         </div>
@@ -68,7 +68,7 @@
           <div class="span12">
             <h2 class="aligncenter">500 Error not found</h3>
 				<p class="aligncenter">
-					Page is not found.
+					Internal Server Error
 				</p>
 			</div>
 		</div>

@@ -152,10 +152,8 @@ function onSaveCall(text) {
           </div>
           <div class="span8">
             <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i
-                class="icon-angle-right"></i></li>
-              <li><a href="#">Plan</a><i
-                class="icon-angle-right"></i></li>
+              <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li>Plan<i class="icon-angle-right"></i></li>
               <li class="active">Check</li>
             </ul>
           </div>

@@ -166,13 +166,14 @@ public class MemberController {
 	
 	/** 마이 페이지 (정보수정하는 곳) */
 	@RequestMapping(value ="/myPage", method =RequestMethod.GET)
-	public void plan(Model model,String id)throws Exception{
+	public void plan(Model model,HttpSession session)throws Exception{
+		Member member = (Member)session.getAttribute("Member");
 		logger.info("show all list");
-		model.addAttribute("PartyJoin", partyjoinservice.listparty(id));
+		model.addAttribute("PartyJoin", partyjoinservice.listparty(member.getId()));
 		model.addAttribute("allParty", partyservice.listAll());
-		model.addAttribute("Party", partyservice.myPartyListAll(id));
-		model.addAttribute("Member", service.mread(id));
-		model.addAttribute("EventPlan", eventplanservice.listPlan(id));
+		model.addAttribute("Party", partyservice.myPartyListAll(member.getId()));
+		model.addAttribute("Member", service.mread(member.getId()));
+		model.addAttribute("EventPlan", eventplanservice.listPlan(member.getId()));
 	}
 	
 	/** member 수정하기 버튼 눌렀을 때 */

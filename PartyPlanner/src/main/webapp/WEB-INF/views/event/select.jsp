@@ -4,7 +4,7 @@
 <html>
 
 <head>
-<title>파티 선택하기</title>
+<title>행사 선택</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -56,9 +56,9 @@
           </div>
           <div class="span8">
             <ul class="breadcrumb">
-              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-              <li><a href="#">Plan</a><i class="icon-angle-right"></i></li>
-              <li class="active">Event Select</li>
+              <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li>Plan<i class="icon-angle-right"></i></li>
+              <li class="active">Select</li>
             </ul>
           </div>
         </div>

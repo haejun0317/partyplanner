@@ -45,7 +45,7 @@
                <% if(member != null){ %>
                        <li><i class="icon-user"></i><%=member.getName() %> 님 환영합니다.</li>
                        <li><a href="/member/logout" >Logout</a></li>
-                       <li><a href="/member/myPage?id=<%=member.getId() %>" >my page</a></li>
+                       <li><a href="/member/myPage" >my page</a></li>
                <% }else{ %>
                        <li><a href="/member/regist"><i
                        class="icon-user"></i> Sign up</a></li>
@@ -71,7 +71,7 @@
             <div class="navigation">
               <nav>
                 <ul class="nav topnav">
-                  <li class="dropdown active"><a href="../">Home
+                  <li class="dropdown active"><a href="/">Home
                   </a></li>
                   <li class="dropdown"><a href="/about">Company</a>
                   </li>
@@ -96,7 +96,7 @@
                       <li><a href="../">이벤트</a></li>
                     </ul>
                    </li>
-                  <li><a href="../contact/contact">Contact </a></li>
+                  <li><a href="/contact/contact">Contact </a></li>
                 </ul>
               </nav>
             </div>

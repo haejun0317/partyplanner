@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>로그인</title>
+<title>로그인 실패</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -56,9 +56,8 @@
         </div>
         <div class="span8">
           <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home"></i></a><i
-              class="icon-angle-right"></i></li>
-            <li><a href="#">로그인</a></li>
+            <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+            <li>로그인</li>
           </ul>
         </div>
       </div>

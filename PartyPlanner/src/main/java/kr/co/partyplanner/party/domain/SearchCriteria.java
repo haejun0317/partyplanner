@@ -6,8 +6,6 @@ public class SearchCriteria{
    /*카테고리별 검색*/
    private String category;
    
-   
-   
    /*장소별 검색*/
    private String place;
    
@@ -32,6 +30,9 @@ public class SearchCriteria{
    /*마감순으로 검색*/
    private String deadline;
    
+   /*무한스크롤 num검색을 위한 변수 선언*/
+   private int listnum;
+   
    public SearchCriteria() {
       
    }
@@ -40,7 +41,7 @@ public class SearchCriteria{
    }
    public void setCategory(String category) {
       if(category.equals("")) {
-         this.category = null;
+         category = null;
          return;
       }
       this.category = category;
@@ -52,7 +53,7 @@ public class SearchCriteria{
 
    public void setPlace(String place) {
       if(place.equals("")) {
-         this.place = null;
+         place = null;
          return;
       }
       this.place = place;
@@ -72,7 +73,7 @@ public class SearchCriteria{
 
    public void setWeek(String week) {
       if(week.equals("")) {
-         this.week = null;
+         week = null;
          return;
       }
       this.week = week;
@@ -84,7 +85,7 @@ public class SearchCriteria{
 
    public void setTime(String time) {
       if(time.equals("")) {
-         this.time = null;
+         time = null;
          return;
       }
       this.time = time;
@@ -96,7 +97,7 @@ public class SearchCriteria{
 
    public void setStartCal(String startCal) {
       if(startCal.equals("")) {
-         this.startCal = null;
+         startCal = null;
          return;
       }
       this.startCal = startCal;
@@ -108,7 +109,7 @@ public class SearchCriteria{
 
    public void setEndCal(String endCal) {
       if(endCal.equals("")) {
-         this.endCal = null;
+         endCal = null;
          return;
       }
       this.endCal = endCal;
@@ -125,14 +126,17 @@ public class SearchCriteria{
    public void setDeadline(String deadline) {
       this.deadline = deadline;
    }
-   @Override
-   public String toString() {
-      return "SearchCriteria [category=" + category + ", place=" + place + ", price=" + price + ", week=" + week
-            + ", time=" + time + ", startCal=" + startCal + ", endCal=" + endCal + ", lately=" + lately
-            + ", deadline=" + deadline + "]";
+   public int getListnum() {
+   return listnum;
    }
-
-
-   
+   public void setListnum(int listnum) {
+   this.listnum = listnum;
+   }
+   @Override
+      public String toString() {
+      return "SearchCriteria [category=" + category + ", place=" + place + ", price=" + price + ", week=" + week
+         + ", time=" + time + ", startCal=" + startCal + ", endCal=" + endCal + ", lately=" + lately + ", deadline="
+         + deadline + ", listnum=" + listnum + "]";
+   }
    
 }

@@ -89,7 +89,6 @@
     });
       
     function setButton() {
-<<<<<<< HEAD
     	console.log($("#pmember").val());
     	console.log($("#id").val());
 		if($("#pmember").val() == $("#id").val()){
@@ -102,7 +101,6 @@
 			})
 		}
 	}
-=======
        console.log($("#pmember").val());
        console.log($("#id").val());
       if($("#pmember").val() == $("#id").val()){
@@ -115,7 +113,6 @@
          })
       }
    }
->>>>>>> branch 'master' of https://github.com/haejun0317/partyplanner
       
 </script>
 
@@ -191,7 +188,7 @@
             <li><a href="/"><i class="icon-home"></i></a><i
               class="icon-angle-right"></i>Share<i
               class="icon-angle-right"></i></li>
-            <li><a href="#">파티 상세보기</a>
+            <li>파티 상세보기</li>
           </ul>
         </div>
       </div>

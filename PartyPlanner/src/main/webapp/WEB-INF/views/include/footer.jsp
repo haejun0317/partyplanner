@@ -6,9 +6,9 @@
         <div class="widget">
           <h5 class="widgetheading">Browse pages</h5>
           <ul class="link-list">
-            <li><a href="#">About our company</a></li>
-            <li><a href="#">My Page</a></li>
-            <li><a href="#">Contact Me</a></li>
+            <li><a href="/about">About our company</a></li>
+            <li><a href="/member/myPage">My Page</a></li>
+            <li><a href="/contact/contact">Contact Me</a></li>
           </ul>
         </div>
       </div>
@@ -16,8 +16,8 @@
         <div class="widget">
           <h5 class="widgetheading">Important stuff</h5>
           <ul class="link-list">
-            <li><a href="#">Party Plan</a></li>
-            <li><a href="#">Party Share</a></li>
+            <li><a href="/event/select">Party Plan</a></li>
+            <li><a href="/party/list">Party Share</a></li>
           </ul>
         </div>
       </div>
@@ -104,7 +104,7 @@
   <script src="/resources/bootstrap/js/jquery.flexslider.js"></script>
   <script src="/resources/bootstrap/js/jquery.nivo.slider.js"></script>
   <script src="/resources/bootstrap/js/modernizr.custom.js"></script>
-  <script src="/resources/bootstrapd/js/jquery.ba-cond.min.js"></script>
+  <script src="/resources/bootstrap/js/jquery.ba-cond.min.js"></script>
   <script src="/resources/bootstrap/js/jquery.slitslider.js"></script>
   <script src="/resources/bootstrap/js/animate.js"></script>
 

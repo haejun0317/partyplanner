@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>파티 개설하기 페이지</title>
+<title>파티 개설</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -503,10 +503,8 @@ td {
 
         <div class="span8">
           <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home"></i></a><i
-              class="icon-angle-right"></i></li>
-            <li><a href="#">Features</a><i class="icon-angle-right"></i></li>
-            <li class="active">Typography</li>
+            <li><a href="/"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+            <li class="active">파티 개설</li>
           </ul>
 
         </div>
