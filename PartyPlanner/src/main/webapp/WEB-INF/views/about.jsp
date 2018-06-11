@@ -81,7 +81,7 @@
                   <img src="/resources/bootstrap/img/works/full/포트폴리오12.png" alt="" />
                 </li>
                 <li>
-                  <img src="/resources/bootstrap/img/works/full/포트폴리오13.jpg" alt="" />
+                  <img src="/resources/bootstrap/img/works/full/포트폴리오14.jpg" alt="" />
                 </li>
               </ul>
             </div>

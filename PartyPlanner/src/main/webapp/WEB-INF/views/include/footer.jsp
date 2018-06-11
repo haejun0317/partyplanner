@@ -62,7 +62,7 @@
                     Licensing information: https://bootstrapmade.com/license/
                     Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
                   -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              Designed by <b>Party Planner</b>
             </div>
           </div>
         </div>
