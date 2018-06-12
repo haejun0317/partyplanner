@@ -134,8 +134,8 @@ $(document).ready(function() {
       success:function (searchList){
         var text ="";
         for ( var i in searchList) {
-          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "<div class='span2'><ul class='slides'><li partimg='"+searchList[i].num+"'><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 150px; height: 200px; border:solid 2px white;' class='img-polaroid' />";
           text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
           text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
           navi((searchList[i].place).substr(0,10)+'...', searchList[i].name, "/resources/bootstrap/img/partyImg/"+searchList[i].image);
@@ -144,7 +144,7 @@ $(document).ready(function() {
         $("#visible").html(text);
         for ( var i in searchList) {
           if(searchList[i].primeum=="Y"){
-            $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+            $("li[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
            }
           var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
@@ -175,8 +175,8 @@ $('#lately').click(function() {
       success:function(searchList){
         var text ="";
         for ( var i in searchList) {
-          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "<div class='span2'><ul class='slides'><li partimg='"+searchList[i].num+"'><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 150px; height: 200px; border:solid 2px white;' class='img-polaroid' />";
           text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
           text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
           function deadlineName() {
@@ -186,7 +186,7 @@ $('#lately').click(function() {
         $("#visible").html(text);
         for ( var i in searchList) {
           if(searchList[i].primeum=="Y"){
-            $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+            $("li[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
            }
           var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
@@ -214,8 +214,8 @@ $('#deadline').click(function() {
       success:function(searchList){
         var text ="";
         for ( var i in searchList) {
-          text += "<div class='span2'><ul class='slides'><li><a href='/party/read?num="+searchList[i].num+"'>";
-          text += "<img partimg='"+searchList[i].num+"' src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 100%; height: 200px; border:solid 2px white;' class='img-polaroid' />";
+          text += "<div class='span2'><ul class='slides'><li partimg='"+searchList[i].num+"'><a href='/party/read?num="+searchList[i].num+"'>";
+          text += "<img src='/resources/bootstrap/img/partyImg/"+searchList[i].image+"' style='max-width: 150px; height: 200px; border:solid 2px white;' class='img-polaroid' />";
           text += "</a></li><li><a href='/party/read?num="+searchList[i].num+"'>"+searchList[i].name+"</a></li>";
           text += "<li>"+searchList[i].recruit+"명<button date='"+searchList[i].num+"' onclick='location.href='/party/read?num="+searchList[i].num+"'' class='btn btn-warning btn-small e_wobble' style='float: right;'>신청하기</button></li></ul></div>";
           function deadlineName() {
@@ -225,7 +225,7 @@ $('#deadline').click(function() {
         $("#visible").html(text);
         for ( var i in searchList) {
            if(searchList[i].primeum=="Y"){
-                $("img[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
+                $("li[partimg="+searchList[i].num+"]").css("border","solid 2px gold");
                }
           var finish = searchList[i].recend.split(" ");
             finishdate(searchList[i].num, finish[0]);
@@ -423,13 +423,13 @@ function finishdate(partynum, finish) {
   /*무한 스크롤 처음 9개만 보기*/
        $("#visible").append("<div class='span2' id='${party.num}' party_place='${party.place}' party_num='${party.num}'"+
               "party_name='${party.name}' party_image='/resources/bootstrap/img/partyImg/${party.image}'>"+
-              "<ul class='slides'><li><a href='/party/read?num=${party.num}'>"+
-              "<img partimg='${party.num}' src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 180px; height: 200px;border:solid 2px white;' class='img-polaroid' />"+
+              "<ul class='slides'><li partimg='${party.num}'><a href='/party/read?num=${party.num}'>"+
+              "<img src='/resources/bootstrap/img/partyImg/${party.image}' style='max-width: 150px; height: 200px;border:solid 2px white;' class='img-polaroid' />"+
               "</a></li><li><a num='${party.num}' href='/party/read?num=${party.num}'>"+subname+
               "</a></li><li>${party.recruit}명<button date='${party.num}' onclick='location.href='/party/read?num=${party.num}'' class='btn btn-warning btn-small e_wobble' style='float: right;'>"+
               "신청하기</button></li></ul></div>");
        if(premium=="Y"){
-          $("img[partimg="+partynum+"]").css("border","solid 2px gold");
+          $("li[partimg="+partynum+"]").css("border","solid 2px gold");
                      }
       finishdate(partynum, finish);
   </script>
