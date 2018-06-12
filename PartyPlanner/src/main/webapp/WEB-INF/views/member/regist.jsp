@@ -113,7 +113,7 @@
                     이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp;&nbsp; <input type="text" name="name" style="border-radius: 10px; padding-left: 15px" placeholder="Enter Name" required>
                     <hr>
                     <span>이&nbsp;&nbsp;메&nbsp;&nbsp;일&nbsp;&nbsp;</span><input type="text" name="firstemail" style="border-radius: 10px; padding-left: 15px" placeholder="Enter E-mail" required> @ <select name="lastemail"
-                      style="border-radius: 10px"><option>직접입력</option>
+                      style="border-radius: 10px"><option>메일 선택</option>
                       <option>naver.com</option>
                       <option>daum.net</option>
                       <option>google.com</option></select><br>
@@ -126,7 +126,7 @@
             </article>
             <div style="text-align: center;">
               <button type="submit" class="btn btn-blue" onclick="regist()">회원가입</button> 
-              <a href="#" class="btn btn-red">취소하기</a>
+              <button type="reset" class="btn btn-red">취소하기</button>
             </div>
             </form>
           </div>

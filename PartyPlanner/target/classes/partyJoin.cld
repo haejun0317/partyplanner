@@ -40,8 +40,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>491</x>
-        <y>157</y>
+        <x>461</x>
+        <y>332</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -73,7 +73,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>135</x>
+              <x>164</x>
               <y>528</y>
             </constraint>
             <sourceConnections>
@@ -198,7 +198,7 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>123</x>
+                    <x>164</x>
                     <y>358</y>
                   </constraint>
                   <sourceConnections>
@@ -293,7 +293,7 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>149</x>
+                          <x>164</x>
                           <y>204</y>
                         </constraint>
                         <sourceConnections>
@@ -382,7 +382,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>137</x>
+                                <x>164</x>
                                 <y>16</y>
                               </constraint>
                               <sourceConnections>
@@ -1239,8 +1239,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>470</x>
-              <y>16</y>
+              <x>461</x>
+              <y>18</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../.."/>
@@ -1420,8 +1420,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>325</x>
-              <y>685</y>
+              <x>382</x>
+              <y>860</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../.."/>

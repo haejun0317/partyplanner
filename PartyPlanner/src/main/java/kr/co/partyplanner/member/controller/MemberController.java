@@ -173,7 +173,7 @@ public class MemberController {
 		model.addAttribute("PartyJoin", partyjoinservice.listparty(member.getId()));
 		model.addAttribute("allParty", partyservice.list());
 		model.addAttribute("Party", partyservice.myPartyListAll(member.getId()));
-		model.addAttribute("Member", service.mread(member.getId()));
+		model.addAttribute("Member", member);
 		model.addAttribute("EventPlan", eventplanservice.listPlan(member.getId()));
 	}
 	

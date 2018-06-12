@@ -40,8 +40,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>16</x>
-        <y>394</y>
+        <x>294</x>
+        <y>285</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -280,8 +280,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>35</x>
-                                <y>16</y>
+                                <x>294</x>
+                                <y>114</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>

@@ -163,7 +163,7 @@
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
-                    <i class="icon-coffee icon-circled icon-64 active"></i>
+                    <a href="/contact/contact"><i class="icon-coffee icon-circled icon-64 active"></i></a>
                   </div>
                   <div class="text">
                     <h6>협력업체 모집</h6>

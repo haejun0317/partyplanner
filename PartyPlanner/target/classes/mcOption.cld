@@ -40,8 +40,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>227</x>
-        <y>142</y>
+        <x>402</x>
+        <y>303</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -73,8 +73,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>213</x>
-              <y>27</y>
+              <x>120</x>
+              <y>366</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.AggregationModel reference="../../.."/>
@@ -198,8 +198,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>437</x>
-                    <y>17</y>
+                    <x>120</x>
+                    <y>250</y>
                   </constraint>
                   <sourceConnections>
                     <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
@@ -293,8 +293,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>651</x>
-                          <y>13</y>
+                          <x>120</x>
+                          <y>150</y>
                         </constraint>
                         <sourceConnections>
                           <net.java.amateras.uml.classdiagram.model.AggregationModel reference="../../.."/>
@@ -382,8 +382,8 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>855</x>
-                                <y>9</y>
+                                <x>120</x>
+                                <y>16</y>
                               </constraint>
                               <sourceConnections>
                                 <net.java.amateras.uml.classdiagram.model.RealizationModel reference="../../.."/>
@@ -891,8 +891,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>636</x>
-              <y>154</y>
+              <x>309</x>
+              <y>15</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../.."/>
@@ -1072,8 +1072,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>218</x>
-              <y>381</y>
+              <x>227</x>
+              <y>561</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.DependencyModel reference="../../.."/>

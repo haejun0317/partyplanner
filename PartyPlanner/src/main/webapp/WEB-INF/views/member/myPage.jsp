@@ -487,11 +487,7 @@ $(document).ready(function(){
   <script>
   	$(function(){
   		$('#btnUp').on('click', function(e){
-  			alert('수정됬습니다');
-  			
   			e.preventDefault();
-  			
-  			$('input[name="id"]').remove();
   			
   			$('#frm').submit();
   		});

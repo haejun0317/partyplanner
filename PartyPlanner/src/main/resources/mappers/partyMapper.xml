@@ -54,7 +54,7 @@
                                      member_id "member"
                                              from (select *
                                                    from party
-                                                   ORDER BY primeum DESC))
+                                                   ORDER BY primeum DESC,regdate DESC))
          where numrow >= 1 and numrow <= 9
       ]]>
    </select>
@@ -122,7 +122,7 @@
 			               member_id 
 			        FROM   (SELECT * 
 			                FROM   party 
-			                ORDER  BY primeum DESC)) 
+			                ORDER  BY primeum DESC,regdate DESC)) 
          where 1=1
    <!-- 무한스크롤 9개씩 출력하기 -->
       <if test="listnum > 9"><![CDATA[and numrow >= #{listnum} and numrow < #{listnum}+9]]></if>

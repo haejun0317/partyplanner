@@ -327,7 +327,7 @@
                   <div id="collapseOne"
                     class="accordion-body collapse in">
                     <div class="accordion-inner">
-                      <input type="radio" name="mcGroup" id="null"
+                      <input type="radio" name="mcGroup" id="null" value="null"
                         onchange="handleClick(this)" checked>선택
                       안함 <br>
                       <c:forEach items="${mcList}" var="mc">

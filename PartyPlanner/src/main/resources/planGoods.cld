@@ -1009,8 +1009,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>323</x>
-              <y>112</y>
+              <x>324</x>
+              <y>15</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.uml.classdiagram.model.DependencyModel>

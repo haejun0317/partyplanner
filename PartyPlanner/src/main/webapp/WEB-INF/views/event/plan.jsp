@@ -921,7 +921,6 @@
                       id="sample4_roadAddress"> <input
                       type="button" class="btn btn-square btn-theme"
                       style="border-radius: 10px; width: 100px"
-                      onclick="sample4_execDaumPostcode()"
                       value="우편번호 찾기">
                     </span>
                     <span>&emsp;&emsp;&emsp;&emsp;&emsp;
